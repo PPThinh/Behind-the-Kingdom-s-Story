@@ -31,18 +31,6 @@ namespace GameCreator.Runtime.VisualScripting
             this.m_Input.OnStartup();
         }
 
-        protected internal override void OnEnable(Trigger trigger)
-        {
-            base.OnEnable(trigger);
-            this.m_Input.Enable();
-        }
-
-        protected internal override void OnDisable(Trigger trigger)
-        {
-            base.OnDisable(trigger);
-            this.m_Input.Disable();
-        }
-
         protected internal override void OnDestroy(Trigger trigger)
         {
             base.OnDestroy(trigger);

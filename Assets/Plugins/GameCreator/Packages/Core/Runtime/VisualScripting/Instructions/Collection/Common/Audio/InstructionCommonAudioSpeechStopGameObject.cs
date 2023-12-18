@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using GameCreator.Runtime.Common.Audio;
 using UnityEngine;

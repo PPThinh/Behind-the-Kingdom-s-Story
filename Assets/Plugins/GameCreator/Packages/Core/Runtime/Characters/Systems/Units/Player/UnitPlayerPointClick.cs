@@ -83,7 +83,6 @@ namespace GameCreator.Runtime.Characters
 
             this.m_HitBuffer = new RaycastHit[BUFFER_SIZE];
             
-            this.m_InputMove.Enable();
             this.m_InputMove.RegisterStart(this.OnStartPointClick);
             this.m_InputMove.RegisterPerform(this.OnPerformPointClick);
         }
@@ -95,7 +94,6 @@ namespace GameCreator.Runtime.Characters
             
             this.m_InputMove.ForgetStart(this.OnStartPointClick);
             this.m_InputMove.ForgetPerform(this.OnPerformPointClick);
-            this.m_InputMove.Disable();
             
             this.Character.Motion?.MoveToDirection(Vector3.zero, Space.World, 0);
         }
@@ -107,28 +105,20 @@ namespace GameCreator.Runtime.Characters
             base.OnUpdate();
             this.m_InputMove.OnUpdate();
             
-            if (!this.m_Location.HasPosition) return;
-            
             GameObject user = this.Character.gameObject;
+            if (!this.m_Location.HasPosition(user)) return;
+            
+            Vector3 position = this.m_Location.GetPosition(user);
             
             #if UNITY_EDITOR
-            Vector3 position = this.m_Location.GetPosition(user);
             Debug.DrawLine(position, position + Vector3.up * 5f);
             #endif
             
             this.Character.Motion?.MoveToLocation(this.m_Location, 0.1f, null, 0);
-
-            if (this.m_Press && this.m_Location.HasPosition)
-            {
-                this.m_Indicator.Get(
-                    this.Character.gameObject,
-                    this.m_Location.GetPosition(this.Character.gameObject),
-                    Quaternion.identity
-                );
-            }
+            if (this.m_Press) this.m_Indicator.Get(user, position, Quaternion.identity);
             
             this.m_Press = false;
-            this.m_Location = Location.NONE;
+            this.m_Location = Location.None;
         }
         
         // PRIVATE METHODS: -----------------------------------------------------------------------

@@ -6,18 +6,18 @@ namespace GameCreator.Runtime.Characters
     [Serializable]
     public class UnitPlayer
     {
-        [SerializeReference] private IUnitPlayer m_Player = new UnitPlayerDirectional();
+        [SerializeReference] private TUnitPlayer m_Player = new UnitPlayerDirectional();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public IUnitPlayer Wrapper => this.m_Player;
+        public TUnitPlayer Wrapper => this.m_Player;
         
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
         public UnitPlayer()
         { }
 
-        public UnitPlayer(IUnitPlayer unit)
+        public UnitPlayer(TUnitPlayer unit)
         {
             this.m_Player = unit;
         }

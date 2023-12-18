@@ -39,7 +39,7 @@ namespace GameCreator.Editor.Characters
             });
 
             popupField.AddToClassList(AlignLabel.CLASS_UNITY_ALIGN_LABEL);
-            _ = new AlignLabel(popupField);
+            AlignLabel.On(popupField);
             
             return popupField;
         }

@@ -61,9 +61,9 @@ namespace GameCreator.Runtime.Characters
         void MoveToDirection(Vector3 velocity, Space space, int priority = 1);
         void StopToDirection(int priority = 1);
 
-        void MoveToLocation(Location location, float stopDistance, Action<Character> onFinish, int priority = 1);
-        void MoveToTransform(Transform target, float stopDistance, Action<Character> onFinish, int priority = 1);
-        void MoveToMarker(Marker marker, float stopDistance, Action<Character> onFinish, int priority = 1);
+        void MoveToLocation(Location location, float stopDistance, Action<Character, bool> onFinish, int priority = 1);
+        void MoveToTransform(Transform target, float stopDistance, Action<Character, bool> onFinish, int priority = 1);
+        void MoveToMarker(Marker marker, float stopDistance, Action<Character, bool> onFinish, int priority = 1);
 
         void StartFollowingTarget(Transform target, float minRadius, float maxRadius, int priority = 1);
         void StopFollowingTarget(int priority = 1);

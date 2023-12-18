@@ -24,7 +24,7 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetDirection m_Direction = GetDirectionVector3.Create();
+        [SerializeField] private PropertyGetDirection m_Direction = GetDirectionVector.Create();
         [SerializeField] private PropertyGetInteger m_Priority = GetDecimalInteger.Create(0);
 
         // PROPERTIES: ----------------------------------------------------------------------------

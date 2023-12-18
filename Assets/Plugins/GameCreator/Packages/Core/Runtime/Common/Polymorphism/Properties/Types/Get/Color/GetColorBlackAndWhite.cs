@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconColor), ColorTheme.Type.TextNormal)]
     [Description("Returns the black and white value of the color")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetColorBlackAndWhite : PropertyTypeGetColor
     {
         [SerializeField]

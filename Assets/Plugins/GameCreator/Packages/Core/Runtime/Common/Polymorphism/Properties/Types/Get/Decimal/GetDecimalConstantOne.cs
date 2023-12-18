@@ -18,5 +18,7 @@ namespace GameCreator.Runtime.Common
         public static PropertyGetDecimal Create => new PropertyGetDecimal(new GetDecimalConstantOne());
 
         public override string String => "1";
+
+        public override double EditorValue => 1;
     }
 }

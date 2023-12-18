@@ -26,7 +26,7 @@
     height: 18px;
     flex-grow: 0;
     flex-shrink: 0;
-    margin: 1px 3px 1px 0;
+    margin: 1px 0;
     background-color: var(--gc-color-list-head-default);
     border-color: var(--gc-color-border-default);
     border-width: 1px;

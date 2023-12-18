@@ -44,7 +44,7 @@ namespace GameCreator.Runtime.Characters
         [SerializeField] protected TimeMode m_Time;
         
         [SerializeField] protected Busy m_Busy = new Busy();
-        [SerializeField] protected CharacterKernel m_Kernel = new CharacterKernel();
+        [SerializeReference] protected CharacterKernel m_Kernel = new CharacterKernel();
         
         [SerializeField] protected AnimimGraph m_AnimimGraph = new AnimimGraph();
         [SerializeField] protected InverseKinematics m_InverseKinematics = new InverseKinematics();
@@ -319,21 +319,11 @@ namespace GameCreator.Runtime.Characters
 
         public void OnLand(float velocity)
         {
-            if (!this.Busy.AreLegsBusy)
-            {
-                _ = this.Busy.Timeout(Busy.Limb.Legs, 0.2f);   
-            }
-            
             this.EventLand?.Invoke(velocity);
         }
 
         public void OnJump(float force)
         {
-            if (!this.Busy.AreLegsBusy)
-            {
-                _ = this.Busy.Timeout(Busy.Limb.Legs, 0.2f);   
-            }
-            
             this.EventJump?.Invoke(force);
         }
         
@@ -341,9 +331,9 @@ namespace GameCreator.Runtime.Characters
 
         public struct ChangeOptions
         {
-            public MaterialSoundsAsset materials;
-            public RuntimeAnimatorController controller;
-            public Vector3 offset;
+            [NonSerialized] public MaterialSoundsAsset materials;
+            [NonSerialized] public RuntimeAnimatorController controller;
+            [NonSerialized] public Vector3 offset;
         }
         
         /// <summary>
@@ -452,6 +442,7 @@ namespace GameCreator.Runtime.Characters
         // INTERFACE SPATIAL HASH: ----------------------------------------------------------------
 
         Vector3 ISpatialHash.Position => this.transform.position;
+        
         int ISpatialHash.UniqueCode => this.gameObject.GetInstanceID();
     }   
 }

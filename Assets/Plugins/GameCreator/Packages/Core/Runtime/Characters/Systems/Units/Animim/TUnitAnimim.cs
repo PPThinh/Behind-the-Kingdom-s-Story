@@ -1,16 +1,12 @@
 ﻿using System;
 using GameCreator.Runtime.Common;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameCreator.Runtime.Characters
 {
     [Serializable]
     public abstract class TUnitAnimim : TUnit, IUnitAnimim
     {
-        public const int LAYER_BREATH = 1;
-        public const int LAYER_TWITCH = 2;
-
         protected const float LAND_RECOVERY_SMOOTH_IN = 0.3f;
         protected const float LAND_RECOVERY_DURATION = 0.1f;
         protected const float LAND_RECOVERY_SMOOTH_OUT = 0.5f;
@@ -26,8 +22,7 @@ namespace GameCreator.Runtime.Characters
         };
 
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
-
-        [FormerlySerializedAs("m_ModelPosition")]
+        
         [SerializeField] protected Vector3 m_Position;
         [SerializeField] protected Vector3 m_Rotation = Vector3.zero;
         [SerializeField] protected Vector3 m_Scale = Vector3.one;
@@ -37,9 +32,6 @@ namespace GameCreator.Runtime.Characters
         [SerializeField] protected Animator m_Animator;
         [SerializeField] protected State m_StartState;
         [SerializeField] protected Reaction m_Reaction;
-
-        [SerializeField] protected AnimimBreathing m_Breathing = new AnimimBreathing();
-        [SerializeField] protected AnimimTwitching m_Twitching = new AnimimTwitching();
 
         // MEMBERS: -------------------------------------------------------------------------------
 
@@ -76,7 +68,6 @@ namespace GameCreator.Runtime.Characters
             set => this.m_Scale = value;
         }
 
-
         public Transform Mannequin
         {
             get
@@ -105,24 +96,6 @@ namespace GameCreator.Runtime.Characters
         public Vector3 RootMotionDeltaPosition { get; private set; }
         public Quaternion RootMotionDeltaRotation { get; private set; }
 
-        public float HeartRate
-        {
-            get => this.m_Breathing?.Rate ?? 0f;
-            set => this.m_Breathing.Rate = value;
-        }
-
-        public float Exertion
-        {
-            get => this.m_Breathing?.Exertion ?? 0f;
-            set => this.m_Breathing.Exertion = value;
-        }
-        
-        public float Twitching
-        {
-            get => this.m_Twitching?.Weight ?? 0f;
-            set => this.m_Twitching.Weight = value;
-        }
-
         // EVENTS: --------------------------------------------------------------------------------
 
         public event Action<int> EventOnAnimatorIK;
@@ -132,8 +105,6 @@ namespace GameCreator.Runtime.Characters
         public virtual void OnStartup(Character character)
         {
             this.Character = character;
-            this.m_Breathing?.OnStartup(this, character);
-            this.m_Twitching?.OnStartup(this, character);
         }
 
         public virtual void AfterStartup(Character character)
@@ -152,8 +123,6 @@ namespace GameCreator.Runtime.Characters
         public virtual void OnDispose(Character character)
         {
             this.Character = character;
-            this.m_Breathing?.OnDispose(this, character);
-            this.m_Twitching?.OnDispose(this, character);
             
             if (this.Character.Ragdoll.IsRagdoll)
             {
@@ -166,17 +135,11 @@ namespace GameCreator.Runtime.Characters
 
         public virtual void OnEnable()
         {
-            this.m_Breathing?.OnEnable(this);
-            this.m_Twitching?.OnEnable(this);
-            
             this.Character.EventLand += this.OnLand;
         }
 
         public virtual void OnDisable()
         {
-            this.m_Breathing?.OnDisable(this);
-            this.m_Twitching?.OnDisable(this);
-            
             this.Character.EventLand -= this.OnLand;
         }
 
@@ -185,10 +148,6 @@ namespace GameCreator.Runtime.Characters
         public virtual void OnUpdate()
         {
             this.RequireAnimatorProxy();
-            
-            this.m_Breathing?.OnUpdate(this);
-            this.m_Twitching?.OnUpdate(this);
-
             this.OnUpdateModelLocation();
         }
 

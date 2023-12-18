@@ -22,6 +22,8 @@ namespace GameCreator.Runtime.Common
         // PROPERTIES: ----------------------------------------------------------------------------
         
         [field: NonSerialized] internal bool IsDestroying { get; private set; }
+
+        internal bool IsSceneLoaded => this.gameObject.scene.isLoaded;
         
         // INIT METHODS: --------------------------------------------------------------------------
 

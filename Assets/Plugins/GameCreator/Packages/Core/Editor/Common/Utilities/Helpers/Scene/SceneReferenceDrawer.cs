@@ -21,7 +21,7 @@ namespace GameCreator.Editor.Common
                 bindingPath = propertyAsset.propertyPath
             };
 
-            _ = new AlignLabel(fieldAsset);
+            AlignLabel.On(fieldAsset);
             root.Add(fieldAsset);
 
             return root;

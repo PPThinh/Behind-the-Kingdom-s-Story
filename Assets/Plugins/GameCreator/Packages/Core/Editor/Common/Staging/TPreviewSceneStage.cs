@@ -27,6 +27,8 @@ namespace GameCreator.Editor.Core
         
         public static void EnterStage(string assetPath)
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+            
             if (Stage != null) DestroyImmediate(Stage);
             Stage = CreateInstance<T>();
 

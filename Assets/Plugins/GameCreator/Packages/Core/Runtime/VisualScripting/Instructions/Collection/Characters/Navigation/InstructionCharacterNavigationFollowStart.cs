@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameCreator.Runtime.VisualScripting
 {
@@ -33,14 +34,14 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetGameObject m_Target = GetGameObjectInstance.Create();
+        [SerializeField] private PropertyGetGameObject m_FollowTarget = GetGameObjectPlayer.Create();
 
-        [SerializeField] private float m_MinDistance = 2f;
-        [SerializeField] private float m_MaxDistance = 4f;
+        [SerializeField] private PropertyGetDecimal m_MinDistance = GetDecimalDecimal.Create(2f);
+        [SerializeField] private PropertyGetDecimal m_MaxDistance = GetDecimalDecimal.Create(4f);
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override string Title => $"{this.m_Character} Follow {this.m_Target}";
+        public override string Title => $"{this.m_Character} Follow {this.m_FollowTarget}";
 
         // RUN METHOD: ----------------------------------------------------------------------------
         
@@ -49,13 +50,13 @@ namespace GameCreator.Runtime.VisualScripting
             Character character = this.m_Character.Get<Character>(args);
             if (character == null) return DefaultResult;
 
-            GameObject target = this.m_Target.Get(args);
+            GameObject target = this.m_FollowTarget.Get(args);
             if (target == null) return DefaultResult;
             
             character.Motion.StartFollowingTarget(
                 target.transform,
-                this.m_MinDistance,
-                this.m_MaxDistance
+                (float) this.m_MinDistance.Get(args),
+                (float) this.m_MaxDistance.Get(args)
             );
 
             return DefaultResult;

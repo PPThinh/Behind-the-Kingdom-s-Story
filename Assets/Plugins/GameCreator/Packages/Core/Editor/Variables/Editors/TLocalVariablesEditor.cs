@@ -1,6 +1,7 @@
 using GameCreator.Editor.Common;
 using GameCreator.Runtime.Variables;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
@@ -57,7 +58,14 @@ namespace GameCreator.Editor.Variables
             this.m_Error.style.display = DisplayStyle.None;
 
             if (PrefabUtility.IsPartOfPrefabAsset(this.target)) return;
-
+            
+            TLocalVariables instance = this.target as TLocalVariables;
+            if (instance != null)
+            {
+                PrefabStage stage = PrefabStageUtility.GetCurrentPrefabStage();
+                if (stage != null && stage.IsPartOfPrefabContents(instance.gameObject)) return;
+            }
+            
             SerializedProperty saveUniqueID = this.serializedObject.FindProperty("m_SaveUniqueID");
             
             string itemID = saveUniqueID

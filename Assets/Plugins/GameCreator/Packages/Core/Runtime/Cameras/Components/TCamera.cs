@@ -24,7 +24,8 @@ namespace GameCreator.Runtime.Cameras
         
         [SerializeField] private CameraViewport m_Viewport = new CameraViewport();
         [SerializeField] private CameraTransition m_Transition = new CameraTransition();
-        [SerializeField] private CameraAvoidClip m_AvoidClip = new CameraAvoidClip();
+        
+        [SerializeReference] private TCameraClip m_Clip = new CameraClipNone();
 
         // MEMBERS: -------------------------------------------------------------------------------
         
@@ -35,9 +36,12 @@ namespace GameCreator.Runtime.Cameras
         
         public CameraViewport Viewport => this.m_Viewport;
         public CameraTransition Transition => this.m_Transition;
-        public CameraAvoidClip AvoidClip => this.m_AvoidClip;
         
-        public TimeMode Time => this.m_TimeMode;
+        public TimeMode Time
+        {
+            get => this.m_TimeMode;
+            set => this.m_TimeMode = value;
+        }
 
         // EVENTS: --------------------------------------------------------------------------------
         
@@ -130,7 +134,7 @@ namespace GameCreator.Runtime.Cameras
 
             Transform target = this.Transition.CurrentShotCamera.Target;
             Transform[] ignore = this.Transition.CurrentShotCamera.Ignore;
-            transform.position = this.AvoidClip.Update(this, target, ignore);
+            this.transform.position = this.m_Clip.Update(this, target, ignore);
         }
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
@@ -157,22 +161,13 @@ namespace GameCreator.Runtime.Cameras
 
         // GIZMOS: --------------------------------------------------------------------------------
 
-        private void OnDrawGizmos()
-        {
-            #if UNITY_EDITOR
-            if (UnityEditor.PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
-            #endif
-            
-            this.m_AvoidClip?.OnDrawGizmos(this);
-        }
-
         private void OnDrawGizmosSelected()
         {
             #if UNITY_EDITOR
             if (UnityEditor.PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
             #endif
             
-            this.m_AvoidClip?.OnDrawGizmosSelected(this);
+            this.m_Clip?.OnDrawGizmos(this);
         }
     }   
 }

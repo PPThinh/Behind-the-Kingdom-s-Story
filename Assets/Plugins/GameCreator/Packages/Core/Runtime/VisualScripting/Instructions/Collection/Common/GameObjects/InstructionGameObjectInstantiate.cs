@@ -12,8 +12,8 @@ namespace GameCreator.Runtime.VisualScripting
     [Category("Game Objects/Instantiate")]
     
     [Parameter("Game Object", "Game Object reference that is instantiated")]
-    [Parameter("Position", "The position where the new game object is instantiated")]
-    [Parameter("Rotation", "The rotation that the new game object has")]
+    [Parameter("Position", "The position of the new game object instance")]
+    [Parameter("Rotation", "The rotation of the new game object instance")]
     [Parameter("Save", "Optional value where the newly instantiated game object is stored")]
     
     [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue, typeof(OverlayPlus))]
@@ -27,8 +27,11 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] 
         private PropertyGetInstantiate m_GameObject = new PropertyGetInstantiate();
 
-        [SerializeField] 
-        private PropertyGetLocation m_Location = GetLocationCharacter.Create;
+        [SerializeField]
+        private PropertyGetPosition m_Position = GetPositionCharactersPlayer.Create;
+
+        [SerializeField]
+        private PropertyGetRotation m_Rotation = GetRotationCharactersPlayer.Create;
 
         [SerializeField] 
         private PropertyGetGameObject m_Parent = GetGameObjectNone.Create();
@@ -44,15 +47,8 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected override Task Run(Args args)
         {
-            Location location = this.m_Location.Get(args);
-
-            Vector3 position = location.HasPosition
-                ? location.GetPosition(args.Self)
-                : args.Self != null ? args.Self.transform.position : Vector3.zero;
-            
-            Quaternion rotation = location.HasRotation
-                ? location.GetRotation(args.Self)
-                : args.Self != null ? args.Self.transform.rotation : Quaternion.identity;
+            Vector3 position = this.m_Position.Get(args);
+            Quaternion rotation = this.m_Rotation.Get(args);
             
             GameObject instance = this.m_GameObject.Get(args, position, rotation);
 

@@ -22,10 +22,17 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionTransformChangePosition : TInstructionTransform
     {
+        private enum SpaceMode
+        {
+            GlobalPosition = Space.World,
+            LocalPosition = Space.Self
+        }
+        
+        // EXPOSED MEMBERS: -----------------------------------------------------------------------
+        
+        [SerializeField] private SpaceMode m_Space = SpaceMode.GlobalPosition;
         [SerializeField] private ChangePosition m_Position = new ChangePosition(Vector3.up);
         
-        [Space]
-        [Space] [SerializeField] private Space m_Space = Space.Self;
         [SerializeField] private Transition m_Transition = new Transition();
         
         // PROPERTIES: ----------------------------------------------------------------------------
@@ -39,19 +46,34 @@ namespace GameCreator.Runtime.VisualScripting
             GameObject gameObject = this.m_Transform.Get(args);
             if (gameObject == null) return;
 
-            Vector3 valueSource = gameObject.transform.position;
-            Vector3 valueTarget = this.m_Position.Get(
-                valueSource, 
-                args, 
-                this.m_Space,
-                gameObject.transform.parent
-            );
+            Vector3 valueSource = this.m_Space switch
+            {
+                SpaceMode.GlobalPosition => gameObject.transform.position,
+                SpaceMode.LocalPosition => gameObject.transform.localPosition,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            
+            Vector3 valueTarget = this.m_Position.Get(valueSource, args);
 
             ITweenInput tween = new TweenInput<Vector3>(
                 valueSource,
                 valueTarget,
                 this.m_Transition.Duration,
-                (a, b, t) => gameObject.transform.position = Vector3.LerpUnclamped(a, b, t),
+                (a, b, t) =>
+                {
+                    switch (this.m_Space)
+                    {
+                        case SpaceMode.GlobalPosition:
+                            gameObject.transform.position = Vector3.LerpUnclamped(a, b, t);
+                            break;
+                        
+                        case SpaceMode.LocalPosition:
+                            gameObject.transform.localPosition = Vector3.LerpUnclamped(a, b, t);
+                            break;
+                        
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+                },
                 Tween.GetHash(typeof(Transform), "position"),
                 this.m_Transition.EasingType,
                 this.m_Transition.Time

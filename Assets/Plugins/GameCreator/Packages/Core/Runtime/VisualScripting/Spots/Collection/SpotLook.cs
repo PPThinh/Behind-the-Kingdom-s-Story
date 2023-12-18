@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Look At")]
     [Image(typeof(IconEye), ColorTheme.Type.Green)]
     
-    [Category("Look At")]
+    [Category("Characters/Look At")]
     [Description(
         "Makes the Character look at the center of the Hotspot when it's activated" +
         "and smoothly look away when it's deactivated"
@@ -20,8 +20,11 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
         
-        [SerializeField] protected int m_Priority;
-        [SerializeField] protected Vector3 m_Offset = Vector3.zero;
+        [SerializeField] 
+        protected int m_Priority;
+        
+        [SerializeField]
+        protected PropertyGetDirection m_Offset = GetDirectionVector3Zero.Create();
 
         // MEMBERS: -------------------------------------------------------------------------------
 
@@ -44,7 +47,7 @@ namespace GameCreator.Runtime.VisualScripting
                 lookTrack?.SetTarget(new LookToTransform(
                     this.m_Priority, 
                     hotspot.transform, 
-                    this.m_Offset
+                    this.m_Offset.Get(hotspot.Args)
                 ));
             }
 
@@ -54,7 +57,7 @@ namespace GameCreator.Runtime.VisualScripting
                 lookTrack?.RemoveTarget(new LookToTransform(
                     this.m_Priority, 
                     hotspot.transform,
-                    this.m_Offset
+                    this.m_Offset.Get(hotspot.Args)
                 ));
             }
 
@@ -70,7 +73,7 @@ namespace GameCreator.Runtime.VisualScripting
             lookTrack?.RemoveTarget(new LookToTransform(
                 this.m_Priority, 
                 hotspot.transform,
-                this.m_Offset
+                this.m_Offset.Get(hotspot.Args)
             ));
         }
 
@@ -83,7 +86,7 @@ namespace GameCreator.Runtime.VisualScripting
             lookTrack?.RemoveTarget(new LookToTransform(
                 this.m_Priority, 
                 hotspot.transform,
-                this.m_Offset
+                this.m_Offset.Get(hotspot.Args)
             ));
         }
         

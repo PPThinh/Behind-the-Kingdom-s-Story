@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
     [Description("Returns true if the Global List Variable is empty")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetBoolGlobalListEmpty : PropertyTypeGetBool
     {
         [SerializeField] private GlobalListVariables m_List;

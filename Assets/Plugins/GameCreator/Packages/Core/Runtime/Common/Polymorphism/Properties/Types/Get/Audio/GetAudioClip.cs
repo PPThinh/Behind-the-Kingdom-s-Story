@@ -32,5 +32,7 @@ namespace GameCreator.Runtime.Common
         public override string String => this.m_Value != null 
             ? this.m_Value.name 
             : "(none)";
+
+        public override AudioClip EditorValue => this.m_Value;
     }
 }

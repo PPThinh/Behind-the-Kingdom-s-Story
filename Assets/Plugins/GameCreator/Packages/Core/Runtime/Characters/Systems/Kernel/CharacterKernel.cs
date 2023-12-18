@@ -6,11 +6,11 @@ namespace GameCreator.Runtime.Characters
     [Serializable]
     public class CharacterKernel : ICharacterKernel
     {
-        [SerializeReference] protected IUnitPlayer m_Player;
-        [SerializeReference] protected IUnitMotion m_Motion;
-        [SerializeReference] protected IUnitDriver m_Driver;
-        [SerializeReference] protected IUnitFacing m_Facing;
-        [SerializeReference] protected IUnitAnimim m_Animim;
+        [SerializeReference] protected TUnitPlayer m_Player;
+        [SerializeReference] protected TUnitMotion m_Motion;
+        [SerializeReference] protected TUnitDriver m_Driver;
+        [SerializeReference] protected TUnitFacing m_Facing;
+        [SerializeReference] protected TUnitAnimim m_Animim;
 
         // EVENTS: --------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ namespace GameCreator.Runtime.Characters
             this.ChangeAnimim(character, preset.MakeAnimim);
         }
 
-        public void ChangePlayer(Character character, IUnitPlayer unit)
+        public void ChangePlayer(Character character, TUnitPlayer unit)
         {
             if (unit == null) return;
             if (unit == this.m_Player) return;
@@ -69,7 +69,7 @@ namespace GameCreator.Runtime.Characters
             this.EventChangePlayer?.Invoke();
         }
 
-        public void ChangeMotion(Character character, IUnitMotion unit)
+        public void ChangeMotion(Character character, TUnitMotion unit)
         {
             if (unit == null) return;
             if (unit == this.m_Motion) return;
@@ -84,7 +84,7 @@ namespace GameCreator.Runtime.Characters
             this.EventChangeMotion?.Invoke();
         }
 
-        public void ChangeDriver(Character character, IUnitDriver unit)
+        public void ChangeDriver(Character character, TUnitDriver unit)
         {
             if (unit == null) return;
             if (unit == this.m_Driver) return;
@@ -99,7 +99,7 @@ namespace GameCreator.Runtime.Characters
             this.EventChangeDriver?.Invoke();
         }
 
-        public void ChangeFacing(Character character, IUnitFacing unit)
+        public void ChangeFacing(Character character, TUnitFacing unit)
         {
             if (unit == null) return;
             if (unit == this.m_Facing) return;
@@ -114,7 +114,7 @@ namespace GameCreator.Runtime.Characters
             this.EventChangeFacing?.Invoke();
         }
 
-        public void ChangeAnimim(Character character, IUnitAnimim unit)
+        public void ChangeAnimim(Character character, TUnitAnimim unit)
         {
             if (unit == null) return;
             if (unit == this.m_Animim) return;

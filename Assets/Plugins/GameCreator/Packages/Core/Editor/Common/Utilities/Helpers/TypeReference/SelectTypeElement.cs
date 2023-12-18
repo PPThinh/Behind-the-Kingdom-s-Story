@@ -51,7 +51,7 @@ namespace GameCreator.Editor.Common
             this.m_Head.Add(this.m_Label);
             this.m_Head.Add(this.m_Button);
 
-            _ = new AlignLabel(this.m_Head);
+            AlignLabel.On(this.m_Head);
             this.LoadHeadStyleSheet(this.m_Head);
         }
 

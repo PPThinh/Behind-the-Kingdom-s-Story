@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Console
     [Title("Console Open")]
     [Description("Opens the Runtime Console")]
 
-    [Category("Debug/Console Open")]
+    [Category("Debug/Console/Console Open")]
 
     [Keywords("Terminal", "Log", "Debug")]
     [Image(typeof(IconTerminal), ColorTheme.Type.Blue, typeof(OverlayPlus))]

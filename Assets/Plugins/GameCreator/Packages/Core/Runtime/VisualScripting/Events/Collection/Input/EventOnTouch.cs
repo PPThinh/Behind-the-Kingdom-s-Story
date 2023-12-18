@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.InputSystem;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 

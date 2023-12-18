@@ -8,14 +8,6 @@ namespace GameCreator.Editor.Common
     [CustomPropertyDrawer(typeof(PoolField))]
     public class PoolFieldDrawer : PropertyDrawer
     {
-        private const string CLASS_INLINE_FIELD = "gc-inline-toggle-field";
-
-        private static readonly StyleLength SEPARATION = new StyleLength(
-            new Length(5, LengthUnit.Pixel)
-        );
-
-        // PAINT METHODS: -------------------------------------------------------------------------
-        
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             VisualElement root = new VisualElement();
@@ -25,64 +17,30 @@ namespace GameCreator.Editor.Common
 
             SerializedProperty prefab = property.FindPropertyRelative("m_Prefab");
             SerializedProperty usePooling = property.FindPropertyRelative("m_UsePooling");
-            SerializedProperty size = property.FindPropertyRelative("m_Size");
-            SerializedProperty hasDuration = property.FindPropertyRelative("m_HasDuration");
             SerializedProperty duration = property.FindPropertyRelative("m_Duration");
 
-            Toggle fieldUsePooling = new Toggle
-            {
-                label = usePooling.displayName,
-                bindingPath = usePooling.propertyPath
-            };
-
-            PropertyField fieldSize = new PropertyField(size, string.Empty);
-
-            Toggle fieldHasDuration = new Toggle
-            {
-                label = hasDuration.displayName,
-                bindingPath = hasDuration.propertyPath
-            };
-
-            PropertyField fieldDuration = new PropertyField(duration, string.Empty);
-
-            fieldUsePooling.style.marginRight = SEPARATION;
-            fieldHasDuration.style.marginRight = SEPARATION;
-
-            VisualElement contentPooling = new VisualElement();
-            VisualElement contentDuration = new VisualElement();
-            
-            contentPooling.AddToClassList(CLASS_INLINE_FIELD);
-            contentDuration.AddToClassList(CLASS_INLINE_FIELD);
-            
-            contentPooling.Add(fieldUsePooling);
-            contentPooling.Add(fieldSize);
-            contentDuration.Add(fieldHasDuration);
-            contentDuration.Add(fieldDuration);
+            PropertyField fieldUsePooling = new PropertyField(usePooling);
+            PropertyField fieldDuration = new PropertyField(duration);
             
             root.Add(new PropertyField(prefab));
-            root.Add(contentPooling);
-            root.Add(contentDuration);
-
-            fieldUsePooling.RegisterValueChangedCallback(changeEvent =>
+            root.Add(fieldUsePooling);
+            root.Add(fieldDuration);
+            
+            fieldUsePooling.RegisterValueChangeCallback(changeEvent =>
             {
-                fieldSize.SetEnabled(changeEvent.newValue);
-                contentDuration.style.display = changeEvent.newValue
+                SerializedProperty change = changeEvent.changedProperty;
+                bool isEnabled = change.FindPropertyRelative("m_IsEnabled").boolValue;
+                
+                fieldDuration.style.display = isEnabled
                     ? DisplayStyle.Flex
                     : DisplayStyle.None;
             });
             
-            fieldSize.SetEnabled(usePooling.boolValue);
-            contentDuration.style.display = usePooling.boolValue
+            bool isEnabled = usePooling.FindPropertyRelative("m_IsEnabled").boolValue;
+            fieldDuration.style.display = isEnabled
                 ? DisplayStyle.Flex
                 : DisplayStyle.None;
-
-            fieldHasDuration.RegisterValueChangedCallback(changeEvent =>
-            {
-                fieldDuration.SetEnabled(changeEvent.newValue);
-            });
             
-            fieldDuration.SetEnabled(hasDuration.boolValue);
-
             return root;
         }
     }

@@ -19,8 +19,8 @@ namespace GameCreator.Runtime.Common.Audio
         [SerializeField] 
         private SpatialBlending m_SpatialBlend = SpatialBlending.None;
         
-        [SerializeField] 
-        private PropertyGetGameObject m_Target = new PropertyGetGameObject();
+        [SerializeField]
+        private PropertyGetGameObject m_Target = GetGameObjectNone.Create();
 
         // PROPERTIES: ----------------------------------------------------------------------------
 

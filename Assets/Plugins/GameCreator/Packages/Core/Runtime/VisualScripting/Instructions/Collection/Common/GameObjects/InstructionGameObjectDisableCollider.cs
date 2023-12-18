@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Disable Collider")]
     [Description("Disables a Collider component from the game object")]
 
-    [Category("Game Objects/Disable Collider")]
+    [Category("Game Objects/Components/Disable Collider")]
 
     [Keywords("Inactive", "Turn", "Off", "Box", "Sphere", "Capsule", "Mesh")]
     [Image(typeof(IconPhysics), ColorTheme.Type.Red)]

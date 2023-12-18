@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Remove Component")]
     [Description("Removes an existing component from the game object")]
 
-    [Category("Game Objects/Remove Component")]
+    [Category("Game Objects/Components/Remove Component")]
 
     [Keywords("Delete", "Destroy", "MonoBehaviour", "Behaviour", "Script")]
     [Image(typeof(IconComponent), ColorTheme.Type.Red, typeof(OverlayMinus))]

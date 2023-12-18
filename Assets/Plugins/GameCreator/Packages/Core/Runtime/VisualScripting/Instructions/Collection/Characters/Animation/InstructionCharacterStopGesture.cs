@@ -26,8 +26,8 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] private PropertyGetGameObject m_Character = GetGameObjectPlayer.Create();
 
         [Space] 
-        [SerializeField] private float m_Delay = 0f;
-        [SerializeField] private float m_Transition = 0.1f;
+        [SerializeField] private PropertyGetDecimal m_Delay = GetDecimalConstantZero.Create;
+        [SerializeField] private PropertyGetDecimal m_Transition = new PropertyGetDecimal(0.1f);
 
         public override string Title => $"Stop gestures on {this.m_Character}";
 
@@ -36,7 +36,11 @@ namespace GameCreator.Runtime.VisualScripting
             Character character = this.m_Character.Get<Character>(args);
             if (character == null) return DefaultResult;
 
-            character.Gestures.Stop(this.m_Delay, this.m_Transition);
+            character.Gestures.Stop(
+                (float) this.m_Delay.Get(args), 
+                (float) this.m_Transition.Get(args)
+            );
+            
             return DefaultResult;
         }
     }

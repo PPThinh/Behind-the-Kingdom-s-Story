@@ -4,10 +4,10 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Target Direction")]
-    [Category("Target Direction")]
+    [Category("Game Objects/Target Direction")]
     
     [Image(typeof(IconTarget), ColorTheme.Type.Yellow)]
-    [Description("The forward direction of the target game object")]
+    [Description("The forward direction of the target game object in World Space")]
 
     [Serializable]
     public class GetDirectionTarget : PropertyTypeGetDirection

@@ -73,7 +73,7 @@ namespace GameCreator.Editor.Characters
                 this.PropertyList.InsertArrayElementAtIndex(insertIndex);
                 this.PropertyList
                     .GetArrayElementAtIndex(insertIndex)
-                    .SetValue(new Bone(HumanBodyBones.Hips));
+                    .SetValue(new Footstep(HumanBodyBones.Hips));
 
                 SerializationUtils.ApplyUnregisteredSerialization(this.SerializedObject);
 

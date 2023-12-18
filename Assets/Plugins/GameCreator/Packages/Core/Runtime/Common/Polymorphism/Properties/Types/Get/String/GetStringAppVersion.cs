@@ -21,5 +21,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => "App Version";
+
+        public override string EditorValue => Application.version;
     }
 }

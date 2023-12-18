@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
     [Description("Returns the Vector3 value of a Global List Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDirectionGlobalList : PropertyTypeGetDirection
     {
         [SerializeField]

@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Common

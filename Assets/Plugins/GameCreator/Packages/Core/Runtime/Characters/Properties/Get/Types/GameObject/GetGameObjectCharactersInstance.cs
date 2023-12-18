@@ -13,7 +13,7 @@ namespace GameCreator.Runtime.Characters
     [Serializable] [HideLabelsInEditor]
     public class GetGameObjectCharactersInstance : PropertyTypeGetGameObject
     {
-        [SerializeField] protected Character m_Character;
+        [SerializeField] private Character m_Character;
 
         public GetGameObjectCharactersInstance()
         { }
@@ -48,7 +48,7 @@ namespace GameCreator.Runtime.Characters
             ? this.m_Character.gameObject.name
             : "(none)";
 
-        public override GameObject SceneReference => this.m_Character != null
+        public override GameObject EditorValue => this.m_Character != null
             ? this.m_Character.gameObject 
             : null;
     }

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Vector Zero")]
-    [Category("Vectors/Vector Zero")]
+    [Title("Zero")]
+    [Category("Constants/Zero")]
     
-    [Image(typeof(IconVector3), ColorTheme.Type.Green)]
+    [Image(typeof(IconZero), ColorTheme.Type.TextNormal)]
     [Description("A Vector3 with a 0 value on all three axis")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDirectionVector3Zero : PropertyTypeGetDirection
     {
         public override Vector3 Get(Args args) => Vector3.zero;
@@ -20,5 +20,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => "(0,0,0)";
+        
+        public override Vector3 EditorValue => Vector3.zero;
     }
 }

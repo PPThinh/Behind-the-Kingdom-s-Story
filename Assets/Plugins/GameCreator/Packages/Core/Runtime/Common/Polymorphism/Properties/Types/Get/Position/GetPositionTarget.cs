@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Target")]
-    [Category("Target")]
+    [Title("Target Position")]
+    [Category("Game Objects/Target Position")]
     
     [Image(typeof(IconTarget), ColorTheme.Type.Yellow)]
     [Description("Returns the position of the targeted object")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetPositionTarget : PropertyTypeGetPosition
     {
         public override Vector3 Get(Args args)

@@ -30,7 +30,7 @@ namespace GameCreator.Runtime.Characters
 
         // VIRTUAL METHODS: -----------------------------------------------------------------------
 
-        public virtual Character.MovementType Stop()
+        public virtual Character.MovementType Stop(bool success)
         {
             this.Priority = -1;
             

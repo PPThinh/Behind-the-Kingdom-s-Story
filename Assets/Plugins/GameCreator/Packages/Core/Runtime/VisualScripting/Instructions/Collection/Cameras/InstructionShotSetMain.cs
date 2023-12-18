@@ -19,8 +19,8 @@ namespace GameCreator.Runtime.VisualScripting
     public class InstructionShotSetMain : Instruction
     {
         // MEMBERS: -------------------------------------------------------------------------------
-        
-        [SerializeField] protected PropertyGetShot m_Shot = GetShotInstance.Create;
+
+        [SerializeField] protected PropertyGetGameObject m_Shot = GetGameObjectShot.Create;
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override Task Run(Args args)
         {
-            ShotCamera shotCamera = this.m_Shot.Get(args);
+            ShotCamera shotCamera = this.m_Shot.Get<ShotCamera>(args);
             ShortcutMainShot.Change(shotCamera);
             
             return DefaultResult;

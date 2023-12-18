@@ -24,7 +24,7 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
         
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
 
         [Space] 
         [SerializeField] private float m_Duration = 0f;
@@ -37,7 +37,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override Task Run(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
 
             if (camera == null) return DefaultResult;
             camera.Transition.ChangeToPreviousShot(this.m_Duration);

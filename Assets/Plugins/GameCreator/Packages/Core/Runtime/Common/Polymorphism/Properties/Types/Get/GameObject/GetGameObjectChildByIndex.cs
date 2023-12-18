@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Common
@@ -6,7 +7,7 @@ namespace GameCreator.Runtime.Common
     [Title("Game Object Child Index")]
     [Category("Transforms/Game Object Child Index")]
     
-    [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue, typeof(OverlayDot))]
+    [Image(typeof(IconCubeOutline), ColorTheme.Type.Green, typeof(OverlayDot))]
     [Description("The N-th child of a game object")]
 
     [Serializable]
@@ -40,11 +41,11 @@ namespace GameCreator.Runtime.Common
 
         public override string String => $"{this.m_Transform}/{this.m_Index}";
 
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {
-                GameObject parent = this.m_Transform.SceneReference;
+                GameObject parent = this.m_Transform.EditorValue;
                 if (parent == null) return null;
                 if (!int.TryParse(this.m_Index.ToString(), out int index)) return null;
                 

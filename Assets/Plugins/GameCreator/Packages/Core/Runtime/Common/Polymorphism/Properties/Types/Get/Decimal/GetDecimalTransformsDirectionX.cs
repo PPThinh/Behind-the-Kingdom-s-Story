@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Position", "Vector3", "Right", "Left")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalTransformsDirectionX : PropertyTypeGetDecimal
     {
         [SerializeField]

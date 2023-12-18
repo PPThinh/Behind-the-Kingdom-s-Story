@@ -29,5 +29,13 @@ namespace GameCreator.Runtime.Common
             Value ??= new SpatialHash();
             Value.Find(point, radius, results, except);
         }
+        
+        // INITIALIZERS: --------------------------------------------------------------------------
+        
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        public static void OnSubsystemsInit()
+        {
+            Value = null;
+        }
     }
 }

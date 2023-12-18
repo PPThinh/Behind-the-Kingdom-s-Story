@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public abstract class TInstructionShot : Instruction
     {
-        [SerializeField] protected PropertyGetShot m_Shot = GetShotInstance.Create;
+        [SerializeField] protected PropertyGetGameObject m_Shot = GetGameObjectShot.Create;
         
         // PROPERTIES: ----------------------------------------------------------------------------
         
@@ -21,7 +21,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected T GetShotSystem<T>(Args args) where T : class, IShotSystem
         {
-            ShotCamera shot = this.m_Shot.Get(args);
+            ShotCamera shot = this.m_Shot.Get<ShotCamera>(args);
             return shot != null ? shot.ShotType.GetSystem(this.SystemID) as T : null;
         }
     }

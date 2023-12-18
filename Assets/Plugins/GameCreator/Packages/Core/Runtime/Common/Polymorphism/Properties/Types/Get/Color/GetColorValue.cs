@@ -33,5 +33,7 @@ namespace GameCreator.Runtime.Common
         public override string String => this.m_Value.a >= 1f
             ? "#" + ColorUtility.ToHtmlStringRGB(this.m_Value)
             : "#" + ColorUtility.ToHtmlStringRGBA(this.m_Value);
+
+        public override Color EditorValue => this.m_Value;
     }
 }

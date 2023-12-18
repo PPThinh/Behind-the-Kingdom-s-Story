@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconID), ColorTheme.Type.TextNormal)]
     [Description("Reference to a scene Marker game object by its ID")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectNavigationMarkerID : PropertyTypeGetGameObject
     {
         [SerializeField] 
@@ -33,7 +33,7 @@ namespace GameCreator.Runtime.Common
 
         public override string String => $"Marker ID:{this.m_ID}";
         
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {

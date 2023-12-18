@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Audio", "Sound", "Effect")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalVolumeSFX : PropertyTypeGetDecimal
     {
         public override double Get(Args args) => AudioManager.Instance.Volume.SoundEffects;

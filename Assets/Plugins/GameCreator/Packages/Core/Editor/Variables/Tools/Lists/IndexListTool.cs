@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GameCreator.Editor.Common;
@@ -18,9 +19,12 @@ namespace GameCreator.Editor.Variables
         private const string CLASS_HEAD_BUTTON = "gc-variables-index-button";
         private const string CLASS_HEAD_DROPDOWN = "gc-variables-index-dropdown";
 
+        private const string NAME_DROPZONE = "GC-ListIndex-List-Head-DropZone";
+
         private static readonly IIcon ICON_DROPDOWN = new IconDropdown(ColorTheme.Type.TextLight);
         private static readonly IIcon ICON_COLLAPSE = new IconCollapse(ColorTheme.Type.TextNormal);
         private static readonly IIcon ICON_ADD = new IconPlus(ColorTheme.Type.TextNormal);
+        private static readonly IIcon ICON_DROP = new IconSquareOutline(ColorTheme.Type.TextLight);
 
         // MEMBERS: -------------------------------------------------------------------------------
         
@@ -39,6 +43,7 @@ namespace GameCreator.Editor.Variables
         protected override string ElementNameFoot => "GC-ListIndex-List-Foot";
         
         public IndexList IndexList => this.m_Property.GetValue<IndexList>();
+        public VisualElement DropZone { get; private set; }
         
         public override bool AllowReordering => true;
         public override bool AllowDuplicating => true;
@@ -49,7 +54,7 @@ namespace GameCreator.Editor.Variables
         public override bool AllowBreakpoint => false;
         public override bool AllowDisable => false;
         public override bool AllowDocumentation => false;
-        
+
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
         public IndexListTool(SerializedProperty propertyRoot)
@@ -67,11 +72,16 @@ namespace GameCreator.Editor.Variables
         protected override void SetupHead()
         {
             base.SetupHead();
-
-            Button btnToggle = new Button();
+            
+            this.DropZone = new VisualElement { name = NAME_DROPZONE };
+            this.DropZone.Add(new Image { image = ICON_DROP.Texture });
+            
+            ManipulatorDropToListVariables dropSelection = new ManipulatorDropToListVariables(this);
+            this.DropZone.AddManipulator(dropSelection);
+            
+            Button btnToggle = new Button(this.Collapse);
             btnToggle.AddToClassList(CLASS_HEAD_BUTTON);
             btnToggle.Add(new Image { image = ICON_COLLAPSE.Texture });
-            btnToggle.clicked += this.Collapse;
 
             this.m_ChangeTypeButton = new Button();
             this.m_ChangeTypeButton.AddToClassList(CLASS_HEAD_DROPDOWN);
@@ -94,6 +104,7 @@ namespace GameCreator.Editor.Variables
             btnAdd.AddToClassList(CLASS_HEAD_BUTTON);
             btnAdd.Add(new Image { image = ICON_ADD.Texture });
 
+            this.m_Head.Add(this.DropZone);
             this.m_Head.Add(btnToggle);
             this.m_Head.Add(this.m_ChangeTypeButton);
             this.m_Head.Add(btnAdd);
@@ -132,8 +143,8 @@ namespace GameCreator.Editor.Variables
         private void ChangeValueType(Type newType)
         {
             this.SerializedObject.Update();
-
-            IdString newTypeID = TValue.GetTypeID(newType);
+            
+            IdString newTypeID = TValue.GetTypeIDFromValueType(newType);
             this.m_PropertyTypeID
                 .FindPropertyRelative(IdStringDrawer.NAME_STRING)
                 .stringValue = newTypeID.String;
@@ -154,6 +165,31 @@ namespace GameCreator.Editor.Variables
             SerializationUtils.ApplyUnregisteredSerialization(this.SerializedObject);
             this.Refresh();
             this.RefreshChangeType();
+        }
+
+        public void FillWith(UnityEngine.Object[] references)
+        {
+            if (references.Length <= 0) return;
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+
+            Type objectType = references[0]?.GetType();
+            IdString typeID = TValue.GetTypeIDFromObjectType(objectType);
+            if (typeID == ValueNull.TYPE_ID) return;
+
+            Type valueType = TValue.GetType(typeID);
+            this.ChangeValueType(valueType);
+            
+            List<object> variables = new List<object>();
+            foreach (UnityEngine.Object reference in references)
+            {
+                TValue value = TValue.CreateValue(typeID, reference);
+                if (value == null) continue;
+
+                IndexVariable variable = new IndexVariable(value);
+                variables.Add(variable);
+            }
+            
+            this.FillItems(variables);
         }
     }
 }

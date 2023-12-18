@@ -21,8 +21,8 @@ namespace GameCreator.Runtime.Common.SaveSystem
         Task<string> GetString(string key, string value);
         Task SetString(string key, string value);
 
-        Task<float> GetFloat(string key, float value);
-        Task SetFloat(string key, float value);
+        Task<double> GetDouble(string key, double value);
+        Task SetDouble(string key, double value);
 
         Task<int> GetInt(string key, int value);
         Task SetInt(string key, int value);

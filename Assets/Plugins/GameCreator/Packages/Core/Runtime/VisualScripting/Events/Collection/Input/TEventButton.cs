@@ -31,28 +31,24 @@ namespace GameCreator.Runtime.VisualScripting
         {
             base.OnAwake(trigger);
             this.m_Button.OnStartup();
-            
-            this.m_Button.RegisterPerform(this.OnInput);
         }
 
         protected internal override void OnEnable(Trigger trigger)
         {
             base.OnEnable(trigger);
-            this.m_Button.Enable();
+            this.m_Button.RegisterPerform(this.OnInput);
         }
 
         protected internal override void OnDisable(Trigger trigger)
         {
             base.OnDisable(trigger);
-            this.m_Button.Disable();
+            this.m_Button.ForgetPerform(this.OnInput);
         }
 
         protected internal override void OnDestroy(Trigger trigger)
         {
             base.OnDestroy(trigger);
             this.m_Button.OnDispose();
-            
-            this.m_Button.ForgetPerform(this.OnInput);
         }
 
         protected internal override void OnUpdate(Trigger trigger)

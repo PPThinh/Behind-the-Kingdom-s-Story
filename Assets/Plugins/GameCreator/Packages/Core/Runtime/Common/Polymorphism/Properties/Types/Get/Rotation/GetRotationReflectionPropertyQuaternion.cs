@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetRotationReflectionPropertyQuaternion : PropertyTypeGetRotation
     {
         [SerializeField] private ReflectionPropertyQuaternion m_Property = new ReflectionPropertyQuaternion();

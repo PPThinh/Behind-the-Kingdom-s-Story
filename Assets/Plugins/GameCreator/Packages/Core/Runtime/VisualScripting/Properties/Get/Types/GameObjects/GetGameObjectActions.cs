@@ -72,7 +72,7 @@ namespace GameCreator.Runtime.VisualScripting
             ? this.m_Actions.gameObject.name
             : "(none)";
 
-        public override GameObject SceneReference => this.m_Actions != null 
+        public override GameObject EditorValue => this.m_Actions != null 
             ? this.m_Actions.gameObject
             : null;
     }

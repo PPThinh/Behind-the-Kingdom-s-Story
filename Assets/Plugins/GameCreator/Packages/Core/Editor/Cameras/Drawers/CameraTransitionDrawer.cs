@@ -30,10 +30,6 @@ namespace GameCreator.Editor.Cameras
             PropertyField fieldSmoothPosition = new PropertyField(smoothPosition);
             PropertyField fieldSmoothRotation = new PropertyField(smoothRotation);
             
-            Label labelTitle = new Label("Shot");
-            labelTitle.AddToClassList("gc-label-title");
-            
-            root.Add(labelTitle);
             root.Add(fieldCurrentShot);
             root.Add(fieldSmoothPosition);
             root.Add(fieldSmoothRotation);

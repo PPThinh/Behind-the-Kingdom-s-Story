@@ -84,7 +84,7 @@ namespace GameCreator.Editor.Variables
             nameContainer.Add(this.m_NameField);
             nameContainer.Add(this.m_NameDropdown);
 
-            _ = new AlignLabel(nameContainer);
+            AlignLabel.On(nameContainer);
 
             this.Add(nameContainer);
         }

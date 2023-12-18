@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Emit Signal")]
     [Description("Emits a specific signal, which is captured by other listeners")]
 
-    [Category("Logic/Emit Signal")]
+    [Category("Visual Scripting/Emit Signal")]
 
     [Parameter("Signal", "The signal name emitted")]
 

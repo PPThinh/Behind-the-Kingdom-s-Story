@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace GameCreator.Runtime.Common
@@ -10,19 +9,6 @@ namespace GameCreator.Runtime.Common
         // PROPERTIES: ----------------------------------------------------------------------------
 
         public abstract InputAction InputAction { get; }
-
-        public override bool Active
-        {
-            get => this.InputAction?.enabled ?? false;
-            set
-            {
-                switch (value)
-                {
-                    case true: this.Enable(); break;
-                    case false: this.Disable(); break;
-                }
-            }
-        }
 
         // INITIALIZERS: --------------------------------------------------------------------------
         
@@ -37,21 +23,22 @@ namespace GameCreator.Runtime.Common
             this.InputAction?.Dispose();
         }
 
+        public override void OnUpdate()
+        {
+            this.RequireActiveInputAsset();
+            base.OnUpdate();
+        }
+
         // PRIVATE METHODS: -----------------------------------------------------------------------
         
         private void Enable()
         {
             if (this.InputAction == null) return;
-            if (this.InputAction.enabled)
-            {
-                this.InputAction.started -= this.ExecuteEventStart;
-                this.InputAction.canceled -= this.ExecuteEventCancel;
-                this.InputAction.performed -= this.ExecuteEventPerform;
-            }
-            else
-            {
-                this.InputAction.Enable();    
-            }
+            this.RequireActiveInputAsset();
+            
+            this.InputAction.started -= this.ExecuteEventStart;
+            this.InputAction.canceled -= this.ExecuteEventCancel;
+            this.InputAction.performed -= this.ExecuteEventPerform;
             
             this.InputAction.started += this.ExecuteEventStart;
             this.InputAction.canceled += this.ExecuteEventCancel;
@@ -61,26 +48,24 @@ namespace GameCreator.Runtime.Common
         private void Disable()
         {
             if (this.InputAction == null) return;
-            if (this.InputAction.enabled) this.InputAction.Disable();
             
             this.InputAction.started -= this.ExecuteEventStart;
             this.InputAction.canceled -= this.ExecuteEventCancel;
             this.InputAction.performed -= this.ExecuteEventPerform;
         }
         
-        private void ExecuteEventStart(InputAction.CallbackContext context)
+        private void RequireActiveInputAsset()
         {
-            this.ExecuteEventStart();
+            if (this.InputAction?.enabled ?? false) return;
+            this.InputAction?.Enable();
         }
         
-        private void ExecuteEventCancel(InputAction.CallbackContext context)
-        {
-            this.ExecuteEventCancel();
-        }
+        // PROTECTED METHODS: ---------------------------------------------------------------------
         
-        private void ExecuteEventPerform(InputAction.CallbackContext context)
-        {
-            this.ExecuteEventPerform();
-        }
+        protected abstract void ExecuteEventStart(InputAction.CallbackContext context);
+
+        protected abstract void ExecuteEventCancel(InputAction.CallbackContext context);
+
+        protected abstract void ExecuteEventPerform(InputAction.CallbackContext context);
     }
 }

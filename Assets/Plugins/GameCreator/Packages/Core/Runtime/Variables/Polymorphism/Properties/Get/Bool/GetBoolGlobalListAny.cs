@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
     [Description("Returns true if the Global List Variable has at least one element")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetBoolGlobalListAny : PropertyTypeGetBool
     {
         [SerializeField] private GlobalListVariables m_List;

@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Audio", "Sound")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalVolumeAmbient : PropertyTypeGetDecimal
     {
         public override double Get(Args args) => AudioManager.Instance.Volume.Ambient;

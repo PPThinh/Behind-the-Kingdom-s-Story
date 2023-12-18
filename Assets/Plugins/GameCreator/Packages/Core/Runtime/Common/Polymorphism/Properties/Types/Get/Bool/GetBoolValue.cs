@@ -31,5 +31,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => this.m_Value ? "True" : "False";
+        
+        public override bool EditorValue => this.m_Value;
     }
 }

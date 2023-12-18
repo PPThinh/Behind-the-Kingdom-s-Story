@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Console
@@ -42,7 +43,7 @@ namespace GameCreator.Runtime.Console
 
         public static void Submit(Input input)
         {
-            Output[] outputs = Commands.Run(input);
+            IEnumerable<Output> outputs = Commands.Run(input);
 
             ConsoleUI console = RequestConsoleUI();
             foreach (Output output in outputs)

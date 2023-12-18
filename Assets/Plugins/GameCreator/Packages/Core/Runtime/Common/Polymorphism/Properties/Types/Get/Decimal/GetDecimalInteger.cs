@@ -33,5 +33,7 @@ namespace GameCreator.Runtime.Common
         }
 
         public override string String => this.m_Value.ToString();
+
+        public override double EditorValue => this.m_Value;
     }
 }

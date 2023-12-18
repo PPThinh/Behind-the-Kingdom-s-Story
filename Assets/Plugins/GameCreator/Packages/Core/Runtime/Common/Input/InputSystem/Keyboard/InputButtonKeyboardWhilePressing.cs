@@ -18,10 +18,6 @@ namespace GameCreator.Runtime.Common
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private Key m_Key = Key.Space;
-        
-        // PROPERTIES: ----------------------------------------------------------------------------
-
-        public override bool Active => true;
 
         // INITIALIZERS: --------------------------------------------------------------------------
 

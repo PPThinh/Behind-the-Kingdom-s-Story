@@ -12,6 +12,8 @@ namespace GameCreator.Editor.Common
         {
             SerializedProperty value = property.FindPropertyRelative("m_Value");
             TagField tagField = new TagField(property.displayName, value.stringValue);
+            
+            tagField.AddToClassList(AlignLabel.CLASS_UNITY_ALIGN_LABEL);
 
             tagField.RegisterValueChangedCallback(changeEvent =>
             {

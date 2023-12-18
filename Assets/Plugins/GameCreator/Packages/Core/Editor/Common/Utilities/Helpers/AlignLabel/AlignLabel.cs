@@ -5,15 +5,16 @@ namespace GameCreator.Editor.Common
 {
     public class AlignLabel
     {
-        private const float EPSILON = 0.001f;
-
+        // PUBLIC CONSTANTS: ----------------------------------------------------------------------
+        
         public const string CLASS_UNITY_ALIGN_LABEL = "unity-base-field__aligned";
         
         public const string CLASS_UNITY_INSPECTOR_ELEMENT = "unity-inspector-element";
         public const string CLASS_UNITY_MAIN_CONTAINER = "unity-inspector-main-container";
         
-        private const string CLASS_BASE_FIELD = "unity-base-field";
-        private const string CLASS_INSPECTOR_FIELD = CLASS_BASE_FIELD + "__inspector-field";
+        // PRIVATE CONSTANTS: ---------------------------------------------------------------------
+        
+        private const float EPSILON = 0.001f;
         
         private static readonly CustomStyleProperty<float> LabelWidthRatioProperty = new CustomStyleProperty<float>("--unity-property-field-label-width-ratio");
         private static readonly CustomStyleProperty<float> LabelExtraPaddingProperty = new CustomStyleProperty<float>("--unity-property-field-label-extra-padding");
@@ -40,13 +41,20 @@ namespace GameCreator.Editor.Common
         
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
-        public AlignLabel(VisualElement field)
+        private AlignLabel(VisualElement field)
         {
             this.m_Field = field;
             this.m_Label = field.Q<Label>();
 
             this.m_Field.RegisterCallback<AttachToPanelEvent>(this.OnAttachToPanel);
             this.m_Field.RegisterCallback<DetachFromPanelEvent>(this.OnDetachFromPanel);
+        }
+        
+        // PUBLIC METHODS: ------------------------------------------------------------------------
+        
+        public static void On(VisualElement field)
+        {
+            _ = new AlignLabel(field);
         }
 
         // CALLBACKS: -----------------------------------------------------------------------------
@@ -84,14 +92,12 @@ namespace GameCreator.Editor.Common
             this.m_LabelExtraContextWidth = LABEL_EXTRA_CONTEXT_WIDTH;
 
             this.m_Field.RegisterCallback<CustomStyleResolvedEvent>(OnCustomStyleResolved);
-            this.m_Field.AddToClassList(CLASS_INSPECTOR_FIELD);
             this.m_Field.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent eventDetach)
         {
             this.m_Field.UnregisterCallback<CustomStyleResolvedEvent>(OnCustomStyleResolved);
-            this.m_Field.RemoveFromClassList(CLASS_INSPECTOR_FIELD);
             this.m_Field.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
         }
         

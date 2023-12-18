@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,106 +13,110 @@ namespace GameCreator.Runtime.Common
         [NonSerialized] private readonly GameObject m_Prefab;
         [NonSerialized] private readonly Transform m_Container;
 
-        [NonSerialized] private readonly List<PoolObject> m_Instances;
+        [NonSerialized] private readonly List<PoolInstance> m_ReadyInstances;
+        [NonSerialized] private readonly Dictionary<int, PoolInstance> m_RunningInstances;
+        
+        // PROPERTIES: ----------------------------------------------------------------------------
 
-        [NonSerialized] private readonly int m_InitCount;
-        [NonSerialized] private readonly bool m_HasDuration;
-        [NonSerialized] private readonly float m_Duration;
+        public int ReadyCount => this.m_ReadyInstances.Count;
+        
+        [field: NonSerialized] public GameObject LastGet { get; private set; }
 
-        // INITIALIZER: ---------------------------------------------------------------------------
+        // CONSTRUCTOR: ---------------------------------------------------------------------------
 
-        public PoolData(GameObject prefab, int count, float duration)
+        public PoolData(GameObject prefab, int count)
         {
-            this.m_Instances = new List<PoolObject>();
-
             this.m_Prefab = prefab;
-            this.m_InitCount = count;
-
-            this.m_HasDuration = duration > 0f;
-            this.m_Duration = duration;
-
             this.m_Container = new GameObject(string.Format(CONTAINER_NAME, prefab.name)).transform;
+            
             this.m_Container.SetParent(PoolManager.Instance.transform);
             this.m_Container.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-            this.Rebuild();
-        }
-
-        private void Rebuild()
-        {
-            this.m_Instances.Clear();
-
-            for (int i = 0; i < this.m_InitCount; ++i)
-            {
-                PoolObject instance = this.CreateEntity();
-                this.m_Instances.Add(instance);
-            }
-        }
-
-        private PoolObject CreateEntity()
-        {
-            bool prevState = this.m_Prefab.gameObject.activeSelf;
-            this.m_Prefab.gameObject.SetActive(false);
-
-            GameObject go = UnityEngine.Object.Instantiate(
-                m_Prefab.gameObject,
-                this.m_Container,
-                true
-            );
             
-            go.SetActive(false);
+            this.m_ReadyInstances = new List<PoolInstance>(count);
+            this.m_RunningInstances = new Dictionary<int, PoolInstance>();
 
-            PoolObject instance = go.GetComponent<PoolObject>();
-            if (instance == null) instance = go.AddComponent<PoolObject>();
-
-            this.m_Prefab.gameObject.SetActive(prevState);
-            return instance;
+            this.Prewarm(count);
         }
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
-
-        public GameObject Get(Vector3 position, Quaternion rotation)
+        
+        public GameObject Get(Vector3 position, Quaternion rotation, float duration)
         {
-            int count = this.m_Instances.Count;
-            if (count == 0) this.Rebuild();
+            if (this.m_ReadyInstances.Count == 0) this.Prewarm(1);
 
-            PoolObject instance = null;
-
-            for (int i = count - 1; instance == null && i >= 0; --i)
-            {
-                if (this.m_Instances[i] == null)
-                {
-                    this.m_Instances.RemoveAt(i);
-                    continue;
-                }
-
-                if (!this.m_Instances[i].gameObject.activeSelf)
-                {
-                    instance = this.m_Instances[i];
-                }
-            }
-
-            if (instance == null)
-            {
-                instance = this.CreateEntity();
-                this.m_Instances.Add(instance);
-            }
-
-            instance.transform.SetPositionAndRotation(
-                position, 
-                rotation
-            );
+            PoolInstance instance = this.m_ReadyInstances[0];
+            this.m_ReadyInstances.RemoveAt(0);
+            
+            int instanceId = instance.GetInstanceID();
+            this.m_RunningInstances[instanceId] = instance;
+            
+            instance.transform.SetPositionAndRotation(position, rotation);
             
             instance.enabled = true;
             instance.gameObject.SetActive(true);
-            instance.transform.SetParent(this.m_Container);
+                
+            if (duration > 0f) instance.SetDuration(duration);
 
-            if (this.m_HasDuration)
+            this.LastGet = instance.gameObject;
+            return this.LastGet;
+        }
+        
+        public void Prewarm(int count)
+        {
+            int prefabId = this.m_Prefab.GetInstanceID();
+            
+            for (int i = 0; i < count; ++i)
             {
-                instance.SetDuration(this.m_Duration);
+                PoolInstance instance = this.CreateInstance();
+                instance.OnCreate(prefabId);
+                
+                this.m_ReadyInstances.Add(instance);
             }
+        }
 
-            return instance.gameObject;
+        public void Dispose()
+        {
+            UnityEngine.Object.Destroy(this.m_Container);
+        }
+        
+        public void SetDontDestroyOnLoad()
+        {
+            UnityEngine.Object.DontDestroyOnLoad(this.m_Container);
+        }
+        
+        // PRIVATE METHODS: -----------------------------------------------------------------------
+        
+        private PoolInstance CreateInstance()
+        {
+            bool prevState = this.m_Prefab.activeSelf;
+            this.m_Prefab.SetActive(false);
+
+            GameObject instance = UnityEngine.Object.Instantiate(this.m_Prefab, this.m_Container);
+            
+            PoolInstance poolInstance = instance.GetComponent<PoolInstance>();
+            if (poolInstance == null) poolInstance = instance.AddComponent<PoolInstance>();
+
+            this.m_Prefab.gameObject.SetActive(prevState);
+            return poolInstance;
+        }
+
+        // INTERNAL CALLBACKS: --------------------------------------------------------------------
+        
+        internal void OnDisableInstance(PoolInstance instance)
+        {
+            int instanceId = instance.GetInstanceID();
+            if (this.m_RunningInstances.Remove(instanceId))
+            {
+                this.m_ReadyInstances.Add(instance);
+            }
+        }
+        
+        internal void OnDestroyInstance(PoolInstance instance)
+        {
+            int instanceId = instance.GetInstanceID();
+            
+            this.m_RunningInstances.Remove(instanceId);
+            this.m_ReadyInstances.Remove(instance);
         }
     }
 }

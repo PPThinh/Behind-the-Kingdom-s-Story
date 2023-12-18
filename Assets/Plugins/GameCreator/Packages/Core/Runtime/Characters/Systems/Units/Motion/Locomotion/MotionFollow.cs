@@ -35,9 +35,9 @@ namespace GameCreator.Runtime.Characters
             return Character.MovementType.None;
         }
 
-        public override Character.MovementType Stop()
+        public override Character.MovementType Stop(bool success)
         {
-            Character.MovementType movementType = base.Stop();
+            Character.MovementType movementType = base.Stop(success);
             this.m_ActiveFollow = false;
             
             return movementType;

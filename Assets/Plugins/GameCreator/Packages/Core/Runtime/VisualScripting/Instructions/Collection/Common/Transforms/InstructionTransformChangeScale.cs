@@ -22,8 +22,7 @@ namespace GameCreator.Runtime.VisualScripting
     public class InstructionTransformChangeScale : TInstructionTransform
     {
         [SerializeField] private ChangeScale m_Scale = new ChangeScale(Vector3.one);
-
-        [Space]
+        
         [SerializeField] private Transition m_Transition = new Transition();
         
         // PROPERTIES: ----------------------------------------------------------------------------
@@ -49,7 +48,7 @@ namespace GameCreator.Runtime.VisualScripting
                 this.m_Transition.EasingType,
                 this.m_Transition.Time
             );
-
+            
             Tween.To(gameObject, tween);
             if (this.m_Transition.WaitToComplete) await this.Until(() => tween.IsFinished);
         }

@@ -12,7 +12,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Position", "Vector3", "Forward", "Backward")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalTransformsPositionZ : PropertyTypeGetDecimal
     {
         [SerializeField]

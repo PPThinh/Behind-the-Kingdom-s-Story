@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameCreator.Runtime.Common;
 using UnityEngine;
@@ -17,10 +16,10 @@ namespace GameCreator.Runtime.Variables
     {
         // MEMBERS: -------------------------------------------------------------------------------
     
-        [SerializeField] private NameVariableRuntime m_Runtime = new NameVariableRuntime();
+        [SerializeReference] private NameVariableRuntime m_Runtime = new NameVariableRuntime();
         
         // PROPERTIES: ----------------------------------------------------------------------------
-
+        
         internal NameVariableRuntime Runtime => this.m_Runtime;
         
         // EVENTS: --------------------------------------------------------------------------------

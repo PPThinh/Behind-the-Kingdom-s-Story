@@ -21,6 +21,8 @@ namespace GameCreator.Editor.Characters
                 bindingPath = weight.propertyPath,
                 showInputField = true
             };
+            
+            weightSlider.AddToClassList(AlignLabel.CLASS_UNITY_ALIGN_LABEL);
 
             PropertyElement jointSelector = new PropertyElement(joint, joint.displayName, false);
             

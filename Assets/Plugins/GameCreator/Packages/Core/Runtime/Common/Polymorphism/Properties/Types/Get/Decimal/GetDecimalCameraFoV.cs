@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Cameras;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Common
@@ -11,10 +12,10 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("FOV", "Aperture", "Angle", "Cone", "View")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalCameraFoV : PropertyTypeGetDecimal
     {
-        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectMainCamera.Create();
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
         
         public override double Get(Args args) => this.GetValue(args);
 

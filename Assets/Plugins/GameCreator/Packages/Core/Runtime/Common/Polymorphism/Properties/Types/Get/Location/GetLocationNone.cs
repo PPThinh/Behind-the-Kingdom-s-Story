@@ -12,8 +12,8 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class GetLocationNone : PropertyTypeGetLocation
     {
-        public override Location Get(Args args) => default;
-        public override Location Get(GameObject gameObject) => default;
+        public override Location Get(Args args) => Location.None;
+        public override Location Get(GameObject gameObject) => Location.None;
 
         public static PropertyGetLocation Create => new PropertyGetLocation(
             new GetLocationNone()

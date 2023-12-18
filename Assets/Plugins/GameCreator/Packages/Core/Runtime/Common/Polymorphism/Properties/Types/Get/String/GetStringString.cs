@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("String")]
-    [Category("String")]
+    [Category("Constants/String")]
     
     [Image(typeof(IconString), ColorTheme.Type.Yellow)]
     [Description("A string of characters")]
@@ -31,6 +31,8 @@ namespace GameCreator.Runtime.Common
             new GetStringString()
         );
 
-        public override string String => this.m_Value;
+        public override string String => string.IsNullOrEmpty(this.m_Value) ? "<empty>" : this.m_Value;
+        
+        public override string EditorValue => this.m_Value;
     }
 }

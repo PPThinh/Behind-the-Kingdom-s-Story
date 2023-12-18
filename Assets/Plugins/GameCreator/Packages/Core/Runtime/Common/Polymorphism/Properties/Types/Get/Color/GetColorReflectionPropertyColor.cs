@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetColorReflectionPropertyColor : PropertyTypeGetColor
     {
         [SerializeField] private ReflectionPropertyColor m_Property = new ReflectionPropertyColor();

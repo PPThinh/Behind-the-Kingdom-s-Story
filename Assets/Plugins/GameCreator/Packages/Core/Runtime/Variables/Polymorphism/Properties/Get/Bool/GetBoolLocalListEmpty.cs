@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
     [Description("Returns true if the Local List Variable is empty")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetBoolLocalListEmpty : PropertyTypeGetBool
     {
         [SerializeField] private PropertyGetGameObject m_List = new PropertyGetGameObject();

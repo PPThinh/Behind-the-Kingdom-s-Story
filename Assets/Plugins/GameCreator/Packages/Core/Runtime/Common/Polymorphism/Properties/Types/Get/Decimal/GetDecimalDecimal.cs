@@ -21,7 +21,9 @@ namespace GameCreator.Runtime.Common
 
         public override double Get(Args args) => this.m_Value;
         public override double Get(GameObject gameObject) => this.m_Value;
-        
+
+        public override double EditorValue => this.m_Value;
+
         public GetDecimalDecimal() : base()
         { }
         

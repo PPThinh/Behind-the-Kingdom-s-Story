@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectReflectionFieldObject : PropertyTypeGetGameObject
     {
         [SerializeField] private ReflectionFieldGameObject m_Field = new ReflectionFieldGameObject();

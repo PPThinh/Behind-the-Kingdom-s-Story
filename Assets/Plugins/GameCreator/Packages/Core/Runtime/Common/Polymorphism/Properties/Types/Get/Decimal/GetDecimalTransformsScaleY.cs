@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Position", "Vector3", "Up", "Down")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalTransformsScaleY : PropertyTypeGetDecimal
     {
         [SerializeField]

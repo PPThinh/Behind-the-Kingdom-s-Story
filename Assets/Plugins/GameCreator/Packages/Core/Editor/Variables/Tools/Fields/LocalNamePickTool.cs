@@ -30,8 +30,8 @@ namespace GameCreator.Editor.Variables
                     
                     SerializedPropertyType.ManagedReference =>
                         this.m_PropertyVariable.managedReferenceValue is PropertyGetGameObject
-                            property && property.SceneReference != null
-                            ? property.SceneReference.GetComponent<LocalNameVariables>()
+                            property && property.EditorValue != null
+                            ? property.EditorValue.GetComponent<LocalNameVariables>()
                             : null,
                     
                     _ => null
@@ -103,7 +103,7 @@ namespace GameCreator.Editor.Variables
             nameContainer.Add(this.m_NameField);
             nameContainer.Add(this.m_NameDropdown);
 
-            _ = new AlignLabel(nameContainer);
+            AlignLabel.On(nameContainer);
             
             this.Add(nameContainer);
         }

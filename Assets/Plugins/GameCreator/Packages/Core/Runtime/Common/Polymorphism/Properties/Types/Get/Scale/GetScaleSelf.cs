@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Self")]
-    [Category("Self")]
+    [Title("Self Scale")]
+    [Category("Game Objects/Self Scale")]
     
     [Image(typeof(IconSelf), ColorTheme.Type.Yellow)]
     [Description("Scale of the caller in local or world space")]

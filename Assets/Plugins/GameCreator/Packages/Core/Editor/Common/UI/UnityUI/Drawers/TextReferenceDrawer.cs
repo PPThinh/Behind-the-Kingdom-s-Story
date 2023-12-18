@@ -50,7 +50,7 @@ namespace GameCreator.Editor.Common.UnityUI
             root.Add(fieldSelector);
             root.Add(content);
 
-            _ = new AlignLabel(root);
+            AlignLabel.On(root);
 
             return root;
         }

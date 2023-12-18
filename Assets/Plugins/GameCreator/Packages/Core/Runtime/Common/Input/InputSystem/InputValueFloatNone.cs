@@ -11,6 +11,8 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class InputValueFloatNone : TInputValueFloat
     {
+        // PUBLIC METHODS: ------------------------------------------------------------------------
+        
         public override float Read() => 0f;
     }
 }

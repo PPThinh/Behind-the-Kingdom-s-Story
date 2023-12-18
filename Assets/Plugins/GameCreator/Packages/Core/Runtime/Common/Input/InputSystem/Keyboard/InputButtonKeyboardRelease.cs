@@ -21,8 +21,6 @@ namespace GameCreator.Runtime.Common
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override bool Active => true;
-
         // INITIALIZERS: --------------------------------------------------------------------------
 
         public static InputPropertyButton Create(Key key = Key.Space)

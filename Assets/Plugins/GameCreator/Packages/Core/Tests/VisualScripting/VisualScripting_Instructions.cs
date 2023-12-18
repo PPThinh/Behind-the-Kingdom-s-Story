@@ -15,7 +15,7 @@ namespace GameCreator.Tests.Core
             );
 
             InstructionTester.Clear();
-            instructions.Run(null);
+            _ = instructions.Run(null);
 
             Assert.AreEqual("abc", InstructionTester.Chain);
         }
@@ -30,7 +30,7 @@ namespace GameCreator.Tests.Core
             );
 
             InstructionTester.Clear();
-            instructions.Run(null, 1);
+            _ = instructions.Run(null, 1);
             
             Assert.AreEqual("bc", InstructionTester.Chain);
         }
@@ -45,7 +45,7 @@ namespace GameCreator.Tests.Core
             );
 
             InstructionTester.Clear();
-            instructions.Run(null, -1);
+            _ = instructions.Run(null, -1);
 
             Assert.AreEqual("abc", InstructionTester.Chain);
         }
@@ -60,7 +60,7 @@ namespace GameCreator.Tests.Core
             );
 
             InstructionTester.Clear();
-            instructions.Run(null, 9999);
+            _ = instructions.Run(null, 9999);
 
             Assert.AreEqual("", InstructionTester.Chain);
         }

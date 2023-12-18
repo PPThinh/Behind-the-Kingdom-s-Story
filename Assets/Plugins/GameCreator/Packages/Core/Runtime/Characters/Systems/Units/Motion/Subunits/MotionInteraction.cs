@@ -1,6 +1,7 @@
 using System;
 using GameCreator.Runtime.Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameCreator.Runtime.Characters
 {
@@ -11,8 +12,8 @@ namespace GameCreator.Runtime.Characters
         
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
         
-        [SerializeField] protected float m_Radius;
-        [SerializeField] protected InteractionMode m_Mode;
+        [SerializeField] protected float m_Radius = 2f;
+        [SerializeField] protected InteractionMode m_Focus = new InteractionMode();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -24,23 +25,15 @@ namespace GameCreator.Runtime.Characters
         
         public InteractionMode Mode
         {
-            get => this.m_Mode;
-            set => this.m_Mode = value;
-        }
-
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public MotionInteraction()
-        {
-            this.m_Radius = 2f;
-            this.m_Mode = new InteractionMode();
+            get => this.m_Focus;
+            set => this.m_Focus = value;
         }
 
         // GIZMOS: --------------------------------------------------------------------------------
         
         public void DrawGizmos(Character character)
         {
-            this.m_Mode.DrawGizmos(character);
+            this.m_Focus.DrawGizmos(character);
             
             Gizmos.color = COLOR_GIZMOS;
             GizmosExtension.Octahedron(

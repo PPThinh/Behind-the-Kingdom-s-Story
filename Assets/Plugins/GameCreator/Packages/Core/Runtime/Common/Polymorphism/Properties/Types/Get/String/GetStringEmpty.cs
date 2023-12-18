@@ -4,14 +4,14 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Empty")]
-    [Category("Empty")]
+    [Category("Constants/Empty")]
     
     [Image(typeof(IconEmpty), ColorTheme.Type.Yellow)]
     [Description("An empty string of characters")]
 
     [Keywords("String", "None", "Null")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetStringEmpty : PropertyTypeGetString
     {
         public override string Get(Args args) => string.Empty;
@@ -21,6 +21,6 @@ namespace GameCreator.Runtime.Common
             new GetStringEmpty()
         );
 
-        public override string String => "(empty)";
+        public override string String => "<empty>";
     }
 }

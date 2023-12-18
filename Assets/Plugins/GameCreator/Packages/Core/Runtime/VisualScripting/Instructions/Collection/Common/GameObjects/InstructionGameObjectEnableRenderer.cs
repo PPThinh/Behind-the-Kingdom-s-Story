@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Enable Renderer")]
     [Description("Enables a Renderer component from the game object")]
 
-    [Category("Game Objects/Enable Renderer")]
+    [Category("Game Objects/Components/Enable Renderer")]
 
     [Keywords("Inactive", "Turn", "Off", "Mesh")]
     [Image(typeof(IconSkinMesh), ColorTheme.Type.Yellow)]

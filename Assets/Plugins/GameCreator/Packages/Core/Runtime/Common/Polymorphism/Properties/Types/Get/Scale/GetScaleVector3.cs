@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Vector3")]
-    [Category("Vector3")]
+    [Title("Vector")]
+    [Category("Constants/Vector")]
     
     [Image(typeof(IconVector3), ColorTheme.Type.Yellow)]
     [Description("A Vector3 that represents the scale on each axis")]

@@ -33,11 +33,6 @@ namespace GameCreator.Runtime.Cameras
             set => this.m_IsActive = value;
         }
 
-        // CONSTRUCTORS: --------------------------------------------------------------------------
-
-        public ShotSystemHeadLeaning() : base()
-        { }
-
         // IMPLEMENTS: ----------------------------------------------------------------------------
         
         public override void OnUpdate(TShotType shotType)

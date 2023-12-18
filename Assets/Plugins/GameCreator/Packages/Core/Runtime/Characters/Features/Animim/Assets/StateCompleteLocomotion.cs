@@ -19,15 +19,8 @@ namespace GameCreator.Runtime.Characters
         // MEMBERS: -------------------------------------------------------------------------------
         
         [SerializeField] private AirborneMode m_AirborneMode = AirborneMode.Single;
-
-        [SerializeField] private bool m_UseBreathing = false;
-        [SerializeField] private bool m_UseTwitching = false;
-        [SerializeField] private AnimationClip m_Breathing;
-        [SerializeField] private AnimationClip m_Twitching;
-
-        [SerializeField] private Stand16Points m_Stand16Points = new Stand16Points();
         
-        [FormerlySerializedAs("m_Crouch16Points")] 
+        [SerializeField] private Stand16Points m_Stand16Points = new Stand16Points();
         [SerializeField] private Crouch16Points m_Land16Points = new Crouch16Points();
         
         [SerializeField] private AirborneSingle m_AirborneSingle = new AirborneSingle();
@@ -35,9 +28,6 @@ namespace GameCreator.Runtime.Characters
         [SerializeField] private AirborneDirectional m_AirborneDirectional = new AirborneDirectional();
 
         // SERIALIZATION CALLBACKS: ---------------------------------------------------------------
-
-        private const string N_SM_BREATHE = "Human@SM_Breathe";
-        private const string N_SM_TWITCH  = "Human@SM_Twitch";
         
         private const string N_AIR_UP_I = "Human@Air_Up_I";
         private const string N_AIR_UP_F = "Human@Air_Up_F";
@@ -170,9 +160,6 @@ namespace GameCreator.Runtime.Characters
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            if (this.m_UseBreathing) this.m_Controller[N_SM_BREATHE] = this.m_Breathing;
-            if (this.m_UseTwitching) this.m_Controller[N_SM_TWITCH] = this.m_Twitching;
         }
 
         protected sealed override void AfterSerialize()

@@ -33,7 +33,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override string Title => $"Set Is Kinematic on {this.m_Rigidbody}";
+        public override string Title => $"Set Is Kinematic = {this.m_IsKinematic} on {this.m_Rigidbody}";
 
         // RUN METHOD: ----------------------------------------------------------------------------
         

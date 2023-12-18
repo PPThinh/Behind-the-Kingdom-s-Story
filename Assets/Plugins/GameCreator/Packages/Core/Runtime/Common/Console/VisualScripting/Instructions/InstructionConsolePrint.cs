@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Console
     [Title("Console Text")]
     [Description("Prints a message to the Runtime Console")]
 
-    [Category("Debug/Console Text")]
+    [Category("Debug/Console/Console Text")]
 
     [Parameter(
         "Message",

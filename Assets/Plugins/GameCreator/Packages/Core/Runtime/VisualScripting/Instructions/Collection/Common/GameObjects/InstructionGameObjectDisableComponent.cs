@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Disable Component")]
     [Description("Disables a component class from the game object")]
 
-    [Category("Game Objects/Disable Component")]
+    [Category("Game Objects/Components/Disable Component")]
 
     [Keywords("Deactivate", "Turn", "Off", "MonoBehaviour", "Behaviour", "Script")]
     [Image(typeof(IconComponent), ColorTheme.Type.Red)]

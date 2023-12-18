@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Characters
 {
-    [Title("Character")]
-    [Category("Characters/Character")]
+    [Title("Character Rotation")]
+    [Category("Characters/Character Rotation")]
     
     [Image(typeof(IconCharacter), ColorTheme.Type.Yellow)]
     [Description("Rotation of the Character in local or world space")]

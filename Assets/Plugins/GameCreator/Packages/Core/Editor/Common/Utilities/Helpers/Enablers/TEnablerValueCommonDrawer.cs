@@ -33,12 +33,12 @@ namespace GameCreator.Editor.Common
             };
 
             PropertyField fieldValue = new PropertyField(value, string.Empty);
-
+            
             root.Add(label);
             root.Add(toggleIsEnabled);
             root.Add(fieldValue);
 
-            _ = new AlignLabel(root);
+            AlignLabel.On(root);
 
             toggleIsEnabled.RegisterValueChangedCallback(changeEvent =>
             {

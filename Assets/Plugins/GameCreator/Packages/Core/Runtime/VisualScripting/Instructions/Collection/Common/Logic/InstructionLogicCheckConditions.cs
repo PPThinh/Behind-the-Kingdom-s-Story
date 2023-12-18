@@ -13,12 +13,14 @@ namespace GameCreator.Runtime.VisualScripting
         "the rest of the Instructions below"
     )]
 
-    [Category("Logic/Check Conditions")]
+    [Category("Visual Scripting/Check Conditions")]
 
     [Parameter(
         "Conditions",
         "List of Conditions that can evaluate to true or false"
     )]
+    
+    [Parameter("Mode", "Whether to check the Conditions as an AND or an OR set")]
 
     [Keywords("Execute", "Call", "Check", "Evaluate")]
     [Image(typeof(IconCondition), ColorTheme.Type.Green)]
@@ -32,18 +34,26 @@ namespace GameCreator.Runtime.VisualScripting
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override string Title => this.m_Conditions.Length switch
+        public override string Title
         {
-            0 => "(none)",
-            1 => $"Check {this.m_Conditions.Get(0)?.Title ?? "(unknown)"}",
-            _ => $"Check {this.m_Conditions.Length} Conditions"
-        };
+            get
+            {
+                string text = this.m_Conditions.Length switch
+                {
+                    0 => "(none)",
+                    1 => $"Check {this.m_Conditions.Get(0)?.Title ?? "(unknown)"}",
+                    _ => $"Check {this.m_Conditions.Length} Conditions"
+                };
+
+                return $"{text}";
+            }
+        }
 
         // RUN METHOD: ----------------------------------------------------------------------------
 
         protected override Task Run(Args args)
         {
-            if (!this.m_Conditions.Check(args))
+            if (!this.m_Conditions.Check(args, CheckMode.And))
             {
                 this.NextInstruction = int.MaxValue;
             }

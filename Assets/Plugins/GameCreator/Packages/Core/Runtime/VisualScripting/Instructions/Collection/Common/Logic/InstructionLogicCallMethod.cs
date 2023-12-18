@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Invoke Method")]
     [Description("Invokes a method from any script attached to a game object")]
 
-    [Category("Logic/Invoke Method")]
+    [Category("Visual Scripting/Invoke Method")]
     
     [Parameter("Method", "The method/function that is called on a game object reference")]
 

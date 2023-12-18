@@ -12,19 +12,20 @@ namespace GameCreator.Runtime.VisualScripting
 
     [Category("Audio/Stop Sound Effect")]
 
-    [Keywords("Audio", "Sounds", "Silence", "Fade", "Mute")]
+    [Keywords("Audio", "Sounds", "Silence", "Fade", "Mute", "SFX", "FX")]
     [Image(typeof(IconMusicNote), ColorTheme.Type.TextLight, typeof(OverlayCross))]
     
     [Serializable]
     public class InstructionCommonAudioSFXStop : Instruction
     {
-        [SerializeField] private AudioClip m_AudioClip = null;
-        [SerializeField] private bool m_WaitToComplete = false;
+        [SerializeField] private PropertyGetAudio m_AudioClip = GetAudioClip.Create;
+        
+        [SerializeField] private bool m_WaitToComplete;
         [SerializeField] private float transitionOut = 0.1f;
 
         public override string Title => string.Format(
             "Stop SFX: {0} {1}",
-            this.m_AudioClip != null ? this.m_AudioClip.name : "(none)",
+            this.m_AudioClip,
             this.transitionOut < float.Epsilon 
                 ? string.Empty 
                 : string.Format(
@@ -36,17 +37,20 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected override async Task Run(Args args)
         {
+            AudioClip audioClip = this.m_AudioClip.Get(args);
+            if (audioClip == null) return;
+            
             if (this.m_WaitToComplete)
             {
                 await AudioManager.Instance.SoundEffect.Stop(
-                    this.m_AudioClip,
+                    audioClip,
                     this.transitionOut
                 );
             }
             else
             {
                 _ = AudioManager.Instance.SoundEffect.Stop(
-                    this.m_AudioClip,
+                    audioClip,
                     this.transitionOut
                 );
             }

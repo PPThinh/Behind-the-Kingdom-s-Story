@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Completed_Scenes/Main_Menu.unity
+    guid: 1d1ff18979764e74dab404a68e515d20
+  - enabled: 1
+    path: Assets/Scenes/Completed_Scenes/Story_Speaker.unity
+    guid: bdb5d14317a2cc54db57ddb153238845
+  - enabled: 1
+    path: Assets/Scenes/Kingdom.unity
+    guid: 5840491f9dde1b349bd9dde4b6f2d7b7
+  - enabled: 0
+    path: Assets/Scenes/Editor_Scenes/1_Main_Menu.unity
+    guid: 920c75949c86645808982400655c2f90
+  - enabled: 0
+    path: Assets/Scenes/Editor_Scenes/Test Loading scene.unity
+    guid: c9c27414f37ab094193803319957fe24
   m_configObjects: {}

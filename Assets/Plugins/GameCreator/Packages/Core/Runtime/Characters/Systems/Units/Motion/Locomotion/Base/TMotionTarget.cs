@@ -7,17 +7,21 @@ namespace GameCreator.Runtime.Characters
 	public abstract class TMotionTarget<T> : TMotion
 	{
 		private const float MIN_THRESHOLD = 0.15f;
+		private const float STUCK_TIME = 0.5f;
 		
 		// MEMBERS: -------------------------------------------------------------------------------
 		
-		protected T m_Target;
+		[NonSerialized] protected T m_Target;
 
-		protected float m_Threshold;
+		[NonSerialized] protected float m_Threshold;
 
-		protected bool m_HasFinished;
-		protected Action<Character> m_OnFinish;
+		[NonSerialized] protected bool m_HasFinished;
+		[NonSerialized] protected Action<Character, bool> m_OnFinish;
 
-        private int m_FacingLayerKey = -1;
+		[NonSerialized] private int m_FacingLayerKey = -1;
+
+		[NonSerialized] private Vector3 m_StartStuckPosition;
+		[NonSerialized] private float m_StartStuckTime;
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -28,7 +32,7 @@ namespace GameCreator.Runtime.Characters
         // INITIALIZERS: --------------------------------------------------------------------------
 
         public virtual Character.MovementType Setup(T target, float threshold, 
-	        Action<Character> onFinish)
+	        Action<Character, bool> onFinish)
 		{
             this.Setup();
 
@@ -41,6 +45,9 @@ namespace GameCreator.Runtime.Characters
 			this.Motion.MoveDirection = (this.Position - this.Transform.position).normalized;
 			this.Motion.MovePosition = this.Position;
 
+			this.m_StartStuckPosition = this.Transform.position;
+			this.m_StartStuckTime = this.Character.Time.Time;
+			
 			return Character.MovementType.MoveToPosition;
 		}
 
@@ -68,7 +75,17 @@ namespace GameCreator.Runtime.Characters
             
 			if (distance <= this.m_Threshold)
 			{
-				return this.Stop();
+				return this.Stop(true);
+			}
+
+			if (this.m_StartStuckPosition != this.Transform.position)
+			{
+				this.m_StartStuckPosition = this.Transform.position;
+				this.m_StartStuckTime = this.Character.Time.Time;
+			}
+			else if (this.Character.Time.Time - this.m_StartStuckTime >= STUCK_TIME)
+			{
+				return this.Stop(false);
 			}
 
             Vector3 direction = target - source;
@@ -88,10 +105,10 @@ namespace GameCreator.Runtime.Characters
                 : Character.MovementType.None;
 		}
 
-        public override Character.MovementType Stop()
+        public override Character.MovementType Stop(bool success)
         {
-	        Character.MovementType movementType = base.Stop();
-	        this.m_OnFinish?.Invoke(this.Character);
+	        Character.MovementType movementType = base.Stop(success);
+	        this.m_OnFinish?.Invoke(this.Character, success);
 	        this.m_HasFinished = true;
 	        
 	        return movementType;

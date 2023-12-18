@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Game Object")]
-    [Category("Game Objects/Game Object")]
+    [Title("Game Object Rotation")]
+    [Category("Game Objects/Game Object Rotation")]
     
     [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue)]
     [Description("Rotation of the Game Object in local or world space")]

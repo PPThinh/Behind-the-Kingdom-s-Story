@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Reflection;
 using GameCreator.Runtime.Common;
 using UnityEditor;
 using UnityEngine;
@@ -138,10 +138,9 @@ namespace GameCreator.Editor.Common
             for (int i = 0; i < arraySize; ++i)
             {
                 SerializedProperty item = this.PropertyList.GetArrayElementAtIndex(i);
-                item.FindPropertyRelative("m_IsExpanded").boolValue = isExpanded;
+                TPolymorphicItemTool.SetIsExpanded(item, isExpanded);
             }
 
-            SerializationUtils.ApplyUnregisteredSerialization(this.SerializedObject);
             this.Refresh();
         }
 
@@ -195,12 +194,38 @@ namespace GameCreator.Editor.Common
             }
         }
 
+        public virtual void FillItems(List<object> values)
+        {
+            this.SerializedObject.Update();
+            this.PropertyList.ClearArray();
+
+            for (int i = 0; i < values.Count; ++i)
+            {
+                this.PropertyList.InsertArrayElementAtIndex(i);
+                this.PropertyList.GetArrayElementAtIndex(i).SetValue(values[i]);
+
+                SerializationUtils.ApplyUnregisteredSerialization(this.SerializedObject);
+            }
+            
+            int size = this.PropertyList.arraySize;
+            this.EventChangeSize?.Invoke(size);
+            
+            using ChangeEvent<int> changeEvent = ChangeEvent<int>.GetPooled(size, size);
+            changeEvent.target = this;
+            
+            this.SendEvent(changeEvent);
+            this.Refresh();
+        }
+
         public virtual void InsertItem(int index, object value)
         {
             this.SerializedObject.Update();
             
             this.PropertyList.InsertArrayElementAtIndex(index);
-            this.PropertyList.GetArrayElementAtIndex(index).SetValue(value);
+            SerializedProperty entry = this.PropertyList.GetArrayElementAtIndex(index);
+                
+            entry.SetValue(value);
+            TPolymorphicItemTool.SetIsExpanded(entry, true);
 
             SerializationUtils.ApplyUnregisteredSerialization(this.SerializedObject);
 
@@ -209,8 +234,8 @@ namespace GameCreator.Editor.Common
             
             using ChangeEvent<int> changeEvent = ChangeEvent<int>.GetPooled(size, size);
             changeEvent.target = this;
-            this.SendEvent(changeEvent);
             
+            this.SendEvent(changeEvent);
             this.Refresh();
         }
 
@@ -227,8 +252,8 @@ namespace GameCreator.Editor.Common
             
             using ChangeEvent<int> changeEvent = ChangeEvent<int>.GetPooled(size, size);
             changeEvent.target = this;
-            this.SendEvent(changeEvent);
             
+            this.SendEvent(changeEvent);
             this.Refresh();
         }
         
@@ -251,8 +276,8 @@ namespace GameCreator.Editor.Common
             
             using ChangeEvent<int> changeEvent = ChangeEvent<int>.GetPooled(size, size);
             changeEvent.target = this;
-            this.SendEvent(changeEvent);
             
+            this.SendEvent(changeEvent);
             this.Refresh();
         }
 

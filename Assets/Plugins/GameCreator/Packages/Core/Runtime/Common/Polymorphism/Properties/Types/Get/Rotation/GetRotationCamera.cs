@@ -10,14 +10,14 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconCamera), ColorTheme.Type.Green)]
     [Description("Rotation of the selected Camera in world space")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetRotationCamera : PropertyTypeGetRotation
     {
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
         
         public override Quaternion Get(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
             return camera != null ? camera.transform.rotation : default;
         }
 

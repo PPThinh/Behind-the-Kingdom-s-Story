@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Stop Actions")]
     [Description("Stops an Actions component object that is being executed")]
 
-    [Category("Logic/Stop Actions")]
+    [Category("Visual Scripting/Stop Actions")]
 
     [Parameter(
         "Actions",

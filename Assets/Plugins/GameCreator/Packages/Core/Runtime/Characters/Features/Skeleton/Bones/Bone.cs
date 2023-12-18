@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Characters
 {
     [Serializable]
-    public class Bone : TPolymorphicItem<Bone>, IBone
+    public struct Bone : IBone
     {
         private enum Type
         {
@@ -17,32 +17,31 @@ namespace GameCreator.Runtime.Characters
         
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private Type m_Type = Type.Human;
+        [SerializeField] private Type m_Type;
         
-        [SerializeField] private HumanBodyBones m_Human = HumanBodyBones.Hips;
-        [SerializeField] private string m_Path = string.Empty;
+        [SerializeField] private HumanBodyBones m_Human;
+        [SerializeField] private string m_Path;
 
         // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public Bone()
-        { }
 
         public Bone(HumanBodyBones humanBone)
         {
             this.m_Type = Type.Human;
             this.m_Human = humanBone;
+            this.m_Path = string.Empty;
         }
 
         public Bone(string bonePath)
         {
             this.m_Type = Type.Path;
+            this.m_Human = HumanBodyBones.Hips;
             this.m_Path = bonePath;
         }
 
         public static Bone CreateNone() => new Bone { m_Type = Type.None };
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
-
+        
         public GameObject Get(Animator animator)
         {
             Transform transform = this.GetTransform(animator);

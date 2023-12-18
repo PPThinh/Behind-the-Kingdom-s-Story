@@ -11,8 +11,6 @@ namespace GameCreator.Runtime.Common
     {
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override bool Active => true;
-
         protected bool WasTouchedThisFrame
         {
             get
@@ -91,13 +89,7 @@ namespace GameCreator.Runtime.Common
         public override void OnStartup()
         {
             base.OnStartup();
-            EnhancedTouchSupport.Enable();
-        }
-
-        public override void OnDispose()
-        {
-            base.OnDispose();
-            EnhancedTouchSupport.Disable();
+            InputManager.Instance.RequireEnhancedTouchInput();
         }
     }
 }

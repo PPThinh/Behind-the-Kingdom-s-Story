@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using GameCreator.Runtime.Cameras;
 using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
@@ -24,8 +25,8 @@ namespace GameCreator.Runtime.VisualScripting
     public class InstructionCharacterTargetsDirection : Instruction
     {
         [SerializeField] private PropertyGetGameObject m_Character = GetGameObjectPlayer.Create();
-        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectMainCamera.Create();
-        [SerializeField] private PropertyGetDirection m_Direction = GetDirectionInputDirection.Create();
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
+        [SerializeField] private PropertyGetDirection m_Direction = GetDirectionCharactersMoving.Create;
 
         public override string Title => $"Cycle {this.m_Character} Direction Targets from {this.m_Camera}";
 

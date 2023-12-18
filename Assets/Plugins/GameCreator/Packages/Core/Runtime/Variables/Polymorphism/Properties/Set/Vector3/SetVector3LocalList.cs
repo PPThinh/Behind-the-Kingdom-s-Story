@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Vector3 value of a Local List Variable")]
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetVector3LocalList : PropertyTypeSetVector3
     {
         [SerializeField]

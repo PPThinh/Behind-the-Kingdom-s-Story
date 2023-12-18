@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Restart Instructions")]
     [Description("Stops executing the current list of Instructions and starts again from the top")]
 
-    [Category("Logic/Restart Instructions")]
+    [Category("Visual Scripting/Restart Instructions")]
 
     [Keywords("Reset", "Call", "Again")]
     [Image(typeof(IconInstructions), ColorTheme.Type.Yellow, typeof(OverlayArrowUp))]

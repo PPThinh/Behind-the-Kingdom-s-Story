@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconTag), ColorTheme.Type.Yellow)]
     [Description("Searches the scene for a Game Object with a specific tag")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectByTag : PropertyTypeGetGameObject
     {
         [SerializeField] protected PropertyGetString m_Tag = new PropertyGetString("");
@@ -22,6 +22,6 @@ namespace GameCreator.Runtime.Common
 
         public override string String => this.m_Tag.ToString();
 
-        public override GameObject SceneReference => GameObject.FindWithTag(this.m_Tag.ToString());
+        public override GameObject EditorValue => GameObject.FindWithTag(this.m_Tag.ToString());
     }
 }

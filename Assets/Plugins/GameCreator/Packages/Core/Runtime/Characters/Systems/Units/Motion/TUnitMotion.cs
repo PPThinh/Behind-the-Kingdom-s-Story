@@ -180,7 +180,7 @@ namespace GameCreator.Runtime.Characters
             if (!this.UpdateMotionData<MotionToDirection>(priority)) return;
             if (this.m_MotionData is MotionToDirection motion && motion.Priority <= priority)
             {
-                motion.Stop();
+                motion.Stop(true);
             }
         }
 
@@ -192,12 +192,12 @@ namespace GameCreator.Runtime.Characters
         /// <param name="onFinish">Callback executed when the Character reaches its destination</param>
         /// <param name="priority">Higher priority grants permission to cancel other movements</param>
         public virtual void MoveToLocation(Location location, float stopDistance, 
-            Action<Character> onFinish, int priority)
+            Action<Character, bool> onFinish, int priority)
         {
             this.m_StopDistance = Mathf.Max(stopDistance, MIN_STOP_THRESHOLD);
             if (!this.UpdateMotionData<MotionToLocation>(priority))
             {
-                onFinish?.Invoke(this.Character);
+                onFinish?.Invoke(this.Character, false);
                 return;
             }
 
@@ -215,12 +215,12 @@ namespace GameCreator.Runtime.Characters
         /// <param name="onFinish">Callback executed when the Character reaches its destination</param>
         /// <param name="priority">Higher priority grants permission to cancel other movements</param>
         public virtual void MoveToTransform(Transform target, float stopDistance, 
-            Action<Character> onFinish, int priority )
+            Action<Character, bool> onFinish, int priority )
         {
             this.m_StopDistance = Mathf.Max(stopDistance, MIN_STOP_THRESHOLD);
             if (!this.UpdateMotionData<MotionToTransform>(priority))
             {
-                onFinish?.Invoke(this.Character);
+                onFinish?.Invoke(this.Character, false);
                 return;
             }
         
@@ -238,12 +238,12 @@ namespace GameCreator.Runtime.Characters
         /// <param name="onFinish">Callback executed when the Character reaches its destination</param>
         /// <param name="priority">Higher priority grants permission to cancel other movements</param>
         public virtual void MoveToMarker(Marker marker, float stopDistance, 
-            Action<Character> onFinish, int priority)
+            Action<Character, bool> onFinish, int priority)
         {
             this.m_StopDistance = Mathf.Max(stopDistance, marker.StopDistance, MIN_STOP_THRESHOLD);
             if (!this.UpdateMotionData<MotionToMarker>(priority))
             {
-                onFinish?.Invoke(this.Character);
+                onFinish?.Invoke(this.Character, false);
                 return;
             }
             
@@ -285,9 +285,11 @@ namespace GameCreator.Runtime.Characters
         {
             if (this.m_MotionData is MotionFollow motion && motion.Priority <= priority)
             {
-                motion.Stop();
+                motion.Stop(true);
             }
         }
+        
+        // PROTECTED METHODS: ---------------------------------------------------------------------
 
         protected bool UpdateMotionData<T>(int priority) where T : TMotion, new()
         {
@@ -298,7 +300,7 @@ namespace GameCreator.Runtime.Characters
                 return true;
             }
             
-            this.m_MotionData?.Stop();
+            this.m_MotionData?.Stop(false);
             this.m_MotionData = new T();
             this.m_MotionData.Initialize(this, priority);
             

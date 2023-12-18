@@ -26,20 +26,20 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCommonAudioAmbientPlay : Instruction
     {
-        [SerializeField] private AudioClip m_AudioClip = null;
+        [SerializeField] private PropertyGetAudio m_AudioClip = GetAudioClip.Create;
         [SerializeField] private AudioConfigAmbient m_Config = new AudioConfigAmbient();
 
-        public override string Title => string.Format(
-            "Play Ambient: {0}",
-            this.m_AudioClip != null ? this.m_AudioClip.name : "(none)"
-        );
+        public override string Title => $"Play Ambient: {this.m_AudioClip}";
 
         protected override Task Run(Args args)
         {
-            if (!AudioManager.Instance.Ambient.IsPlaying(this.m_AudioClip))
+            AudioClip audioClip = this.m_AudioClip.Get(args);
+            if (audioClip == null) return DefaultResult;
+            
+            if (!AudioManager.Instance.Ambient.IsPlaying(audioClip))
             {
                 _ = AudioManager.Instance.Ambient.Play(
-                    this.m_AudioClip, 
+                    audioClip, 
                     this.m_Config,
                     args
                 );   

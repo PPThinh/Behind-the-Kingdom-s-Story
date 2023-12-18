@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Cameras
     {
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
-        [FormerlySerializedAs("m_ShotSystemSettings")] [SerializeField] protected ShotSystemViewport m_ShotSystemViewport;
+        [SerializeField] protected ShotSystemViewport m_ShotSystemViewport;
         
         // MEMBERS: -------------------------------------------------------------------------------
         
@@ -26,13 +26,13 @@ namespace GameCreator.Runtime.Cameras
 
         public virtual Vector3 Position
         {
-            get => this.m_Transform.position;
+            get => this.m_Transform != null ? this.m_Transform.position : default;
             set => this.m_Transform.position = value;
         }
         
         public virtual Quaternion Rotation
         {
-            get => this.m_Transform.rotation;
+            get => this.m_Transform != null ? this.m_Transform.rotation : default;
             set => this.m_Transform.rotation = value;
         }
 

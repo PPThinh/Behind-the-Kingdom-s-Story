@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Sprite value of a Global List Variable")]
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetSpriteGlobalList : PropertyTypeSetSprite
     {
         [SerializeField]

@@ -22,5 +22,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => "Green";
+        
+        public override Color EditorValue => Color.green;
     }
 }

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Color value of a Local Name Variable")]
     [Image(typeof(IconNameVariable), ColorTheme.Type.Purple)]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetColorLocalName : PropertyTypeSetColor
     {
         [SerializeField]

@@ -27,9 +27,12 @@ namespace GameCreator.Runtime.Characters
                 ? camera.transform.TransformDirection(Vector3.forward)
                 : camera.ScreenPointToRay(Mouse.current.position.ReadValue()).direction;
             
+            Vector3 interactiveDirection = interactive.Position - camera.transform.position;
+            if (Vector3.Dot(direction, interactiveDirection) < 0f) return float.MaxValue;
+            
             float distance = Vector3.Cross(
                 direction, 
-                interactive.Position - camera.transform.position
+                interactiveDirection
             ).magnitude;
 
             return distance < this.m_MaxDistance ? distance : float.MaxValue;

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Self")]
-    [Category("Self")]
+    [Title("Self Position")]
+    [Category("Game Objects/Self Position")]
     
     [Image(typeof(IconSelf), ColorTheme.Type.Yellow)]
     [Description("Returns the position of the caller")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetPositionSelf : PropertyTypeGetPosition
     {
         public override Vector3 Get(Args args)

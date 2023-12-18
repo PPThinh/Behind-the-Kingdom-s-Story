@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Common.SaveSystem
@@ -55,9 +54,9 @@ namespace GameCreator.Runtime.Common.SaveSystem
             return Task.FromResult(value);
         }
 
-        Task<float> IDataStorage.GetFloat(string key, float value)
+        Task<double> IDataStorage.GetDouble(string key, double value)
         {
-            value = PlayerPrefs.GetFloat(key, value);
+            value = PlayerPrefs.GetFloat(key, (float) value);
             return Task.FromResult(value);
         }
 
@@ -83,9 +82,9 @@ namespace GameCreator.Runtime.Common.SaveSystem
             return Task.FromResult(1);
         }
 
-        Task IDataStorage.SetFloat(string key, float value)
+        Task IDataStorage.SetDouble(string key, double value)
         {
-            PlayerPrefs.SetFloat(key, value);
+            PlayerPrefs.SetFloat(key, (float) value);
             return Task.FromResult(1);
         }
 

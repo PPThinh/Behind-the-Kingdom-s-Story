@@ -1,6 +1,7 @@
 using System;
 using GameCreator.Editor.Common;
 using GameCreator.Runtime.Common;
+using GameCreator.Runtime.VisualScripting;
 using UnityEditor;
 using UnityEngine.UIElements;
 
@@ -105,7 +106,7 @@ namespace GameCreator.Editor.VisualScripting
 
             for (int i = 0; i < TrackTools.Length; ++i)
             {
-                TrackTool trackTool = new TrackTool(this, i);
+                TrackTool trackTool = this.CreateTrackTool(i);
                 trackTool.EventSelectClip += this.SelectClip;
 
                 this.TrackTools[i] = trackTool;
@@ -192,6 +193,12 @@ namespace GameCreator.Editor.VisualScripting
         protected internal virtual void SetupControlR(PlaybackTool playbackTool)
         {
             playbackTool.style.paddingRight = this.TracksOffsetR + 1;
+        }
+        
+        protected virtual TrackTool CreateTrackTool(int trackIndex)
+        {
+            SerializedProperty track = this.Tracks.GetArrayElementAtIndex(trackIndex);
+            return track != null ? new TrackToolDefault(this, trackIndex) : null;
         }
     }
 }

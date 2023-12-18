@@ -16,17 +16,16 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class GetDecimalRandomRange : PropertyTypeGetDecimal
     {
-        [SerializeField] private double m_MinValue = 5f;
-        [SerializeField] private double m_MaxValue = 10f;
+        [SerializeField] private PropertyGetDecimal m_MinValue = GetDecimalConstantZero.Create;
+        [SerializeField] private PropertyGetDecimal m_MaxValue = GetDecimalConstantTwo.Create;
         
         public override double Get(Args args)
         {
-            System.Random random = new System.Random();
-            return random.NextDouble() * (this.m_MaxValue - this.m_MinValue) + this.m_MinValue;
-        }
+            float minValue = (float) this.m_MinValue.Get(args);
+            float maxValue = (float) this.m_MaxValue.Get(args);
 
-        public GetDecimalRandomRange() : base()
-        { }
+            return UnityEngine.Random.Range(minValue, maxValue);
+        }
 
         public static PropertyGetDecimal Create => new PropertyGetDecimal(new GetDecimalRandomRange());
 

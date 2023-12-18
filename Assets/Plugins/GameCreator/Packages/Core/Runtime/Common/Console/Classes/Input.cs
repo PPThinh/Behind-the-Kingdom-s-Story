@@ -36,9 +36,9 @@ namespace GameCreator.Runtime.Console
                 .SelectMany(element => element).ToList();
 
             if (texts.Count <= 0) return;
-
+            
             this.Command = texts[0].ToLowerInvariant();
-
+            
             List<Parameter> parameters = new List<Parameter>();
             for (int i = 1; i < texts.Count; i += 2)
             {

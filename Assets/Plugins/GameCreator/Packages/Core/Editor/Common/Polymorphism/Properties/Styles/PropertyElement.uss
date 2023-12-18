@@ -3,6 +3,7 @@
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
+    margin-right: -2px;
 }
 
 #GC-PropertyElement-Head Label {
@@ -10,8 +11,7 @@
     flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;
-    margin-left: 3px;
-    margin-right: -2px;
+    padding-left: 3px;
 }
 
 #GC-PropertyElement-Head Button {
@@ -33,6 +33,10 @@
     flex-shrink: 0;
 }
 
-#GC-PropertyElement-Body-HideLabels { }
+#GC-PropertyElement-Body {
+    margin-left: 10px;
+}
 
-#GC-PropertyElement-Body-ShowLabels { }
+.gc-property-element-body-content {
+    /*margin-bottom: var(--gc-common-space-smaller);*/
+}

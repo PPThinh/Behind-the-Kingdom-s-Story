@@ -27,7 +27,10 @@ namespace GameCreator.Runtime.VisualScripting
 
         public bool IsRunning => this.m_IsRunning;
 
-        public bool IsCancelled => AsyncManager.ExitRequest || this.m_IsCancelled;
+        public bool IsCancelled => AsyncManager.ExitRequest || this.m_IsCancelled ||
+                                   (this.CancellationToken?.IsCancelled ?? false);
+
+        protected virtual ICancellable CancellationToken => null;
         
         public abstract float Duration { get; }
         public abstract TimeMode TimeMode { get; }
@@ -82,9 +85,13 @@ namespace GameCreator.Runtime.VisualScripting
             
             while (this.IsRunning)
             {
-                if (this.IsCancelled) return;
-                if (this.OnRun(args)) return;
+                if (this.IsCancelled)
+                {
+                    this.OnCancel(args);
+                    return;
+                }
                 
+                if (this.OnRun(args)) return;
                 await Task.Yield();
             }
         }
@@ -154,6 +161,8 @@ namespace GameCreator.Runtime.VisualScripting
         private void OnCancel(Args args)
         {
             this.m_IsCancelled = true;
+            this.m_IsRunning = false;
+            
             foreach (ITrack track in this.m_Tracks)
             {
                 track?.OnCancel(this, args);

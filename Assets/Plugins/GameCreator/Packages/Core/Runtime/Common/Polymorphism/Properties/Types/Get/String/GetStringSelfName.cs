@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Self Name")]
-    [Category("Self Name")]
+    [Category("Game Objects/Self Name")]
     
     [Image(typeof(IconSelf), ColorTheme.Type.Yellow)]
     [Description("Returns the name of the game object which made the call")]

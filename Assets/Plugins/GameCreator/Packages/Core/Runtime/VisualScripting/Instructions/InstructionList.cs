@@ -42,6 +42,11 @@ namespace GameCreator.Runtime.VisualScripting
         {
             this.m_Instructions = instructions;
         }
+        
+        public InstructionList(InstructionList instructionList) : this()
+        {
+            this.m_Instructions = instructionList.m_Instructions;
+        }
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
 

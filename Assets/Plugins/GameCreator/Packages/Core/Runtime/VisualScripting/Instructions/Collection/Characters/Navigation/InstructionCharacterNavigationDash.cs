@@ -49,7 +49,7 @@ namespace GameCreator.Runtime.VisualScripting
             // EXPOSED MEMBERS: -------------------------------------------------------------------
             
             [SerializeField] private AnimationMode m_Mode;
-        
+            
             [SerializeField] private AnimationClip m_AnimationForward;
             [SerializeField] private AnimationClip m_AnimationBackward;
             [SerializeField] private AnimationClip m_AnimationRight;

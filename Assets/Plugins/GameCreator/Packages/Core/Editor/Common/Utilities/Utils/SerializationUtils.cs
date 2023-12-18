@@ -24,7 +24,8 @@ namespace GameCreator.Editor.Common
         private static readonly Regex RX_ARRAY = new Regex(@"\[\d+\]");
 
         private const string SPACE = " ";
-        private const string INDENT = "";
+        
+        private const string ERR_GENERIC = "Generic access is to be deprecated. Review '{0}'";
         
         // ENUMS: ---------------------------------------------------------------------------------
         
@@ -55,28 +56,6 @@ namespace GameCreator.Editor.Common
 
         // UI TOOLKIT: ----------------------------------------------------------------------------
 
-        [Obsolete("Use CreateChildProperties() with ChildrenMode instead")]
-        public static bool CreateChildProperties(VisualElement root, SerializedProperty prop,
-            bool hideLabelsInChildren, params string[] excludeFields)
-        {
-            return CreateChildProperties(root, prop, hideLabelsInChildren, false, excludeFields);
-        }
-
-        [Obsolete("Use CreateChildProperties() with ChildrenMode instead")]
-        public static bool CreateChildProperties(VisualElement root, SerializedProperty prop,
-            bool hideLabelsInChildren, bool indent, params string[] excludeFields)
-        {
-            return CreateChildProperties(
-                root,
-                prop,
-                hideLabelsInChildren
-                    ? ChildrenMode.HideLabelsInChildren
-                    : ChildrenMode.ShowLabelsInChildren,
-                indent, 
-                excludeFields
-            );
-        }
-        
         public static bool CreateChildProperties(VisualElement root, SerializedProperty prop,
             ChildrenMode mode, bool indent, params string[] excludeFields)
         {
@@ -140,6 +119,10 @@ namespace GameCreator.Editor.Common
             // SerializedProperty class. Might be what we are looking for.
             // Resolution: Negative. It would work, but if the boxed value contains any
             // UnityEngine.Object reference the deserialization fails and throws an exception.
+            
+            // Update 18/9/2023: Since Unity has provided much more support for serialized
+            // references it is clear that generic data should never be accessed and modified
+            // as-is. Therefore all generic data should be converted to managed reference values.
 
             if (property == null) return default;
             ApplyUnregisteredSerialization(property.serializedObject);
@@ -151,6 +134,8 @@ namespace GameCreator.Editor.Common
                     : default;
             }
 
+            Debug.LogWarning(string.Format(ERR_GENERIC, property.propertyPath));
+            
             object obj = property.serializedObject.targetObject;
             string path = property.propertyPath.Replace(".Array.data[", "[");
         

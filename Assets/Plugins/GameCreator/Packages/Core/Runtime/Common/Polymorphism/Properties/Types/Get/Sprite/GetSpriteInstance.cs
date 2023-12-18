@@ -32,5 +32,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => this.m_Sprite.ToString();
+
+        public override Sprite EditorValue => this.m_Sprite;
     }
 }

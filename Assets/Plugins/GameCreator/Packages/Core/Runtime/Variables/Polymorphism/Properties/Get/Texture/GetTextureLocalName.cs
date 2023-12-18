@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconNameVariable), ColorTheme.Type.Purple)]
     [Description("Returns the Texture value of a Local Name Variable")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetTextureLocalName : PropertyTypeGetTexture
     {
         [SerializeField]

@@ -19,7 +19,7 @@ namespace GameCreator.Runtime.Common
         
         // MEMBERS: -------------------------------------------------------------------------------
 
-        private Dictionary<Texture, MaterialSoundTexture> m_LookupTable;
+        [NonSerialized] private Dictionary<Texture, MaterialSoundTexture> m_LookupTable;
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -241,8 +241,8 @@ namespace GameCreator.Runtime.Common
 
                 config = AudioConfigSoundEffect.Create(
                     material.Volume * weight * speed,
-                    new Vector2(pitch + PITCH_VARIATION.x, pitch + PITCH_VARIATION.y), 
-                    0f, SpatialBlending.Spatial,
+                    new Vector2(pitch + PITCH_VARIATION.x, pitch + PITCH_VARIATION.y),
+                    0f, TimeMode.UpdateMode.GameTime, SpatialBlending.Spatial,
                     target.gameObject
                 );
             }
@@ -253,7 +253,7 @@ namespace GameCreator.Runtime.Common
                 config = AudioConfigSoundEffect.Create(
                     materialSound.Volume * weight * speed,
                     new Vector2(pitch + PITCH_VARIATION.x, pitch + PITCH_VARIATION.y),
-                    0f, SpatialBlending.Spatial,
+                    0f, TimeMode.UpdateMode.GameTime, SpatialBlending.Spatial,
                     target.gameObject
                 );
             }
@@ -323,7 +323,7 @@ namespace GameCreator.Runtime.Common
                 AudioConfigSoundEffect config = AudioConfigSoundEffect.Create(
                     material.Volume,
                     new Vector2(1f + PITCH_VARIATION.x, 1f + PITCH_VARIATION.y),
-                    0f, SpatialBlending.Spatial,
+                    0f, TimeMode.UpdateMode.GameTime, SpatialBlending.Spatial,
                     args.Self
                 );
                 
@@ -336,7 +336,7 @@ namespace GameCreator.Runtime.Common
             AudioConfigSoundEffect configDefault = AudioConfigSoundEffect.Create(
                 materialSounds.MaterialSounds.DefaultSounds.Volume,
                 new Vector2(1f + PITCH_VARIATION.x, 1f + PITCH_VARIATION.y),
-                0f, SpatialBlending.Spatial,
+                0f, TimeMode.UpdateMode.GameTime, SpatialBlending.Spatial,
                 args.Self
             );
             

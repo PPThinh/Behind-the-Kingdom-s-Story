@@ -1,0 +1,11 @@
+Documentation:
+https://www.docs.daimahougames.com/abilities
+
+Requires GameCreator2 https://assetstore.unity.com/packages/tools/game-toolkits/game-creator-2-203069
+Requires UniRx (free) https://assetstore.unity.com/packages/tools/integration/unirx-reactive-extensions-for-unity-17276
+
+To install, use the Game Creator example installer menu
+
+Game Creator > Install...
+
+Detailed infos at : https://docs.daimahougames.com/abilities/getting-started/

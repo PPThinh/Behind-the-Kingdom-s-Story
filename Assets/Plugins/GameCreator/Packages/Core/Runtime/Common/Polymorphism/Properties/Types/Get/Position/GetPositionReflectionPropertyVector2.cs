@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetPositionReflectionPropertyVector2 : PropertyTypeGetPosition
     {
         [SerializeField] private ReflectionPropertyVector2 m_Property = new ReflectionPropertyVector2();

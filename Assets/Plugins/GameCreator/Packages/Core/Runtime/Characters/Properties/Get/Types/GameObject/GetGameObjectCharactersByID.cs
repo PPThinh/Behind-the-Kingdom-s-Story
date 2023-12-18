@@ -15,7 +15,7 @@ namespace GameCreator.Runtime.Characters
     {
         [SerializeField]
         private PropertyGetString m_ID = new PropertyGetString("my-character-id");
-
+        
         public override GameObject Get(Args args) => this.GetObject(args);
 
         private GameObject GetObject(Args args)
@@ -31,7 +31,7 @@ namespace GameCreator.Runtime.Characters
 
         public override string String => $"Character ID:{this.m_ID}";
         
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {

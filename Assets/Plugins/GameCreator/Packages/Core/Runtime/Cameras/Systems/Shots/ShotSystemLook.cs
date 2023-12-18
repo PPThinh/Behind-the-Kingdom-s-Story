@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace GameCreator.Runtime.Cameras
         private PropertyGetGameObject m_LookTarget = GetGameObjectPlayer.Create();
 
         [SerializeField] 
-        private PropertyGetOffset m_LookOffset = GetOffsetNone.Create;
+        private PropertyGetDirection m_LookOffset = GetDirectionVector3Zero.Create();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Offset
         {
-            set => this.m_LookOffset = GetOffsetLocalSelf.Create(value);
+            set => this.m_LookOffset = GetDirectionLocalValue.CreateSelf(value);
         }
 
         // CONSTRUCTORS: --------------------------------------------------------------------------
@@ -46,7 +47,7 @@ namespace GameCreator.Runtime.Cameras
         public ShotSystemLook() : base()
         { }
 
-        public ShotSystemLook(PropertyGetGameObject target, PropertyGetOffset offset) : this()
+        public ShotSystemLook(PropertyGetGameObject target, PropertyGetDirection offset) : this()
         {
             this.m_LookTarget = target;
             this.m_LookOffset = offset;

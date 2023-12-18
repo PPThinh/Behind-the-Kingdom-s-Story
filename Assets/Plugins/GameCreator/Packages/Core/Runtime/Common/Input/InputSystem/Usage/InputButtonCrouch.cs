@@ -37,6 +37,23 @@ namespace GameCreator.Runtime.Common
             }
         }
         
+        // PROTECTED OVERRIDE METHODS: ------------------------------------------------------------
+        
+        protected override void ExecuteEventStart(InputAction.CallbackContext context)
+        {
+            this.ExecuteEventStart();
+        }
+        
+        protected override void ExecuteEventCancel(InputAction.CallbackContext context)
+        {
+            this.ExecuteEventCancel();
+        }
+        
+        protected override void ExecuteEventPerform(InputAction.CallbackContext context)
+        {
+            this.ExecuteEventPerform();
+        }
+        
         // PUBLIC METHODS: ------------------------------------------------------------------------
         
         public static InputPropertyButton Create()

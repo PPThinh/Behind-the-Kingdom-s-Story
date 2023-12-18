@@ -7,15 +7,18 @@ namespace GameCreator.Runtime.Common
     [Category("Constants/Position")]
 
     [Image(typeof(IconVector3), ColorTheme.Type.Yellow)]
-    [Description("A point in space representing a position in the scene")]
+    [Description("A translation in space without rotation")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetLocationPosition : PropertyTypeGetLocation
     {
-        [SerializeField] private Vector3 m_Position = Vector3.zero;
+        [SerializeField]
+        private PropertyGetPosition m_Position = GetPositionCharactersPlayer.Create;
 
-        public override Location Get(Args args) => new Location(this.m_Position);
-        public override Location Get(GameObject gameObject) => new Location(this.m_Position);
+        public override Location Get(Args args)
+        {
+            return new Location(this.m_Position.Get(args));
+        }
 
         public static PropertyGetLocation Create => new PropertyGetLocation(
             new GetLocationPosition()

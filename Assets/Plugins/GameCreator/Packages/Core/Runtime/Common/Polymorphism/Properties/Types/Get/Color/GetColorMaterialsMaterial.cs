@@ -6,17 +6,19 @@ namespace GameCreator.Runtime.Common
     [Title("Material Color")]
     [Category("Materials/Material Color")]
     
-    [Image(typeof(IconSphereSolid), ColorTheme.Type.Yellow)]
+    [Image(typeof(IconMaterial), ColorTheme.Type.Yellow)]
     [Description("Returns the material's color")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetColorMaterialsMaterial : PropertyTypeGetColor
     {
-        [SerializeField] protected Material m_Material;
+        [SerializeField] protected PropertyGetMaterial m_Material = new PropertyGetMaterial();
 
-        public override Color Get(Args args) => this.m_Material != null 
-            ? this.m_Material.color 
-            : default;
+        public override Color Get(Args args)
+        {
+            Material material = this.m_Material.Get(args);
+            return material != null ? material.color : default;
+        }
 
         public GetColorMaterialsMaterial() : base()
         { }
@@ -25,9 +27,6 @@ namespace GameCreator.Runtime.Common
             new GetColorMaterialsMaterial()
         );
 
-        public override string String => string.Format(
-            "{0} Color",
-            this.m_Material != null ? this.m_Material.name : "(none)"
-        );
+        public override string String => $"{this.m_Material} Color";
     }
 }

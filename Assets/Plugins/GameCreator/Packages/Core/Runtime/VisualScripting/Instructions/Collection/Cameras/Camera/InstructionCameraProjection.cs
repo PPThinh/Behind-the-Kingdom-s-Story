@@ -30,7 +30,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         // MEMBERS: -------------------------------------------------------------------------------
         
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
 
         [Space] 
         [SerializeField] private Projection m_Projection = Projection.Perspective;
@@ -43,7 +43,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override Task Run(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
             if (camera == null) return DefaultResult;
 
             bool isOrthographic = this.m_Projection == Projection.Orthographic;

@@ -51,6 +51,9 @@ namespace GameCreator.Editor.Common
             this.m_Head = new VisualElement { name = "GC-ContentBox-Head" };
             this.m_Body = new VisualElement { name = "GC-ContentBox-Body" };
             
+            this.m_Body.AddToClassList(AlignLabel.CLASS_UNITY_MAIN_CONTAINER);
+            this.m_Body.AddToClassList(AlignLabel.CLASS_UNITY_INSPECTOR_ELEMENT);
+            
             StyleSheet[] sheets = StyleSheetUtils.Load(USS_PATH);
             foreach (StyleSheet sheet in sheets) this.styleSheets.Add(sheet);
             

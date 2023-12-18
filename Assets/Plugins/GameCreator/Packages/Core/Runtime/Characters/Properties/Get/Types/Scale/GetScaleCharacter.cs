@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Characters
 {
-    [Title("Character")]
-    [Category("Characters/Character")]
+    [Title("Character Scale")]
+    [Category("Characters/Character Scale")]
     
     [Image(typeof(IconCharacter), ColorTheme.Type.Yellow)]
     [Description("Scale of the Character game object in local or world space")]

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Target")]
-    [Category("Target")]
+    [Title("Target Scale")]
+    [Category("Game Objects/Target Scale")]
     
     [Image(typeof(IconTarget), ColorTheme.Type.Yellow)]
     [Description("Scale of the targeted game object in local or world space")]

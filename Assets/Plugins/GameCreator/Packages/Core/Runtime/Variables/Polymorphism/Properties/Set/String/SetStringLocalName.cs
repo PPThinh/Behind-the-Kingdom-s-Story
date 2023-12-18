@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the string value of a Local Name Variable")]
     [Image(typeof(IconNameVariable), ColorTheme.Type.Purple)]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetStringLocalName : PropertyTypeSetString
     {
         [SerializeField]

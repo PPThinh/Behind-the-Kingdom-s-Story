@@ -20,28 +20,28 @@ namespace GameCreator.Runtime.VisualScripting
     [Parameter("Spatial Blending", "Whether the sound is placed in a 3D space or not")]
     [Parameter("Target", "A Game Object reference that the sound follows as its source")]
 
-    [Keywords("Audio", "Sounds")]
+    [Keywords("Audio", "Sounds", "SFX", "FX")]
     [Image(typeof(IconMusicNote), ColorTheme.Type.Yellow)]
     
     [Serializable]
     public class InstructionCommonAudioSFXPlay : Instruction
     {
-        [SerializeField] private AudioClip m_AudioClip = null;
-        [SerializeField] private bool m_WaitToComplete = false;
+        [SerializeField] private PropertyGetAudio m_AudioClip = GetAudioClip.Create;
+        [SerializeField] private bool m_WaitToComplete;
         
         [SerializeField] private AudioConfigSoundEffect m_Config = new AudioConfigSoundEffect();
 
-        public override string Title => string.Format(
-            "Play SFX: {0}",
-            this.m_AudioClip != null ? this.m_AudioClip.name : "(none)"
-        );
+        public override string Title => $"Play SFX: {this.m_AudioClip}";
 
         protected override async Task Run(Args args)
         {
+            AudioClip audioClip = this.m_AudioClip.Get(args);
+            if (audioClip == null) return;
+            
             if (this.m_WaitToComplete)
             {
                 await AudioManager.Instance.SoundEffect.Play(
-                    this.m_AudioClip, 
+                    audioClip, 
                     this.m_Config,
                     args
                 );
@@ -49,7 +49,7 @@ namespace GameCreator.Runtime.VisualScripting
             else
             {
                 _ = AudioManager.Instance.SoundEffect.Play(
-                    this.m_AudioClip, 
+                    audioClip, 
                     this.m_Config,
                     args
                 );

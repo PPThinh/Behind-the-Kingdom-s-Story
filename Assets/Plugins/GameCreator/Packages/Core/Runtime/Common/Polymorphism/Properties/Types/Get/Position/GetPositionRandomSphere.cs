@@ -9,14 +9,15 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconDice), ColorTheme.Type.White)]
     [Description("Returns a random position inside a spherical volume")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetPositionRandomSphere : PropertyTypeGetPosition
     {
-        [SerializeField] protected float m_Radius = 1f;
+        [SerializeField] protected PropertyGetDecimal m_Radius = GetDecimalConstantOne.Create;
 
         public override Vector3 Get(Args args)
         {
-            return UnityEngine.Random.insideUnitSphere * this.m_Radius;
+            float radius = (float) this.m_Radius.Get(args);
+            return UnityEngine.Random.insideUnitSphere * radius;
         }
 
         public static PropertyGetPosition Create() => new PropertyGetPosition(

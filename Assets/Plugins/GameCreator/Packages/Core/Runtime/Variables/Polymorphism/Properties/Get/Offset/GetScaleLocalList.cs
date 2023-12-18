@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
     [Description("Returns the Vector3 value of a Local List Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetScaleLocalList : PropertyTypeGetScale
     {
         [SerializeField]

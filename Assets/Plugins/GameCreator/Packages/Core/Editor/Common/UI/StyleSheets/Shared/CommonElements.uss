@@ -4,6 +4,11 @@
     -unity-font: url("../../Fonts/RobotoMono.ttf");
 }
 
+PropertyField {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 /* PROPERTIES: --------------------------------------------------------------------------------- */
 
 .gc-margin-top-default {
@@ -45,6 +50,10 @@
 .gc-label-title {
     -unity-font-style: bold;
     margin: var(--gc-common-space-small) 3px 3px 3px;
+}
+
+.gc-indent {
+    margin-left: var(--gc-common-indent-left);
 }
 
 .gc-inspector-margins-x {

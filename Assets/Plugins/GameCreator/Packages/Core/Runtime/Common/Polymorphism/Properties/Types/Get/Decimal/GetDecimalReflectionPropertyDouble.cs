@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalReflectionPropertyDouble : PropertyTypeGetDecimal
     {
         [SerializeField] private ReflectionPropertyDouble m_Property = new ReflectionPropertyDouble();

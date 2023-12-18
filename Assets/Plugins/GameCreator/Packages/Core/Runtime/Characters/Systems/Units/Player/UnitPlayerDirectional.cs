@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using GameCreator.Runtime.Common;
-using UnityEngine.InputSystem;
 
 namespace GameCreator.Runtime.Characters
 {
@@ -40,18 +39,10 @@ namespace GameCreator.Runtime.Characters
             base.OnDispose(character);
             this.m_InputMove.OnDispose();
         }
-        
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            this.m_InputMove.Enable();
-        }
 
         public override void OnDisable()
         {
             base.OnDisable();
-            this.m_InputMove.Disable();
-            
             this.Character.Motion?.MoveToDirection(Vector3.zero, Space.World, 0);
         }
 
@@ -66,9 +57,9 @@ namespace GameCreator.Runtime.Characters
             
             if (!this.Character.IsPlayer) return;
             Vector3 inputMovement = this.m_IsControllable 
-                ? this.m_InputMove.Read() 
+                ? this.m_InputMove.Read()
                 : Vector2.zero;
-
+            
             this.InputDirection = this.GetMoveDirection(inputMovement);
             float speed = this.Character.Motion?.LinearSpeed ?? 0f;
             
@@ -79,13 +70,15 @@ namespace GameCreator.Runtime.Characters
         {
             Vector3 direction = new Vector3(input.x, 0f, input.y);
 
-            Vector3 moveDirection = this.Camera != null
-                ? this.Camera.TransformDirection(direction)
-                : Vector3.zero;
+            Quaternion cameraRotation = this.Camera != null
+                ? Quaternion.Euler(0f, this.Camera.rotation.eulerAngles.y, 0f)
+                : Quaternion.identity;
 
+            Vector3 moveDirection = cameraRotation * direction;
+            
             moveDirection.Scale(Vector3Plane.NormalUp);
             moveDirection.Normalize();
-
+            
             return moveDirection * direction.magnitude;
         }
         

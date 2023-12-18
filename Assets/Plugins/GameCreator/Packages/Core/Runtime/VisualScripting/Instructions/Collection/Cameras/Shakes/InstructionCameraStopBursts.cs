@@ -23,7 +23,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCameraStopBursts : Instruction
     {
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
 
         [Space] 
         [SerializeField] private float m_Delay = 0f;
@@ -33,7 +33,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected override Task Run(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
             if (camera == null) return DefaultResult;
             
             camera.StopBurstShakes(

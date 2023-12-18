@@ -39,6 +39,8 @@ namespace GameCreator.Editor.Common
             root.Add(fieldUseRaycast);
             root.Add(fieldLayerMask);
             
+            AlignLabel.On(root);
+            
             return root;
         }
     }

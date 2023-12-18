@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using GameCreator.Runtime.Common;
-using UnityEngine.InputSystem;
 
 namespace GameCreator.Runtime.Cameras
 {
@@ -17,11 +16,11 @@ namespace GameCreator.Runtime.Cameras
         [SerializeField] private float m_MinDistance = 1f;
         [SerializeField] private float m_SmoothTime = 0.1f;
 
+        [SerializeField] private InputPropertyValueVector2 m_InputZoom = InputValueVector2Scroll.Create();
+        
         // MEMBERS: -------------------------------------------------------------------------------
         
         private float m_Velocity;
-
-        [SerializeField] private InputPropertyValueVector2 m_InputZoom;
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -50,13 +49,6 @@ namespace GameCreator.Runtime.Cameras
             set => this.m_MinDistance = value;
         }
 
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public ShotSystemZoom()
-        {
-            this.m_InputZoom = InputValueVector2Scroll.Create();
-        }
-
         // IMPLEMENTS: ----------------------------------------------------------------------------
 
         public override void OnAwake(TShotType shotType)
@@ -71,18 +63,6 @@ namespace GameCreator.Runtime.Cameras
         {
             base.OnDestroy(shotType);
             this.m_InputZoom.OnDispose();
-        }
-
-        public override void OnEnable(TShotType shotType, TCamera camera)
-        {
-            base.OnEnable(shotType, camera);
-            this.m_InputZoom?.Enable();
-        }
-        
-        public override void OnDisable(TShotType shotType, TCamera camera)
-        {
-            base.OnDisable(shotType, camera);
-            this.m_InputZoom?.Disable();
         }
 
         public override void OnUpdate(TShotType shotType)

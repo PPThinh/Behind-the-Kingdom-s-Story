@@ -1,3 +1,4 @@
+using GameCreator.Editor.Common;
 using GameCreator.Runtime.Variables;
 using UnityEditor;
 using UnityEngine.UIElements;
@@ -9,7 +10,7 @@ namespace GameCreator.Editor.Variables
     {
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
-            return new PickFieldElement(property, property.displayName);
+            return new PropertyElement(property, property.displayName, false);
         }
     }
 }

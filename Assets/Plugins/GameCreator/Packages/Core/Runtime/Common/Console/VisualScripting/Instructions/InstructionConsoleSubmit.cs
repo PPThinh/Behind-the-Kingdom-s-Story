@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Console
     [Title("Console Command")]
     [Description("Submits a Command onto the Runtime Console")]
 
-    [Category("Debug/Console Command")]
+    [Category("Debug/Console/Console Command")]
 
     [Parameter(
         "Command",

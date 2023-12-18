@@ -8,12 +8,15 @@ namespace GameCreator.Runtime.Variables
         fileName = "Global Variables",
         menuName = "Game Creator/Variables/List Variables"
     )]
+    
     [Icon(RuntimePaths.GIZMOS + "GizmoGlobalListVariables.png")]
+    
+    [Serializable]
     public class GlobalListVariables : TGlobalVariables, IListVariable
     {
         // MEMBERS: -------------------------------------------------------------------------------
     
-        [SerializeField] private IndexList m_IndexList = new IndexList(
+        [SerializeReference] private IndexList m_IndexList = new IndexList(
             ValueNumber.TYPE_ID,
             new IndexVariable(new ValueNumber(5f))
         );

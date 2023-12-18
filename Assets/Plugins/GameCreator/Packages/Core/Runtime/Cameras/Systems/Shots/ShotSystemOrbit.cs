@@ -1,7 +1,7 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GameCreator.Runtime.Cameras
 {
@@ -14,15 +14,15 @@ namespace GameCreator.Runtime.Cameras
         
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetGameObject m_OrbitTarget = 
-            GetGameObjectPlayer.Create();
+        [SerializeField] 
+        private PropertyGetGameObject m_OrbitTarget = GetGameObjectPlayer.Create();
 
         [SerializeField]
-        private PropertyGetOffset m_OrbitOffset = new PropertyGetOffset(
-            new GetOffsetLocalTarget(new Vector3(0f, 0.5f, 0f))
+        private PropertyGetDirection m_OrbitOffset = GetDirectionLocalValue.CreateTarget(
+            new Vector3(0f, 0.5f, 0f)
         );
 
-        [SerializeField] private InputPropertyValueVector2 m_InputOrbit;
+        [SerializeField] private InputPropertyValueVector2 m_InputOrbit = InputValueVector2MotionSecondary.Create();
 
         [SerializeField]
         private PropertyGetDecimal m_InputSensitivityX = GetDecimalDecimal.Create(180f);
@@ -64,7 +64,7 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Offset
         {
-            set => this.m_OrbitOffset = GetOffsetLocalSelf.Create(value);
+            set => this.m_OrbitOffset = GetDirectionLocalValue.CreateTarget(value);
         }
 
         public float MaxPitch
@@ -124,13 +124,6 @@ namespace GameCreator.Runtime.Cameras
             set => this.m_AlignSmoothTime = value;
         }
 
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public ShotSystemOrbit()
-        {
-            this.m_InputOrbit = InputValueVector2MotionSecondary.Create();
-        }
-        
         // PUBLIC METHODS: ------------------------------------------------------------------------
         
         public void SyncWithZoom(ShotSystemZoom shotSystemZoom)
@@ -215,7 +208,6 @@ namespace GameCreator.Runtime.Cameras
         public override void OnEnable(TShotType shotType, TCamera camera)
         {
             base.OnEnable(shotType, camera);
-            this.m_InputOrbit?.Enable();
 
             Vector3 targetPosition = this.GetTargetPosition(shotType);
             Vector3 targetDirection = targetPosition - camera.transform.position;
@@ -230,12 +222,6 @@ namespace GameCreator.Runtime.Cameras
             float yaw = camera.transform.eulerAngles.y;
             
             this.SetRotation(pitch, yaw);
-        }
-
-        public override void OnDisable(TShotType shotType, TCamera camera)
-        {
-            base.OnDisable(shotType, camera);
-            this.m_InputOrbit?.Disable();
         }
         
         // GIZMOS: --------------------------------------------------------------------------------

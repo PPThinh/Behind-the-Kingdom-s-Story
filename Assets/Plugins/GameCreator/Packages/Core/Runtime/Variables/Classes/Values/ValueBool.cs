@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconToggleOn), ColorTheme.Type.Red)]
     [Title("Boolean")]
-    [Category("Boolean")]
+    [Category("Values/Boolean")]
     
     [Serializable]
     public class ValueBool : TValue
@@ -61,7 +61,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueBool), CreateValue)
+            new TypeData(typeof(ValueBool), CreateValue),
+            typeof(bool)
         );
         
         #if UNITY_EDITOR
@@ -69,7 +70,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueBool), CreateValue)
+            new TypeData(typeof(ValueBool), CreateValue),
+            typeof(bool)
         );
         
         #endif

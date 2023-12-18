@@ -9,8 +9,10 @@ using UnityEngine.UIElements;
 
 namespace GameCreator.Editor.VisualScripting
 {
-    public class TrackTool : VisualElement
+    public abstract class TrackTool : VisualElement
     {
+        private const string NAME_ROOT = "GC-Sequence-Track-Root";
+        
         private const string NAME_LANE = "GC-Sequence-Track-Lane";
         private const string NAME_HEAD = "GC-Sequence-Track-Head";
         private const string NAME_TRACK = "GC-Sequence-Track-Track";
@@ -76,6 +78,8 @@ namespace GameCreator.Editor.VisualScripting
         
         public TrackTool(SequenceTool sequenceTool, int trackIndex)
         {
+            this.name = NAME_ROOT;
+            
             this.SequenceTool = sequenceTool;
             this.TrackIndex = trackIndex;
 
@@ -246,10 +250,6 @@ namespace GameCreator.Editor.VisualScripting
             SerializedObject serializedObject = this.m_PropertyTrack.serializedObject;
             serializedObject.Update();
             
-            SerializedProperty removeClip = this.PropertyClips.GetArrayElementAtIndex(removeIndex);
-            this.ClearClip(removeClip);
-            SerializationUtils.ApplyUnregisteredSerialization(serializedObject);
-            
             this.PropertyClips.DeleteArrayElementAtIndex(removeIndex);
             SerializationUtils.ApplyUnregisteredSerialization(serializedObject);
 
@@ -291,11 +291,8 @@ namespace GameCreator.Editor.VisualScripting
             SerializationUtils.ApplyUnregisteredSerialization(serializedObject);
             
             SerializedProperty newClip = this.PropertyClips.GetArrayElementAtIndex(newIndex);
-            newClip.FindPropertyRelative(ClipDrawer.PROP_TIME).floatValue = time;
-            newClip.FindPropertyRelative(ClipDrawer.PROP_DURATION).floatValue = duration;
-
-            this.ResetNewClip(newClip);
-
+            
+            this.OnCreateClip(newClip, time, duration);
             SerializationUtils.ApplyUnregisteredSerialization(serializedObject);
             
             ClipTool clipTool = new ClipTool(this, newIndex);
@@ -309,17 +306,17 @@ namespace GameCreator.Editor.VisualScripting
             this.RefreshButtons();
         }
 
-        private void ResetNewClip(SerializedProperty newClip)
-        {
-            SerializedProperty instructions = newClip.FindPropertyRelative(ClipDefault.NAME_INSTRUCTIONS);
-            
-            if (instructions != null) 
-            {
-                instructions
-                    .FindPropertyRelative(InstructionListDrawer.NAME_INSTRUCTIONS)
-                    .arraySize = 0;
-            }
-        }
+        // private void CreateNewClip(SerializedProperty newClip, float time, float duration)
+        // {
+        //     SerializedProperty instructions = newClip.FindPropertyRelative(ClipDefault.NAME_INSTRUCTIONS);
+        //     
+        //     if (instructions != null) 
+        //     {
+        //         instructions
+        //             .FindPropertyRelative(InstructionListDrawer.NAME_INSTRUCTIONS)
+        //             .arraySize = 0;
+        //     }
+        // }
 
         private void RefreshButtons()
         {
@@ -345,15 +342,8 @@ namespace GameCreator.Editor.VisualScripting
             );
         }
         
-        private void ClearClip(SerializedProperty clip)
-        {
-            SerializedProperty instructions = clip.FindPropertyRelative(ClipDefault.NAME_INSTRUCTIONS);
-            if (instructions != null)
-            {
-                instructions
-                    .FindPropertyRelative(InstructionListDrawer.NAME_INSTRUCTIONS)
-                    .arraySize = 0;
-            }
-        }
+        // PROTECTED METHODS: ---------------------------------------------------------------------
+
+        protected abstract void OnCreateClip(SerializedProperty clip, float time, float duration);
     }
 }

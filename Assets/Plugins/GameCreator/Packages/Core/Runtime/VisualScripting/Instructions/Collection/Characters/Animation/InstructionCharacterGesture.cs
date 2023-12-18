@@ -40,40 +40,38 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] private PropertyGetGameObject m_Character = GetGameObjectPlayer.Create();
 
         [Space]
-        [SerializeField] private AnimationClip m_AnimationClip = null;
+        [SerializeField] private PropertyGetAnimation m_AnimationClip = GetAnimationInstance.Create;
         [SerializeField] private AvatarMask m_AvatarMask = null;
         [SerializeField] private BlendMode m_BlendMode = BlendMode.Blend;
 
-        [Space] 
-        [SerializeField] private float m_Delay = 0f;
-        [SerializeField] private float m_Speed = 1f;
+        [SerializeField] private PropertyGetDecimal m_Delay = GetDecimalConstantZero.Create;
+        [SerializeField] private PropertyGetDecimal m_Speed = GetDecimalConstantOne.Create;
         [SerializeField] private bool m_UseRootMotion = false;
-        [SerializeField] private float m_TransitionIn = 0.1f;
-        [SerializeField] private float m_TransitionOut = 0.1f;
+        [SerializeField] private PropertyGetDecimal m_TransitionIn = new PropertyGetDecimal(0.1f);
+        [SerializeField] private PropertyGetDecimal m_TransitionOut = new PropertyGetDecimal(0.1f);
 
         [Space] 
         [SerializeField] private bool m_WaitToComplete = true;
 
-        public override string Title => string.Format("Gesture {0} on {1}",
-            this.m_AnimationClip != null ? this.m_AnimationClip.name : "(none)",
-            this.m_Character
-        );
+        public override string Title => $"Gesture {this.m_AnimationClip} on {this.m_Character}";
 
         protected override async Task Run(Args args)
         {
-            if (this.m_AnimationClip == null) return;
+            AnimationClip animationClip = this.m_AnimationClip.Get(args);
+            if (animationClip == null) return;
             
             Character character = this.m_Character.Get<Character>(args);
             if (character == null) return;
             
             ConfigGesture configuration = new ConfigGesture(
-                this.m_Delay, this.m_AnimationClip.length, 
-                this.m_Speed, this.m_UseRootMotion,
-                this.m_TransitionIn, this.m_TransitionOut
+                (float) this.m_Delay.Get(args), animationClip.length, 
+                (float) this.m_Speed.Get(args), this.m_UseRootMotion,
+                (float) this.m_TransitionIn.Get(args),
+                (float) this.m_TransitionOut.Get(args)
             );
             
             Task gestureTask = character.Gestures.CrossFade(
-                this.m_AnimationClip, this.m_AvatarMask, this.m_BlendMode,
+                animationClip, this.m_AvatarMask, this.m_BlendMode,
                 configuration, false
             );
 

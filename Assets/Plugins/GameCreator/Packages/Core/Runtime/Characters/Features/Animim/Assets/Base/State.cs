@@ -1,8 +1,6 @@
 using System;
 using GameCreator.Runtime.Common;
-using GameCreator.Runtime.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameCreator.Runtime.Characters
 {
@@ -17,7 +15,7 @@ namespace GameCreator.Runtime.Characters
         [SerializeField] private ExitAnimationClip m_Exit = new ExitAnimationClip();
         [SerializeField] private LocomotionProperties m_Properties = new LocomotionProperties();
 
-        [SerializeField] private InstructionList m_OnChange = new InstructionList();
+        [SerializeField] private RunInstructionsList m_OnChange = new RunInstructionsList();
         
         // MEMBERS: -------------------------------------------------------------------------------
         
@@ -47,21 +45,13 @@ namespace GameCreator.Runtime.Characters
             if (ApplicationManager.IsExiting) return;
             
             this.m_Properties.Setup(args.Self.Get<Character>());
-            
-            if (this.m_TemplateOnChange == null)
-            {
-                this.m_TemplateOnChange = RunInstructionsList.CreateTemplate(
-                    this.m_OnChange
-                );
-            }
-            
-            _ = RunInstructionsList.Run(
-                args.Clone, this.m_TemplateOnChange, 
+            _ = this.m_OnChange.Run(
+                args.Clone,
                 new RunnerConfig
                 {
                     Name = $"On {TextUtils.Humanize(this.name)} Refresh",
-                    Location = new RunnerLocationPosition(
-                        args.Self != null ? args.Self.transform.position : Vector3.zero, 
+                    Location = new RunnerLocationLocation(
+                        args.Self != null ? args.Self.transform.position : Vector3.zero,
                         args.Self != null ? args.Self.transform.rotation : Quaternion.identity
                     )
                 }

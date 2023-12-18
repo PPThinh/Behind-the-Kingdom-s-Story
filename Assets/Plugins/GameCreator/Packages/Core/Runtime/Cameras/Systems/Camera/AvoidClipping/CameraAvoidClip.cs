@@ -166,6 +166,7 @@ namespace GameCreator.Runtime.Cameras
         {
             foreach (Transform ignore in ignoreList)
             {
+                if (ignore == null) continue;
                 if (hit.IsChildOf(ignore)) return true;
             }
 

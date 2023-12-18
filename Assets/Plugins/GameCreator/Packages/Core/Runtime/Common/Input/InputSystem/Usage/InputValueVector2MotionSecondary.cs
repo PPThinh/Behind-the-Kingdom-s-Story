@@ -43,25 +43,11 @@ namespace GameCreator.Runtime.Common
                 
                     this.m_InputAction.AddBinding(
                         "<Gamepad>/rightStick",
-                        processors: @"
-                        invertVector2(invertX=false,invertY=true)"
+                        processors: "invertVector2(invertX=false,invertY=true)"
                     );
                 }
-
-                return this.m_InputAction;
-            }
-        }
         
-        public override bool Active
-        {
-            get => this.InputAction?.enabled ?? false;
-            set
-            {
-                switch (value)
-                {
-                    case true: this.Enable(); break;
-                    case false: this.Disable(); break;
-                }
+                return this.m_InputAction;
             }
         }
 

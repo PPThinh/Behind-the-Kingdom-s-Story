@@ -7,7 +7,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Conditions")]
     [Category("Visual Scripting/Conditions")]
     
-    [Image(typeof(IconConditions), ColorTheme.Type.Yellow)]
+    [Image(typeof(IconConditions), ColorTheme.Type.Green)]
     [Description("A Conditions component reference")]
 
     [Serializable] [HideLabelsInEditor]
@@ -72,7 +72,7 @@ namespace GameCreator.Runtime.VisualScripting
             ? this.m_Conditions.gameObject.name
             : "(none)";
         
-        public override GameObject SceneReference => this.m_Conditions != null 
+        public override GameObject EditorValue => this.m_Conditions != null 
             ? this.m_Conditions.gameObject
             : null;
     }

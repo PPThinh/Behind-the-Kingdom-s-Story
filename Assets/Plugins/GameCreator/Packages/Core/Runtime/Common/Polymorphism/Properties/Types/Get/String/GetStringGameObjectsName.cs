@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Name")]
-    [Category("Game Objects/Name")]
+    [Title("Game Object Name")]
+    [Category("Game Objects/Game Object Name")]
     
     [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue)]
     [Description("Returns the name of the game object")]
@@ -31,5 +31,9 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => $"{this.m_GameObject}'s Name";
+
+        public override string EditorValue => this.m_GameObject.EditorValue != null
+            ? this.m_GameObject.EditorValue.name
+            : default;
     }
 }

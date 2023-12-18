@@ -31,8 +31,8 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] private PropertyGetInteger m_Layer = new PropertyGetInteger(1);
 
         [Space] 
-        [SerializeField] private float m_Delay = 0f;
-        [SerializeField] private float m_Transition = 0.1f;
+        [SerializeField] private PropertyGetDecimal m_Delay = GetDecimalConstantZero.Create;
+        [SerializeField] private PropertyGetDecimal m_Transition = new PropertyGetDecimal(0.1f);
 
         public override string Title => $"Stop {this.m_Character} State in Layer {this.m_Layer}";
 
@@ -42,7 +42,12 @@ namespace GameCreator.Runtime.VisualScripting
             if (character == null) return DefaultResult;
 
             int layer = (int) this.m_Layer.Get(args);
-            character.States.Stop(layer, this.m_Delay, this.m_Transition);
+            character.States.Stop(
+                layer,
+                (float) this.m_Delay.Get(args),
+                (float) this.m_Transition.Get(args)
+            );
+            
             return DefaultResult;
         }
     }

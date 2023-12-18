@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Game Object")]
-    [Category("Game Objects/Game Object")]
+    [Title("Game Object Position")]
+    [Category("Game Objects/Game Object Position")]
     
     [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue)]
     [Description("Returns the position of the Game Object")]
@@ -21,6 +21,11 @@ namespace GameCreator.Runtime.Common
         public GetPositionGameObject(GameObject gameObject)
         {
             this.m_GameObject = GetGameObjectInstance.Create(gameObject);
+        }
+
+        public GetPositionGameObject(PropertyGetGameObject gameObject)
+        {
+            this.m_GameObject = gameObject;
         }
         
         public override Vector3 Get(Args args)

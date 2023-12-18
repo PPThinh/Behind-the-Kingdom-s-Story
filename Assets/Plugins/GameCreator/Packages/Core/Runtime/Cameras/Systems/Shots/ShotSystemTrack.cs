@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -14,8 +15,8 @@ namespace GameCreator.Runtime.Cameras
         [SerializeField]
         private PropertyGetGameObject m_Target = GetGameObjectPlayer.Create();
 
-        [SerializeField] 
-        private PropertyGetOffset m_Offset = GetOffsetNone.Create;
+        [SerializeField]
+        private PropertyGetDirection m_Offset = GetDirectionVector3Zero.Create();
         
         [SerializeField] private Bezier m_Track = new Bezier(
             new Vector3( 0f, 0f, -2f), // PointA 

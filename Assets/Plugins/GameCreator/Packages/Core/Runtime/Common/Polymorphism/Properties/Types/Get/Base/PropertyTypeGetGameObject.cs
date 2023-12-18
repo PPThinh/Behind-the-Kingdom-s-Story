@@ -8,8 +8,6 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public abstract class PropertyTypeGetGameObject : TPropertyTypeGet<GameObject>
     {
-        public virtual GameObject SceneReference => null;
-
         public virtual T Get<T>(Args args) where T : Component
         {
             GameObject gameObject = this.Get(args);

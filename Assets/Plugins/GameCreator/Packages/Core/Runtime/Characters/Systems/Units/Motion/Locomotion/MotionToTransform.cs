@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Characters
         // INITIALIZERS: --------------------------------------------------------------------------
 
         public override Character.MovementType Setup(Transform target, float threshold, 
-            Action<Character> onFinish)
+            Action<Character, bool> onFinish)
         {
             this.m_LastKnownPosition = this.m_Target != null
                 ? this.m_Target.position

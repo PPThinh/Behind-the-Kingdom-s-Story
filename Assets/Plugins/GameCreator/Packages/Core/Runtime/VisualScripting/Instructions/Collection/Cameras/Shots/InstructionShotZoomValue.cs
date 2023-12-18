@@ -19,7 +19,7 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetDecimal m_Level = GetDecimalPercentage.Create(0.5f);
+        [SerializeField] private PropertyGetDecimal m_Level = GetDecimalDecimal.Create(0.5f);
 
         // PROPERTIES: ----------------------------------------------------------------------------
 

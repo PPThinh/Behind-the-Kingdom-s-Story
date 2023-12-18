@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using GameCreator.Runtime.Common;
 using GameCreator.Editor.Common;
-using GameCreator.Runtime.VisualScripting;
 using UnityEngine;
 
 namespace GameCreator.Editor.VisualScripting

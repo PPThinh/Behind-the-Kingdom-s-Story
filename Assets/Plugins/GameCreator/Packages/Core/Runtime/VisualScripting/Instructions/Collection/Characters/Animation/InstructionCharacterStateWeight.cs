@@ -28,8 +28,8 @@ namespace GameCreator.Runtime.VisualScripting
 
         [Space]
         [SerializeField] private PropertyGetInteger m_Layer = new PropertyGetInteger(1);
-        [SerializeField] private PropertyGetDecimal m_Weight = GetDecimalPercentage.Create(1f);
-        [SerializeField] private float m_Transition = 0.5f;
+        [SerializeField] private PropertyGetDecimal m_Weight = GetDecimalDecimal.Create(1f);
+        [SerializeField] private PropertyGetDecimal m_Transition = GetDecimalConstantOne.Create;
 
         public override string Title => $"Change {this.m_Character} State weight to {this.m_Weight}";
 
@@ -40,8 +40,9 @@ namespace GameCreator.Runtime.VisualScripting
 
             int layer = (int) this.m_Layer.Get(args);
             float weight = (float) this.m_Weight.Get(args);
+            float transition = (float) this.m_Transition.Get(args);
             
-            character.States.ChangeWeight(layer, weight, this.m_Transition);
+            character.States.ChangeWeight(layer, weight, transition);
             return DefaultResult;
         }
     }

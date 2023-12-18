@@ -27,9 +27,12 @@ namespace GameCreator.Runtime.VisualScripting
         {
             GameObject submit = this.m_Submit.Get(args);
             if (submit == null) return DefaultResult;
-
-            ISubmitHandler submitHandler = submit.GetComponent<ISubmitHandler>();
-            submitHandler?.OnSubmit(null);
+            
+            ISubmitHandler[] submitHandlers = submit.GetComponents<ISubmitHandler>();
+            foreach (ISubmitHandler submitHandler in submitHandlers)
+            {
+                submitHandler?.OnSubmit(null);   
+            }
 
             return DefaultResult;
         }

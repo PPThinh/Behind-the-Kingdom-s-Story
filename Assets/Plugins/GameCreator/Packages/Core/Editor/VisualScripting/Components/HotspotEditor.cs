@@ -10,30 +10,53 @@ namespace GameCreator.Editor.VisualScripting
     [CustomEditor(typeof(Hotspot))]
     public class HotspotEditor : UnityEditor.Editor
     {
+        private SerializedProperty m_PropertyMode;
+        private VisualElement m_ModeContent;
+        
         public override VisualElement CreateInspectorGUI()
         {
             VisualElement container = new VisualElement();
-
-            container.Add(new PropertyField(this.serializedObject.FindProperty("m_Target")));
-
-            SerializedProperty withFocus = this.serializedObject.FindProperty("m_WithFocus");
-            PropertyField fieldWithFocus = new PropertyField(withFocus);
             
-            container.Add(new SpaceSmaller());
-            container.Add(fieldWithFocus);
+            SerializedProperty gameObject = this.serializedObject.FindProperty("m_Target");
+            this.m_PropertyMode = this.serializedObject.FindProperty("m_Mode");
             
-            container.Add(new SpaceSmall());
-            container.Add(new PropertyField(this.serializedObject.FindProperty("m_Radius")));
-            container.Add(new PropertyField(this.serializedObject.FindProperty("m_Offset")));
-
+            PropertyField fieldGameObject = new PropertyField(gameObject);
+            PropertyField fieldMode = new PropertyField(this.m_PropertyMode);
+            
+            container.Add(fieldGameObject);
+            container.Add(fieldMode);
+            
+            this.m_ModeContent = new VisualElement();
+            container.Add(this.m_ModeContent);
+            
+            fieldMode.RegisterValueChangeCallback(this.RefreshMode);
+            this.RefreshMode(null);
+            
             container.Add(new SpaceSmaller());
             container.Add(new PropertyField(this.serializedObject.FindProperty("m_Spots")));
             
-            fieldWithFocus.SetEnabled(!EditorApplication.isPlayingOrWillChangePlaymode);
-
             return container;
         }
         
+        // PRIVATE METHODS: -----------------------------------------------------------------------
+
+        private void RefreshMode(SerializedPropertyChangeEvent changeEvent)
+        {
+            this.m_ModeContent.Clear();
+            this.serializedObject.Update();
+            
+            switch (this.m_PropertyMode.enumValueIndex)
+            {
+                case (int) Hotspot.HotspotMode.InRadius:
+                    SerializedProperty radius = this.serializedObject.FindProperty("m_Radius");
+                    PropertyField fieldRadius = new PropertyField(radius);
+                    
+                    fieldRadius.Bind(this.serializedObject);
+                    this.m_ModeContent.Add(fieldRadius);
+                    break;
+            }
+        }
+
         // CREATION MENU: -------------------------------------------------------------------------
         
         [MenuItem("GameObject/Game Creator/Visual Scripting/Hotspot", false, 0)]

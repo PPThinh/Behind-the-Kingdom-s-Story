@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Console
     [Title("Console Toggle")]
     [Description("Toggles the Runtime Console")]
 
-    [Category("Debug/Console Toggle")]
+    [Category("Debug/Console/Console Toggle")]
 
     [Keywords("Terminal", "Log", "Debug")]
     [Image(typeof(IconTerminal), ColorTheme.Type.Blue)]

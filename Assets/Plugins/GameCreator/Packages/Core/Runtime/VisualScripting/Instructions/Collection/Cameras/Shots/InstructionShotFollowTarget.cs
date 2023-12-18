@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using GameCreator.Runtime.Cameras;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 

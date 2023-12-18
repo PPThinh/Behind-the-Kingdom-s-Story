@@ -125,17 +125,15 @@ namespace GameCreator.Runtime.Characters
         public static bool LegsBusy(Limb state) => ((int)state & (int)Limb.Legs) > 0;
         
         public static bool WholeBodyBusy(Limb state) => ((int)state & (int)Limb.Every) > 0;
-        
-        // PRIVATE METHODS: -----------------------------------------------------------------------
 
-        private void AddState(Limb limbs)
+        public void AddState(Limb limbs)
         {
             int currState = (int) this.m_State;
             int nextState = (int) limbs;
             this.State = (Limb) (currState | nextState);
         }
         
-        private void RemoveState(Limb limbs)
+        public void RemoveState(Limb limbs)
         {
             int currState = (int) this.m_State;
             int nextState = (int) limbs;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("None")]
-    [Category("None")]
+    [Category("Game Objects/None")]
     
     [Image(typeof(IconNull), ColorTheme.Type.TextLight)]
     [Description("Returns a null game object reference")]

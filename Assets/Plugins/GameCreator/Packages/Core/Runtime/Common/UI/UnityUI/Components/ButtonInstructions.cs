@@ -21,13 +21,57 @@ namespace GameCreator.Runtime.Common.UnityUI
         
         // INIT METHODS: --------------------------------------------------------------------------
 
-        protected override void Start()
+        protected override void Awake()
         {
             base.Start();
             if (!Application.isPlaying) return;
 
             this.m_Args = new Args(gameObject);
-            this.onClick.AddListener(() => _ = this.m_Instructions.Run(this.m_Args));
+            
+            this.m_Instructions.EventStartRunning += this.OnStartRunning;
+            this.m_Instructions.EventEndRunning += this.OnEndRunning;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            if (!Application.isPlaying) return;
+            
+            this.m_Instructions.EventStartRunning -= this.OnStartRunning;
+            this.m_Instructions.EventEndRunning -= this.OnEndRunning;
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            if (!Application.isPlaying) return;
+            
+            this.onClick.AddListener(this.RunInstructions);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            if (!Application.isPlaying) return;
+            
+            this.onClick.RemoveListener(this.RunInstructions);
+        }
+
+        // PRIVATE METHODS: -----------------------------------------------------------------------
+
+        private void RunInstructions()
+        {
+            _ = this.m_Instructions.Run(this.m_Args);
+        }
+        
+        private void OnStartRunning()
+        {
+            this.interactable = false;
+        }
+        
+        private void OnEndRunning()
+        {
+            this.interactable = true;
         }
     }
 }

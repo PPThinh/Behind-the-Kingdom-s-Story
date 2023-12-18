@@ -16,7 +16,7 @@ namespace GameCreator.Runtime.Variables
     {
         // MEMBERS: -------------------------------------------------------------------------------
     
-        [SerializeField] private ListVariableRuntime m_Runtime = new ListVariableRuntime();
+        [SerializeReference] private ListVariableRuntime m_Runtime = new ListVariableRuntime();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 

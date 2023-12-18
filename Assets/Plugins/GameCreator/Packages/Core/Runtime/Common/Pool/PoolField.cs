@@ -9,11 +9,9 @@ namespace GameCreator.Runtime.Common
         // MEMBERS: -------------------------------------------------------------------------------
         
         [SerializeField] private GameObject m_Prefab;
-        
-        [SerializeField] private bool m_UsePooling;
-        [SerializeField] private int m_Size = 5;
-        [SerializeField] private bool m_HasDuration;
-        [SerializeField] private float m_Duration = 10f;
+
+        [SerializeField] private EnablerInt m_UsePooling = new EnablerInt(false, 5);
+        [SerializeField] private EnablerFloat m_Duration = new EnablerFloat(false, 10f);
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
@@ -22,12 +20,12 @@ namespace GameCreator.Runtime.Common
             if (this.m_Prefab == null) return null;
             GameObject instance;
 
-            switch (this.m_UsePooling)
+            switch (this.m_UsePooling.IsEnabled)
             {
                 case true:
                     instance = PoolManager.Instance.Pick(
                         this.m_Prefab, position, rotation, 
-                        this.m_Size, this.m_HasDuration ? this.m_Duration : -1
+                        this.m_UsePooling.Value, this.m_Duration.IsEnabled ? this.m_Duration.Value : -1
                     );
                     
                     if (parent != null) instance.transform.SetParent(parent);

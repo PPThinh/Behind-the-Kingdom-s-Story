@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
     [Description("Returns the amount of elements of a Global List Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalGlobalListLength : PropertyTypeGetDecimal
     {
         [SerializeField]

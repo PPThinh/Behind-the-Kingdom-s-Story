@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -9,13 +10,13 @@ namespace GameCreator.Runtime.Cameras
     {
         public static readonly int ID = nameof(ShotSystemFollow).GetHashCode();
         
-        private static readonly Vector3 DEFAULT_DISTANCE = new Vector3(0f, 3f, -5f);
+        private static readonly Vector3 DEFAULT_DISTANCE = new Vector3(0f, 2f, -3f);
 
         // MEMBERS: -------------------------------------------------------------------------------
         
         [SerializeField] private PropertyGetGameObject m_Follow = GetGameObjectPlayer.Create();
         
-        [SerializeField] private PropertyGetOffset m_Distance = new PropertyGetOffset(DEFAULT_DISTANCE);
+        [SerializeField] private PropertyGetDirection m_Distance = new PropertyGetDirection(DEFAULT_DISTANCE);
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -28,7 +29,7 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Distance
         {
-            set => this.m_Distance = new PropertyGetOffset(value);
+            set => this.m_Distance = new PropertyGetDirection(value);
         }
         
         // PUBLIC METHODS: ------------------------------------------------------------------------

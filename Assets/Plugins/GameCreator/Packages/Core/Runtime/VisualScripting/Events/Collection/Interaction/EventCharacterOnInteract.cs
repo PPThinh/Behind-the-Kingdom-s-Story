@@ -27,6 +27,8 @@ namespace GameCreator.Runtime.VisualScripting
         protected internal override void OnInteract(Trigger trigger, Character character)
         {
             base.OnInteract(trigger, character);
+            
+            if (!this.IsActive) return;
             if (character == null) return;
             
             if (!this.m_FromCharacter.Match(character.gameObject, trigger.gameObject)) return;

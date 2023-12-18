@@ -39,8 +39,7 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] 
         private CollectorListVariable m_ListVariable = new CollectorListVariable();
         
-        [SerializeField] 
-        private ConditionList m_Conditions = new ConditionList();
+        [SerializeField] private ConditionList m_Conditions = new ConditionList();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -60,7 +59,7 @@ namespace GameCreator.Runtime.VisualScripting
                 if (gameObject == null) continue;
                 
                 filterArgs.ChangeTarget(gameObject);
-                if (this.m_Conditions.Check(filterArgs))
+                if (this.m_Conditions.Check(filterArgs, CheckMode.And))
                 {
                     destination.Add(gameObject);
                 }

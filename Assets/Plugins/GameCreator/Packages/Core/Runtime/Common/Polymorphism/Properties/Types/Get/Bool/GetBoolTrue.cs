@@ -21,5 +21,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => "True";
+        
+        public override bool EditorValue => true;
     }
 }

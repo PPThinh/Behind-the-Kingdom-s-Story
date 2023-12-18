@@ -18,7 +18,7 @@ namespace GameCreator.Runtime.Common
         [NonSerialized] private InputAction m_InputAction;
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
-
+        
         public InputAction InputAction
         {
             get

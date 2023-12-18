@@ -1,9 +1,31 @@
 using System;
+using GameCreator.Runtime.Common;
+using UnityEngine;
 
 namespace GameCreator.Runtime.Characters
 {
-    public class Footstep
+    [Serializable]
+    public class Footstep : TPolymorphicItem<Footstep>
     {
-        [field: NonSerialized] public bool WasGrounded { get; set; } = true;
+        [SerializeField] private Bone m_Bone;
+
+        // PROPERTIES: ----------------------------------------------------------------------------
+
+        public Bone Bone => this.m_Bone;
+        
+        // CONSTRUCTORS: --------------------------------------------------------------------------
+        
+        public Footstep()
+        { }
+
+        public Footstep(HumanBodyBones bone)
+        {
+            this.m_Bone = new Bone(bone);
+        }
+
+        public Footstep(string bonePath)
+        {
+            this.m_Bone = new Bone(bonePath);
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Common
     [Title("Root")]
     [Category("Transforms/Root")]
     
-    [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue, typeof(OverlayArrowUp))]
+    [Image(typeof(IconCubeOutline), ColorTheme.Type.Green, typeof(OverlayArrowUp))]
     [Description("The root game object in the hierarchy of the specified object")]
 
     [Serializable]
@@ -29,11 +29,11 @@ namespace GameCreator.Runtime.Common
 
         public override string String => $"Root of {this.m_Transform}";
 
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {
-                GameObject instance = this.m_Transform.SceneReference;
+                GameObject instance = this.m_Transform.EditorValue;
                 return instance != null ? GetRoot(instance) : null;
             }
         }

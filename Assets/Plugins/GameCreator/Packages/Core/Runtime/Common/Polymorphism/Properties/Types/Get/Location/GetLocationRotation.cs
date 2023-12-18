@@ -7,20 +7,23 @@ namespace GameCreator.Runtime.Common
     [Category("Constants/Rotation")]
     
     [Image(typeof(IconRotation), ColorTheme.Type.Yellow)]
-    [Description("An euler rotation in world space")]
+    [Description("A single rotation without translation")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetLocationRotation : PropertyTypeGetLocation
     {
-        [SerializeField] private Vector3 m_Rotation = Vector3.zero;
+        [SerializeField]
+        private PropertyGetRotation m_Rotation = GetRotationCharactersPlayer.Create;
 
-        public override Location Get(Args args) => new Location(Quaternion.Euler(this.m_Rotation));
-        public override Location Get(GameObject gameObject) => new Location(Quaternion.Euler(this.m_Rotation));
+        public override Location Get(Args args)
+        {
+            return new Location(this.m_Rotation.Get(args));
+        }
 
         public static PropertyGetLocation Create => new PropertyGetLocation(
             new GetLocationRotation()
         );
 
-        public override string String => $"Euler{this.m_Rotation.ToString()}";
+        public override string String => $"{this.m_Rotation}";
     }
 }

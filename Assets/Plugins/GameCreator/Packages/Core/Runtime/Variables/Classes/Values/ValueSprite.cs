@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconSprite), ColorTheme.Type.Purple)]
     [Title("Sprite")]
-    [Category("Sprite")]
+    [Category("References/Sprite")]
     
     [Serializable]
     public class ValueSprite : TValue
@@ -61,7 +61,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueSprite), CreateValue)
+            new TypeData(typeof(ValueSprite), CreateValue),
+            typeof(Sprite)
         );
         
         #if UNITY_EDITOR
@@ -69,7 +70,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueSprite), CreateValue)
+            new TypeData(typeof(ValueSprite), CreateValue),
+            typeof(Sprite)
         );
         
         #endif

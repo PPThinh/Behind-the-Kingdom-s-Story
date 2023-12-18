@@ -12,7 +12,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Audio", "Sound")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalAudioMixer : PropertyTypeGetDecimal
     {
         [SerializeField] private AudioMixer m_AudioMixer;

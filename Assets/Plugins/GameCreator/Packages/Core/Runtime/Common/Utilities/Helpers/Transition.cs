@@ -19,7 +19,7 @@ namespace GameCreator.Runtime.Common
 
         public TimeMode.UpdateMode Time => this.m_Time;
 
-        public bool WaitToComplete => m_WaitToComplete;
+        public bool WaitToComplete => this.m_Duration > float.Epsilon && this.m_WaitToComplete;
 
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 

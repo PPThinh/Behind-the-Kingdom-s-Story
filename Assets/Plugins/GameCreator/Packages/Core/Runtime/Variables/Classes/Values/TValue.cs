@@ -27,9 +27,14 @@ namespace GameCreator.Runtime.Variables
         
         private class ID_LUT : Dictionary<Type, IdString>
         { }
-
+        
+        private class ConverterType_LUT : Dictionary<Type, IdString>
+        { }
+        
         private static readonly Type_LUT LUT_ID_TO_DATA = new Type_LUT();
         private static readonly ID_LUT LUT_TYPE_TO_ID = new ID_LUT();
+        
+        private static readonly ConverterType_LUT LUT_CONVERTER = new ConverterType_LUT();
         
         // PROPERTIES: ----------------------------------------------------------------------------
         
@@ -67,10 +72,13 @@ namespace GameCreator.Runtime.Variables
         ///////////////////////////////////////////////////////////////////////////////////////////
         // CREATION METHODS: ----------------------------------------------------------------------
 
-        protected static void RegisterValueType(IdString typeID, TypeData data)
+        protected static void RegisterValueType(IdString typeID, TypeData data, Type convertFrom)
         {
             LUT_ID_TO_DATA.TryAdd(typeID, data);
             LUT_TYPE_TO_ID.TryAdd(data.type, typeID);
+            
+            if (convertFrom == null) return;
+            LUT_CONVERTER.TryAdd(convertFrom, typeID);
         }
 
         public static TValue CreateValue(IdString typeID, object value = default)
@@ -87,9 +95,16 @@ namespace GameCreator.Runtime.Variables
                 : typeof(ValueNull);
         }
 
-        public static IdString GetTypeID(Type type)
+        public static IdString GetTypeIDFromValueType(Type type)
         {
             return LUT_TYPE_TO_ID.TryGetValue(type, out IdString typeID)
+                ? typeID
+                : ValueNull.TYPE_ID;
+        }
+
+        public static IdString GetTypeIDFromObjectType(Type objectType)
+        {
+            return LUT_CONVERTER.TryGetValue(objectType, out IdString typeID)
                 ? typeID
                 : ValueNull.TYPE_ID;
         }

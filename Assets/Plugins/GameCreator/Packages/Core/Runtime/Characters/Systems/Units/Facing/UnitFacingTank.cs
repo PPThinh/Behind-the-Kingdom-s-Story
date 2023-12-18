@@ -48,18 +48,6 @@ namespace GameCreator.Runtime.Characters
             base.OnDispose(character);
             this.m_InputMove.OnDispose();
         }
-        
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            this.m_InputMove.Enable();
-        }
-
-        public override void OnDisable()
-        {
-            base.OnDisable();
-            this.m_InputMove.Disable();
-        }
 
         protected override Vector3 GetDefaultDirection()
         {

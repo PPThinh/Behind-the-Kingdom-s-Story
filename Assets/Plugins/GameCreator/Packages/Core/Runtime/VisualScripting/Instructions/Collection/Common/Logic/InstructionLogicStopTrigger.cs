@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Stop Trigger")]
     [Description("Stops a Trigger component object that is being executed")]
 
-    [Category("Logic/Stop Trigger")]
+    [Category("Visual Scripting/Stop Trigger")]
 
     [Parameter(
         "Trigger",

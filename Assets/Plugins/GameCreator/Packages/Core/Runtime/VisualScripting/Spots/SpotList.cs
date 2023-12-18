@@ -20,7 +20,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         public SpotList()
         {
-            this.m_Spots = new Spot[] { new SpotTooltipPrefab() };
+            this.m_Spots = new Spot[] { new SpotObjectsInstantiatePrefab() };
         }
 
         // PUBLIC METHODS: ------------------------------------------------------------------------

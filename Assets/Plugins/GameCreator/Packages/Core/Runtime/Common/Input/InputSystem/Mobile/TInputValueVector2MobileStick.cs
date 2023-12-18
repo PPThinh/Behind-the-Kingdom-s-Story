@@ -10,19 +10,6 @@ namespace GameCreator.Runtime.Common
 
         protected ITouchStick Stick { get; set; }
 
-        public override bool Active
-        {
-            get => this.Stick != null && this.Stick.Root.activeInHierarchy;
-            set
-            {
-                switch (value)
-                {
-                    case true: this.Enable(); break;
-                    case false: this.Disable(); break;
-                }
-            }
-        }
-
         // INITIALIZERS: --------------------------------------------------------------------------
 
         public override void OnStartup()

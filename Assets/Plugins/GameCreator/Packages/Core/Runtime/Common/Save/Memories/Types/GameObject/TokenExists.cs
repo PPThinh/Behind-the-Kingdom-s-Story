@@ -29,8 +29,8 @@ namespace GameCreator.Runtime.Common
                 this.m_Exists = false;
                 return;
             }
-            
-            this.m_Exists = !remember.IsDestroying; 
+
+            this.m_Exists = !remember.IsSceneLoaded || !remember.IsDestroying;
         }
     }
 }

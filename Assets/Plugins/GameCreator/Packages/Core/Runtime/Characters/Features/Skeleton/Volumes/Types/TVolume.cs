@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Characters
     {
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private Bone m_Bone = new Bone();
+        [SerializeField] private Bone m_Bone;
         [SerializeField] private float m_Weight = 1f;
         
         [SerializeReference] private IJoint m_Joint = new JointNone();
@@ -24,7 +24,7 @@ namespace GameCreator.Runtime.Characters
         
         // CONSTRUCTORS: --------------------------------------------------------------------------
 
-        protected TVolume() : base(false)
+        protected TVolume()
         { }
 
         protected TVolume(HumanBodyBones humanBone, float weight, IJoint joint) : this()
@@ -93,7 +93,7 @@ namespace GameCreator.Runtime.Characters
 
         public void DrawGizmos(Animator animator, Volumes.Display display)
         {
-            Transform bone = this.m_Bone?.GetTransform(animator);
+            Transform bone = this.m_Bone.GetTransform(animator);
             if (bone == null) return;
             
             this.DrawGizmos(bone, display);

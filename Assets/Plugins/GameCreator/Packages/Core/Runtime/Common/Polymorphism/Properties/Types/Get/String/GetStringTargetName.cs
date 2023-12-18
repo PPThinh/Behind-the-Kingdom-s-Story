@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Target Name")]
-    [Category("Target Name")]
+    [Category("Game Objects/Target Name")]
     
     [Image(typeof(IconTarget), ColorTheme.Type.Yellow)]
     [Description("Returns the name of the targeted game object")]

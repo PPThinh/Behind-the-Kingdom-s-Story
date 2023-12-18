@@ -7,6 +7,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public abstract class Clip : IClip, ISerializationCallbackReceiver
     {
+        protected const float DEFAULT_PAD = 0.1f;
         protected const float DEFAULT_TIME = 0.3f;
         protected const float DEFAULT_DURATION = 0.3f;
 

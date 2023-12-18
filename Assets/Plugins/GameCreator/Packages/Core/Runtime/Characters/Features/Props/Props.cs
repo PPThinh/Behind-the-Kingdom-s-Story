@@ -7,12 +7,19 @@ namespace GameCreator.Runtime.Characters
     [Serializable]
     public class Props
     {
-        [field: NonSerialized] public static GameObject LastPropAttached { get; private set; }
+        [field: NonSerialized] public static GameObject LastPropAttachedInstance { get; private set; }
+        [field: NonSerialized] public static GameObject LastPropAttachedPrefab { get; private set; }
+        
+        [field: NonSerialized] public static GameObject LastPropDetachedInstance { get; private set; }
+        [field: NonSerialized] public static GameObject LastPropDetachedPrefab { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void InitializeOnLoad()
         {
-            LastPropAttached = null;
+            LastPropAttachedInstance = null;
+            LastPropAttachedPrefab = null;
+            LastPropDetachedInstance = null;
+            LastPropDetachedPrefab = null;
         }
         
         // MEMBERS: -------------------------------------------------------------------------------
@@ -101,7 +108,9 @@ namespace GameCreator.Runtime.Characters
             
             props.Add(prop);
             
-            LastPropAttached = prop.Instance;
+            LastPropAttachedInstance = prop.Instance;
+            LastPropAttachedPrefab = prefab;
+            
             this.EventAdd?.Invoke(prop.Bone, prop.Instance);
 
             return prop.Instance;
@@ -132,7 +141,9 @@ namespace GameCreator.Runtime.Characters
             
             props.Add(prop);
             
-            LastPropAttached = prop.Instance;
+            LastPropAttachedInstance = prop.Instance;
+            LastPropAttachedPrefab = null;
+            
             this.EventAdd?.Invoke(prop.Bone, prop.Instance);
 
             return prop.Instance;
@@ -156,6 +167,9 @@ namespace GameCreator.Runtime.Characters
             
             props[removeIndex].Destroy();
             props.RemoveAt(removeIndex);
+
+            LastPropDetachedInstance = null;
+            LastPropDetachedPrefab = prefab;
             
             this.EventRemove?.Invoke(bone);
         }
@@ -184,6 +198,9 @@ namespace GameCreator.Runtime.Characters
 
                 prop.Destroy();
                 props.RemoveAt(i);
+                
+                LastPropDetachedInstance = null;
+                LastPropDetachedPrefab = prefab;
 
                 this.EventRemove?.Invoke(bone);
                 return;
@@ -207,6 +224,9 @@ namespace GameCreator.Runtime.Characters
             
             props[removeIndex].Destroy();
             props.RemoveAt(removeIndex);
+            
+            LastPropDetachedInstance = null;
+            LastPropDetachedPrefab = null;
             
             this.EventRemove?.Invoke(bone);
         }
@@ -232,6 +252,9 @@ namespace GameCreator.Runtime.Characters
             
             props[removeIndex].Drop();
             props.RemoveAt(removeIndex);
+            
+            LastPropDetachedInstance = instance;
+            LastPropDetachedPrefab = prefab;
             
             this.EventRemove?.Invoke(bone);
             return instance;
@@ -264,6 +287,9 @@ namespace GameCreator.Runtime.Characters
                 prop.Drop();
                 props.RemoveAt(i);
 
+                LastPropDetachedInstance = instance;
+                LastPropDetachedPrefab = prefab;
+                
                 this.EventRemove?.Invoke(bone);
                 return instance;
             }
@@ -289,6 +315,9 @@ namespace GameCreator.Runtime.Characters
             props[removeIndex].Drop();
             props.RemoveAt(removeIndex);
             
+            LastPropDetachedInstance = instance;
+            LastPropDetachedPrefab = null;
+            
             this.EventRemove?.Invoke(bone);
         }
 
@@ -310,6 +339,9 @@ namespace GameCreator.Runtime.Characters
 
                     prop.Destroy();
                     entry.Value.RemoveAt(i);
+                    
+                    LastPropDetachedInstance = null;
+                    LastPropDetachedPrefab = null;
                     
                     this.EventRemove?.Invoke(boneTransform);
                 }
@@ -335,6 +367,9 @@ namespace GameCreator.Runtime.Characters
                     prop.Drop();
                     entry.Value.RemoveAt(i);
                     
+                    LastPropDetachedInstance = prop.Instance;
+                    LastPropDetachedPrefab = null;
+                    
                     this.EventRemove?.Invoke(boneTransform);
                 }
             }
@@ -350,6 +385,10 @@ namespace GameCreator.Runtime.Characters
                 foreach (IProp prop in entry.Value)
                 {
                     prop.Destroy();
+                    
+                    LastPropDetachedInstance = null;
+                    LastPropDetachedPrefab = null;
+                    
                     this.EventRemove?.Invoke(prop.Bone);
                 }
             }
@@ -367,6 +406,10 @@ namespace GameCreator.Runtime.Characters
                 foreach (IProp prop in entry.Value)
                 {
                     prop.Drop();
+                    
+                    LastPropDetachedInstance = prop.Instance;
+                    LastPropDetachedPrefab = null;
+                    
                     this.EventRemove?.Invoke(prop.Bone);
                 }
             }
@@ -416,7 +459,9 @@ namespace GameCreator.Runtime.Characters
             
             props.Add(prop);
             
-            LastPropAttached = prop.Instance;
+            LastPropAttachedInstance = prop.Instance;
+            LastPropAttachedPrefab = prefab;
+            
             this.EventAdd?.Invoke(null, prop.Instance);
 
             return prop.Instance;
@@ -434,6 +479,9 @@ namespace GameCreator.Runtime.Characters
 
             props[removeIndex].Destroy();
             props.RemoveAt(removeIndex);
+            
+            LastPropDetachedPrefab = prefab;
+            LastPropDetachedInstance = null;
             
             this.EventRemove?.Invoke(null);
         }

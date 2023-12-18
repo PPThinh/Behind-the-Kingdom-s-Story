@@ -14,13 +14,23 @@ namespace GameCreator.Runtime.VisualScripting
     [Category("Characters/Navigation/Move To")]
     
     [Parameter(
-        "Wait to Finish", 
-        "If true this Instruction waits until the Character reaches its destination or it is canceled"
+        "Location", 
+        "The position and rotation of the destination"
     )]
     
     [Parameter(
         "Stop Distance", 
         "Distance to the destination that the Character considers it has reached the target"
+    )]
+    
+    [Parameter(
+        "Cancel on Fail", 
+        "Stops executing the rest of Instructions if the path has been obstructed"
+    )]
+    
+    [Parameter(
+        "On Fail", 
+        "A list of Instructions executed when it can't reach the destination"
     )]
     
     [Example(
@@ -36,16 +46,60 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCharacterNavigationMoveTo : TInstructionCharacterNavigation
     {
+        [Serializable]
+        public class NavigationOptions
+        {
+            // EXPOSED MEMBERS: -------------------------------------------------------------------
+            
+            [SerializeField] private bool m_WaitToArrive = true;
+
+            [SerializeField] private bool m_CancelOnFail = true;
+            [SerializeField] private InstructionList m_OnFail = new InstructionList();
+            
+            // PROPERTIES: ------------------------------------------------------------------------
+
+            public bool WaitToArrive => this.m_WaitToArrive;
+            
+            public bool CancelOnFail => this.m_CancelOnFail;
+            public InstructionList OnFail => this.m_OnFail;
+        }
+        
+        private class NavigationResult
+        {
+            [NonSerialized] private bool m_Complete;
+            [NonSerialized] private bool m_Success = true;
+            
+            public void OnFinish(Character character, bool success)
+            {
+                this.m_Complete = true;
+                this.m_Success = success;
+            }
+            
+            public async Task<bool> Await(NavigationOptions options)
+            {
+                if (options.WaitToArrive)
+                {
+                    while (this.m_Complete == false)
+                    {
+                        await Task.Yield();
+                    }
+                }
+                
+                return this.m_Success;
+            }
+        }
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private PropertyGetLocation m_Location = GetLocationNavigationMarker.Create;
-
-        [SerializeField] private bool m_WaitToArrive = true;
-        [SerializeField] private float m_StopDistance = 0f;
+        [SerializeField] private PropertyGetDecimal m_StopDistance = GetDecimalConstantZero.Create;
+        
+        [SerializeField] private NavigationOptions m_Options = new NavigationOptions();
         
         // MEMBERS: -------------------------------------------------------------------------------
 
-        private bool m_MovementComplete;
+        [NonSerialized] private NavigationResult m_Result;
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -55,7 +109,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override async Task Run(Args args)
         {
-            this.m_MovementComplete = false;
+            this.m_Result = new NavigationResult();
             
             Character character = this.m_Character.Get<Character>(args);
             if (character == null) return;
@@ -63,19 +117,19 @@ namespace GameCreator.Runtime.VisualScripting
             Location location = this.m_Location.Get(args);
             character.Motion.MoveToLocation(
                 location, 
-                this.m_StopDistance,
-                this.OnFinish
+                (float) this.m_StopDistance.Get(args),
+                this.m_Result.OnFinish
             );
-
-            if (this.m_WaitToArrive)
+            
+            bool success = await this.m_Result.Await(this.m_Options);
+            if (success) return;
+            
+            await this.m_Options.OnFail.Run(args);
+            
+            if (this.m_Options.CancelOnFail)
             {
-                await this.Until(() => this.m_MovementComplete);
+                this.NextInstruction = int.MaxValue;
             }
-        }
-
-        private void OnFinish(Character character)
-        {
-            this.m_MovementComplete = true;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace GameCreator.Editor.Common
             this.Add(label);
             this.Add(button);
 
-            _ = new AlignLabel(this);
+            AlignLabel.On(this);
         }
     }
 }

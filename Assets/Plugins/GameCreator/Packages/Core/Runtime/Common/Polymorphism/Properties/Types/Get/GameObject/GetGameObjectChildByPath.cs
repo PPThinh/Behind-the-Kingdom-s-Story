@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using UnityEngine;
 
 namespace GameCreator.Runtime.Common
@@ -6,7 +7,7 @@ namespace GameCreator.Runtime.Common
     [Title("Game Object Child Path")]
     [Category("Transforms/Game Object Child Path")]
     
-    [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue, typeof(OverlayArrowDown))]
+    [Image(typeof(IconCubeOutline), ColorTheme.Type.Green, typeof(OverlayArrowDown))]
     [Description("The child of a game object found in its hierarchy identified by its name")]
 
     [Serializable]
@@ -35,11 +36,11 @@ namespace GameCreator.Runtime.Common
 
         public override string String => $"{this.m_Transform}/{this.m_Path}";
 
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {
-                GameObject parent = this.m_Transform.SceneReference;
+                GameObject parent = this.m_Transform.EditorValue;
                 if (parent == null) return null;
                 
                 Transform child = parent.transform.Find(this.m_Path.ToString());

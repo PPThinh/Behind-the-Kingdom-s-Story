@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace GameCreator.Runtime.Console
 {
     internal static class Commands
@@ -6,7 +8,7 @@ namespace GameCreator.Runtime.Console
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
-        public static Output[] Run(Input input)
+        public static IEnumerable<Output> Run(Input input)
         {
             return Database.Get.TryGetValue(input.Command, out Command value)
                 ? value.Run(input)

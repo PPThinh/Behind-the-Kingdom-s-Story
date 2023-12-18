@@ -35,7 +35,19 @@ namespace GameCreator.Runtime.Common.UnityUI
             set
             {
                 this.m_Value = value;
-                this.Refresh();
+                switch (this.m_Type)
+                {
+                    case Type.Text:
+                        this.RefreshLegacyText();
+                        break;
+                
+                    case Type.TMP:
+                        this.RefreshTMPText();
+                        this.RefreshTMPCharactersVisible();
+                        break;
+                
+                    default: throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
@@ -45,7 +57,18 @@ namespace GameCreator.Runtime.Common.UnityUI
             set
             {
                 this.m_CharactersVisible = value;
-                this.Refresh();
+                switch (this.m_Type)
+                {
+                    case Type.Text:
+                        this.RefreshLegacyText();
+                        break;
+                
+                    case Type.TMP:
+                        this.RefreshTMPCharactersVisible();
+                        break;
+                
+                    default: throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
@@ -103,35 +126,32 @@ namespace GameCreator.Runtime.Common.UnityUI
         
         // PRIVATE METHODS: -----------------------------------------------------------------------
 
-        private void Refresh()
+        private void RefreshLegacyText()
         {
-            switch (this.m_Type)
+            if (this.m_Text == null) return;
+            int count = Math.Min(this.m_Value.Length, this.CharactersVisible);
+            string newValue = this.m_Value[..count];
+            if (newValue != this.m_Text.text)
             {
-                case Type.Text:
-                    if (this.m_Text == null) return;
-                    int count = Math.Min(this.m_Value.Length, this.CharactersVisible);
-                    string newValue = this.m_Value[..count];
-                    if (newValue != this.m_Text.text)
-                    {
-                        this.m_Text.text = newValue;
-                    }
-                    break;
-                
-                case Type.TMP:
-                    if (this.m_TMP == null) return;
-                    if (this.m_TMP.text != this.m_Value)
-                    {
-                        this.m_TMP.text = this.m_Value;
-                    }
-                    
-                    int visibleCount = this.CharactersVisible;
-                    if (this.m_TMP.maxVisibleCharacters != visibleCount)
-                    {
-                        this.m_TMP.maxVisibleCharacters = visibleCount;
-                    }
-                    break;
-                
-                default: throw new ArgumentOutOfRangeException();
+                this.m_Text.text = newValue;
+            }
+        }
+
+        private void RefreshTMPText()
+        {
+            if (this.m_TMP == null) return;
+            if (this.m_TMP.text != this.m_Value)
+            {
+                this.m_TMP.text = this.m_Value;
+            }
+        }
+
+        private void RefreshTMPCharactersVisible()
+        {
+            int visibleCount = this.CharactersVisible;
+            if (this.m_TMP.maxVisibleCharacters != visibleCount)
+            {
+                this.m_TMP.maxVisibleCharacters = visibleCount;
             }
         }
     }

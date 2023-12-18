@@ -24,7 +24,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         [SerializeReference]
         protected Event m_TriggerEvent = new EventOnStart();
-
+        
         [NonSerialized] private Args m_Args;
 
         [NonSerialized] private Rigidbody m_Rigidbody3D;
@@ -128,9 +128,10 @@ namespace GameCreator.Runtime.VisualScripting
             this.m_TriggerEvent?.OnDisable(this);
         }
 
-        protected void OnDestroy()
+        protected override void OnDestroy()
         {
             this.m_TriggerEvent?.OnDestroy(this);
+            base.OnDestroy();
         }
 
         protected void OnBecameVisible()

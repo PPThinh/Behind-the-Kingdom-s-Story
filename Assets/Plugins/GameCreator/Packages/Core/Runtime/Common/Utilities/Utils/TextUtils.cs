@@ -33,7 +33,7 @@ namespace GameCreator.Runtime.Common
         
         public static string Humanize(object source)
         {
-            return Humanize(source.ToString());
+            return Humanize(source?.ToString());
         }
 
         public static string ProcessID(string text, bool isPath = false)

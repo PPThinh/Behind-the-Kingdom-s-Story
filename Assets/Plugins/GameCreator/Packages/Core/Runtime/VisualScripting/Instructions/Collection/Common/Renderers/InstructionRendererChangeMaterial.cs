@@ -20,15 +20,11 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private Material m_Material;
+        [SerializeField] private PropertyGetMaterial m_Material = GetMaterialInstance.Create();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override string Title => string.Format(
-            "Change Material on {0} to {1}",
-            this.m_Renderer,
-            this.m_Material != null ? this.m_Material.name : "(none)"
-        );
+        public override string Title => $"{this.m_Renderer} Material = {this.m_Material}";
 
         // RUN METHOD: ----------------------------------------------------------------------------
         
@@ -39,8 +35,8 @@ namespace GameCreator.Runtime.VisualScripting
 
             Renderer renderer = gameObject.Get<Renderer>();
             if (renderer == null) return DefaultResult;
-
-            renderer.material = this.m_Material;
+            
+            renderer.material = this.m_Material.Get(args);
             return DefaultResult;
         }
     }

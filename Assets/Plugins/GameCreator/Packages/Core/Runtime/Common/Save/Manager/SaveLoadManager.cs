@@ -225,6 +225,7 @@ namespace GameCreator.Runtime.Common
         public async Task Load(int slot, Action callback = null)
         {
             if (this.IsSaving || this.IsLoading || this.IsDeleting) return;
+            if (!this.HasSaveAt(slot)) return;
 
             this.EventBeforeLoad?.Invoke(slot);
             

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Run Actions")]
     [Description("Executes an Actions component object")]
 
-    [Category("Logic/Run Actions")]
+    [Category("Visual Scripting/Run Actions")]
 
     [Parameter(
         "Actions",

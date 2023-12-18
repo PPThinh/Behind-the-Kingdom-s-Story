@@ -23,7 +23,7 @@ namespace GameCreator.Runtime.VisualScripting
             OnTransition
         }
         
-        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectMainCamera.Create();
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
         [SerializeField] private ChangeMode m_When = ChangeMode.AnyChange;
 
         [NonSerialized] private TCamera m_Cache;

@@ -21,7 +21,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCommonAudioMusicStopAll : Instruction
     {
-        [SerializeField] private bool m_WaitToComplete = false;
+        [SerializeField] private bool m_WaitToComplete;
         [SerializeField] private float transitionOut = 2f;
 
         public override string Title => string.Format(

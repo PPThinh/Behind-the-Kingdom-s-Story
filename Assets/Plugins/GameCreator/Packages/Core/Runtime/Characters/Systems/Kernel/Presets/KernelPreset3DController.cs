@@ -12,10 +12,10 @@ namespace GameCreator.Runtime.Characters
     [Serializable]
     public class KernelPreset3DController : IKernelPreset
     {
-        public IUnitPlayer MakePlayer => new UnitPlayerDirectional();
-        public IUnitMotion MakeMotion => new UnitMotionController();
-        public IUnitDriver MakeDriver => new UnitDriverController();
-        public IUnitFacing MakeFacing => new UnitFacingPivot();
-        public IUnitAnimim MakeAnimim => new UnitAnimimKinematic();
+        public TUnitPlayer MakePlayer => new UnitPlayerDirectional();
+        public TUnitMotion MakeMotion => new UnitMotionController();
+        public TUnitDriver MakeDriver => new UnitDriverController();
+        public TUnitFacing MakeFacing => new UnitFacingPivot();
+        public TUnitAnimim MakeAnimim => new UnitAnimimKinematic();
     }
 }

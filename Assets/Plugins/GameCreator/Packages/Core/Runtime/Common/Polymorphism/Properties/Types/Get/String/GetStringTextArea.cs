@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Text Area")]
-    [Category("Text Area")]
+    [Category("Constants/Text Area")]
     
     [Image(typeof(IconTextArea), ColorTheme.Type.Yellow)]
     [Description("A string of characters which includes line breaks")]
@@ -30,7 +30,16 @@ namespace GameCreator.Runtime.Common
         public static PropertyGetString Create(string content = "") => new PropertyGetString(
             new GetStringTextArea(content)
         );
+        
+        public override string String
+        {
+            get
+            {
+                string text = this.m_Text.Text.Replace('\n', ' ');
+                return string.IsNullOrEmpty(text) ? "<empty>" : text;
+            }
+        }
 
-        public override string String => this.m_Text.Text.Replace('\n', ' ');
+        public override string EditorValue => this.m_Text.Text.Replace('\n', ' ');
     }
 }

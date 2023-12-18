@@ -68,19 +68,12 @@ namespace GameCreator.Editor.Common
 
         private Type ItemType => TypeUtils.GetTypeFromProperty(this.m_Property, false);
 
+        private const string KEY_EXPANDED = "gc:polymorphic-item:is-expanded:{0}:{1}";
+        
         public bool IsExpanded
         {
-            get
-            {
-                this.m_Property.serializedObject.Update();
-                return this.m_Property?.FindPropertyRelative("m_IsExpanded")?.boolValue ?? false;
-            }
-            set
-            {
-                if (m_Property?.FindPropertyRelative("m_IsExpanded") == null) return;
-                this.m_Property.FindPropertyRelative("m_IsExpanded").boolValue = value;
-                SerializationUtils.ApplyUnregisteredSerialization(this.m_Property.serializedObject);
-            }
+            get => SessionState.GetBool(KeyIsExpanded(this.m_Property), false);
+            set => SessionState.SetBool(KeyIsExpanded(this.m_Property), value);
         }
         
         public bool IsEnabled
@@ -493,7 +486,7 @@ namespace GameCreator.Editor.Common
                 );
             }
         }
-
+        
         private void OnReplace(int index, Type newType)
         {
             this.ParentTool.DeleteItem(index);
@@ -610,6 +603,22 @@ namespace GameCreator.Editor.Common
         public void DisplayAsTargetBelow()
         {
             this.m_DropBelow.style.display = DisplayStyle.Flex;
+        }
+        
+        // PUBLIC STATIC METHODS: -----------------------------------------------------------------
+        
+        public static void SetIsExpanded(SerializedProperty property, bool isExpanded)
+        {
+            SessionState.SetBool(KeyIsExpanded(property), isExpanded);
+        }
+        
+        public static string KeyIsExpanded(SerializedProperty property)
+        {
+            return string.Format(
+                KEY_EXPANDED, 
+                property.serializedObject.targetObject.GetInstanceID(),
+                property.propertyPath
+            );
         }
     }
 }

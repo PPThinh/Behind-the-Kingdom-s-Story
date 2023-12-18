@@ -38,7 +38,7 @@ namespace GameCreator.Runtime.VisualScripting
         private PropertyGetPosition m_Center = GetPositionCharacter.Create;
 
         [SerializeField] 
-        private PropertyGetOffset m_Size = GetOffsetVector3.Create();
+        private PropertyGetDirection m_Size = GetDirectionVector3Zero.Create();
 
         [SerializeField]
         private PropertyGetDecimal m_Angle = GetDecimalDecimal.Create(0f);

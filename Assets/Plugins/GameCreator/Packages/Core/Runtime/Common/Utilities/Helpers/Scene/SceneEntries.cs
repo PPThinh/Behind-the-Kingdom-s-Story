@@ -30,13 +30,13 @@ namespace GameCreator.Runtime.Common
 
                     Character character = target.Get<Character>();
                     
-                    if (location.HasPosition)
+                    if (location.HasPosition(target))
                     {
                         if (character != null) character.Driver.SetPosition(position);
                         else target.transform.position = position;
                     }
-
-                    if (location.HasRotation)
+                    
+                    if (location.HasRotation(target))
                     {
                         if (character != null) character.Driver.SetRotation(rotation);
                         else target.transform.rotation = rotation;

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Run Trigger")]
     [Description("Executes a Trigger component object")]
 
-    [Category("Logic/Run Trigger")]
+    [Category("Visual Scripting/Run Trigger")]
 
     [Parameter(
         "Trigger",

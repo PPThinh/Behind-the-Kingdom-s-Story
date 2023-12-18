@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconTexture), ColorTheme.Type.Blue)]
     [Title("Texture")]
-    [Category("Texture")]
+    [Category("References/Texture")]
     
     [Serializable]
     public class ValueTexture : TValue
@@ -61,7 +61,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueTexture), CreateValue)
+            new TypeData(typeof(ValueTexture), CreateValue),
+            typeof(Texture)
         );
         
         #if UNITY_EDITOR
@@ -69,7 +70,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueTexture), CreateValue)
+            new TypeData(typeof(ValueTexture), CreateValue),
+            typeof(Texture)
         );
         
         #endif

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Stop Conditions")]
     [Description("Stops a Conditions component object that is being executed")]
 
-    [Category("Logic/Stop Conditions")]
+    [Category("Visual Scripting/Stop Conditions")]
 
     [Parameter(
         "Conditions",

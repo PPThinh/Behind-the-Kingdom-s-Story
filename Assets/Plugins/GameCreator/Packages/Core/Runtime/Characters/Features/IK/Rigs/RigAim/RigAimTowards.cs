@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Cameras;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace GameCreator.Runtime.Characters.IK
 
         [SerializeField] private float m_SmoothTime = 0.1f;
         [SerializeField] private Bone m_Bone = new Bone(HumanBodyBones.Chest);
-        [SerializeField] private PropertyGetGameObject m_From = GetGameObjectMainCamera.Create();
+        [SerializeField] private PropertyGetGameObject m_From = GetGameObjectCameraMain.Create;
         
         // MEMBERS: -------------------------------------------------------------------------------
 

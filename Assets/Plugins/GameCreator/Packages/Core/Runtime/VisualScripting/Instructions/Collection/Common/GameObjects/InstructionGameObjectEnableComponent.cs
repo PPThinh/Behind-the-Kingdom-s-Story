@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Enable Component")]
     [Description("Enables a component class from the game object")]
 
-    [Category("Game Objects/Enable Component")]
+    [Category("Game Objects/Components/Enable Component")]
 
     [Keywords("Active", "Turn", "On", "MonoBehaviour", "Behaviour", "Script")]
     [Image(typeof(IconComponent), ColorTheme.Type.Yellow)]

@@ -8,6 +8,8 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class RunInstructionsList : TRun<InstructionList>
     {
+        private const int PREWARM_COUNTER = 5;
+        
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private InstructionList m_Instructions;
@@ -35,6 +37,11 @@ namespace GameCreator.Runtime.Common
         public RunInstructionsList(params Instruction[] instructions)
         {
             this.m_Instructions = new InstructionList(instructions);
+        }
+
+        public RunInstructionsList(InstructionList instructionList)
+        {
+            this.m_Instructions = new InstructionList(instructionList);
         }
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
@@ -65,18 +72,21 @@ namespace GameCreator.Runtime.Common
             if (ApplicationManager.IsExiting) return;
             if ((template.Get<RunnerInstructionsList>().Value?.Length ?? 0) == 0) return;
 
-            RunnerInstructionsList runner = RunnerInstructionsList.CreateRunner<RunnerInstructionsList>(
+            RunnerInstructionsList runner = RunnerInstructionsList.Pick<RunnerInstructionsList>(
                 template,
-                config
+                config,
+                PREWARM_COUNTER
             );
 
             if (runner == null) return;
             
             await runner.Value.Run(args, config.Cancellable);
-            if (runner != null) UnityEngine.Object.Destroy(runner.gameObject);
+            if (runner != null) RunnerInstructionsList.Restore(runner);
         }
+        
+        // PRIVATE STATIC METHODS: ----------------------------------------------------------------
 
-        public static GameObject CreateTemplate(InstructionList value)
+        private static GameObject CreateTemplate(InstructionList value)
         {
             return RunnerInstructionsList.CreateTemplate<RunnerInstructionsList>(value);
         }

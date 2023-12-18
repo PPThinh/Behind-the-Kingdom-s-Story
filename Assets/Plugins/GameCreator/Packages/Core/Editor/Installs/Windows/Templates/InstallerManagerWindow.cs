@@ -110,8 +110,10 @@ namespace GameCreator.Editor.Installs
                 string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
                 Installer asset = AssetDatabase.LoadAssetAtPath<Installer>(assetPath);
                 
-                if (string.IsNullOrEmpty(asset.Data.Name)) continue; 
-                if (string.IsNullOrEmpty(asset.Data.Module)) continue;
+                if (asset == null) continue;
+                
+                if (string.IsNullOrEmpty(asset.Data?.Name)) continue; 
+                if (string.IsNullOrEmpty(asset.Data?.Module)) continue;
 
                 if (!this.InstallAssetsMap.ContainsKey(asset.Data.Module))
                 {

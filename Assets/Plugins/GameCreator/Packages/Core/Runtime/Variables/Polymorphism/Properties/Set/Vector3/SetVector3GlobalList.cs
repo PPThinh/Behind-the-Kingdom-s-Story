@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Vector3 value of a Global List Variable")]
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetVector3GlobalList : PropertyTypeSetVector3
     {
         [SerializeField]

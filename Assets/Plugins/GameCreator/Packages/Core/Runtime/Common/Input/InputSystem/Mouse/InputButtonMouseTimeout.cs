@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 namespace GameCreator.Runtime.Common
@@ -28,8 +27,6 @@ namespace GameCreator.Runtime.Common
         [SerializeField] private float m_Duration = 0.5f;
 
         // PROPERTIES: ----------------------------------------------------------------------------
-
-        public override bool Active => true;
 
         private bool IsFired { get; set; } = false;
         private float PressTime { get; set; } = -999f;

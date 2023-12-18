@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Broadcast Message")]
     [Description("Invokes any method on any component found on the target game object")]
 
-    [Category("Logic/Broadcast Message")]
+    [Category("Visual Scripting/Broadcast Message")]
     
     [Parameter("Game Object", "The target game object that receives the broadcast message")]
     [Parameter("Message", "The name of the method or methods that are called")]

@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Common
     [Title("Parent")]
     [Category("Transforms/Parent")]
     
-    [Image(typeof(IconCubeSolid), ColorTheme.Type.Blue, typeof(OverlayArrowUp))]
+    [Image(typeof(IconCubeOutline), ColorTheme.Type.Green, typeof(OverlayArrowUp))]
     [Description("The parent game object of the specified game object")]
 
     [Serializable]
@@ -32,11 +32,11 @@ namespace GameCreator.Runtime.Common
 
         public override string String => $"Parent of {this.m_Transform}";
 
-        public override GameObject SceneReference
+        public override GameObject EditorValue
         {
             get
             {
-                GameObject instance = this.m_Transform.SceneReference;
+                GameObject instance = this.m_Transform.EditorValue;
                 if (instance == null) return null;
 
                 Transform parent = instance.transform.parent;

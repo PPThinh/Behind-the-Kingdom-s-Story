@@ -35,6 +35,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         private void OnBlur(Character character, IInteractive interactive)
         {
+            if (!this.IsActive) return;
             if (character == null) return;
             if (character.Interaction.Target == null) return;
 

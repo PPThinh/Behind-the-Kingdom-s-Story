@@ -17,8 +17,6 @@ namespace GameCreator.Runtime.Common
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override bool Active => true;
-
         protected bool WasPressedThisFrame
         {
             get

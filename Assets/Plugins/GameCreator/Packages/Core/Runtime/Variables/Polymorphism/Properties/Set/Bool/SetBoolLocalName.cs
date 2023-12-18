@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the boolean value of a Local Name Variable")]
     [Image(typeof(IconNameVariable), ColorTheme.Type.Purple)]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetBoolLocalName : PropertyTypeSetBool
     {
         [SerializeField]

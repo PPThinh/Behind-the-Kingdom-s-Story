@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -12,9 +13,9 @@ namespace GameCreator.Runtime.Cameras
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private PropertyGetGameObject m_Target = GetGameObjectPlayer.Create();
-        [SerializeField] private PropertyGetOffset m_Offset = GetOffsetLocalTarget.Create();
+        [SerializeField] private PropertyGetDirection m_Offset = GetDirectionLocalValue.CreateTarget();
 
-        [SerializeField] private PropertyGetOffset m_Distance = GetOffsetLocalTarget.Create(
+        [SerializeField] private PropertyGetDirection m_Distance = GetDirectionLocalValue.CreateTarget(
             new Vector3(0f, 0f, -3f)
         );
         
@@ -29,12 +30,12 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Offset
         {
-            set => this.m_Offset = GetOffsetLocalTarget.Create(value);
+            set => this.m_Offset = GetDirectionLocalValue.CreateTarget(value);
         }
         
         public Vector3 Distance
         {
-            set => this.m_Distance = GetOffsetLocalTarget.Create(value);
+            set => this.m_Distance = GetDirectionLocalValue.CreateTarget(value);
         }
 
         // IMPLEMENTS: ----------------------------------------------------------------------------

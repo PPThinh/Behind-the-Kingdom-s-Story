@@ -18,7 +18,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         public bool IsRunning => this.m_Instructions.IsRunning;
         public int RunningIndex => this.m_Instructions.RunningIndex;
-
+        
         // EVENTS: --------------------------------------------------------------------------------
         
         public event Action EventInstructionStartRunning;
@@ -29,9 +29,9 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected BaseActions()
         {
-            this.m_Instructions.EventRunInstruction += i => this.EventInstructionRun?.Invoke(i);
-            this.m_Instructions.EventStartRunning += () => this.EventInstructionStartRunning?.Invoke();
-            this.m_Instructions.EventEndRunning += () => this.EventInstructionEndRunning?.Invoke();
+            this.m_Instructions.EventRunInstruction += this.OnEventInstructionRun;
+            this.m_Instructions.EventStartRunning += this.OnEventInstructionStartRunning;
+            this.m_Instructions.EventEndRunning += this.OnEventInstructionStopRunning;
         }
 
         // ABSTRACT METHODS: ----------------------------------------------------------------------
@@ -61,6 +61,30 @@ namespace GameCreator.Runtime.VisualScripting
         protected virtual void OnDisable()
         {
             this.StopExecInstructions();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            this.EventInstructionStartRunning = null;
+            this.EventInstructionEndRunning = null;
+            this.EventInstructionRun = null;
+        }
+        
+        // PRIVATE METHODS: -----------------------------------------------------------------------
+        
+        private void OnEventInstructionRun(int i)
+        {
+            this.EventInstructionRun?.Invoke(i);
+        }
+        
+        private void OnEventInstructionStartRunning()
+        {
+            this.EventInstructionStartRunning?.Invoke();
+        }
+        
+        private void OnEventInstructionStopRunning()
+        {
+            this.EventInstructionEndRunning?.Invoke();
         }
     }
 }

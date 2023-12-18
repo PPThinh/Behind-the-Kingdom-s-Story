@@ -25,11 +25,11 @@ namespace GameCreator.Runtime.VisualScripting
     public class InstructionCameraShotChange : Instruction
     {
         // MEMBERS: -------------------------------------------------------------------------------
-        
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
 
-        [Space] 
-        [SerializeField] private PropertyGetShot m_Shot = GetShotInstance.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
+
+        [Space]
+        [SerializeField] private PropertyGetGameObject m_Shot = GetGameObjectShot.Create;
 
         [Space] 
         [SerializeField] private Easing.Type m_Easing = Easing.Type.QuadInOut;
@@ -50,8 +50,8 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override async Task Run(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
-            ShotCamera shot = this.m_Shot.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
+            ShotCamera shot = this.m_Shot.Get<ShotCamera>(args);
             
             if (camera == null) return;
             if (shot == null) return;

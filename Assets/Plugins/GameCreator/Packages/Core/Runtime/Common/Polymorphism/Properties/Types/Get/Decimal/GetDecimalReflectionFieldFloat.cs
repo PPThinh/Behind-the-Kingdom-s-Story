@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalReflectionFieldFloat : PropertyTypeGetDecimal
     {
         [SerializeField] private ReflectionFieldFloat m_Field = new ReflectionFieldFloat();

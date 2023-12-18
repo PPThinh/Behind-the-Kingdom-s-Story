@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconVector3), ColorTheme.Type.Green)]
     [Title("Vector3")]
-    [Category("Vector3")]
+    [Category("Values/Vector3")]
     
     [Serializable]
     public class ValueVector3 : TValue
@@ -66,7 +66,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueVector3), CreateValue)
+            new TypeData(typeof(ValueVector3), CreateValue),
+            typeof(Vector3)
         );
         
         #if UNITY_EDITOR
@@ -74,7 +75,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueVector3), CreateValue)
+            new TypeData(typeof(ValueVector3), CreateValue),
+            typeof(Vector3)
         );
         
         #endif

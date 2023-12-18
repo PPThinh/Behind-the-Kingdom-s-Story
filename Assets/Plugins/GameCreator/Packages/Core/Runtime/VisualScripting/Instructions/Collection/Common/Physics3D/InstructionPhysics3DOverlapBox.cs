@@ -33,9 +33,9 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] 
         private PropertyGetPosition m_Center = GetPositionCharacter.Create;
 
-        [SerializeField] 
-        private PropertyGetOffset m_HalfExtents = GetOffsetVector3.Create();
-
+        [SerializeField]
+        private PropertyGetDirection m_HalfExtents = GetDirectionVector.Create(Vector3.one);
+        
         [SerializeField]
         private PropertyGetRotation m_Rotation = GetRotationIdentity.Create;
 

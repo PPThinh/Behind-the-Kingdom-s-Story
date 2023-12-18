@@ -15,7 +15,7 @@ namespace GameCreator.Editor.Core
             StyleSheet[] styleSheets = StyleSheetUtils.Load();
             foreach (StyleSheet styleSheet in styleSheets) root.styleSheets.Add(styleSheet);
 
-            Button button = new Button(this.SelectSkeleton)
+            Button button = new Button(this.SelectAsset)
             {
                 text = "Edit Asset",
                 style = { height = new Length(25f, LengthUnit.Pixel) }
@@ -27,7 +27,7 @@ namespace GameCreator.Editor.Core
             return root;
         }
 
-        private void SelectSkeleton()
+        private void SelectAsset()
         {
             StagingGizmos component = this.target as StagingGizmos;
             if (component == null) return;

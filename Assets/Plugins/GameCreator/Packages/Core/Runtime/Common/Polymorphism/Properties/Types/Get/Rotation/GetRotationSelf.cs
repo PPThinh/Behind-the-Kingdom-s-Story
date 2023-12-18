@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Self")]
-    [Category("Self")]
+    [Title("Self Rotation")]
+    [Category("Game Objects/Self Rotation")]
     
     [Image(typeof(IconSelf), ColorTheme.Type.Yellow)]
     [Description("Rotation of the game object making the call in local or world space")]

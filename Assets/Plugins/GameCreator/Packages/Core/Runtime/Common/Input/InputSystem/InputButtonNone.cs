@@ -11,6 +11,8 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class InputButtonNone : TInputButton
     {
+        // STATIC CONSTRUCTOR: --------------------------------------------------------------------
+        
         public static InputPropertyButton Create()
         {
             return new InputPropertyButton(

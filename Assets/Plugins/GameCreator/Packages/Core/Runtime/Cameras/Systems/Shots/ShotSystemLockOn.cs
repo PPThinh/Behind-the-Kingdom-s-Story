@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
 
@@ -15,8 +16,8 @@ namespace GameCreator.Runtime.Cameras
         private PropertyGetGameObject m_Anchor = GetGameObjectPlayer.Create();
 
         [SerializeField]
-        private PropertyGetOffset m_AnchorOffset = new PropertyGetOffset(
-            new GetOffsetLocalSelf(new Vector3(0f, 0.25f, -1f))
+        private PropertyGetDirection m_AnchorOffset = GetDirectionLocalValue.CreateSelf(
+            new Vector3(0f, 0.25f, -1f)
         );
         
         [SerializeField] private PropertyGetDecimal m_Distance = GetDecimalDecimal.Create(5f);
@@ -37,18 +38,13 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Offset
         {
-            set => this.m_AnchorOffset = GetOffsetLocalSelf.Create(value);
+            set => this.m_AnchorOffset = GetDirectionLocalValue.CreateSelf(value);
         }
         
         public float Distance
         {
             set => this.m_Distance = GetDecimalDecimal.Create(value);
         }
-
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public ShotSystemLockOn()
-        { }
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
 

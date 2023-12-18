@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,11 +86,11 @@ namespace GameCreator.Runtime.Common.SaveSystem
             );
         }
 
-        Task<float> IDataStorage.GetFloat(string key, float value)
+        Task<double> IDataStorage.GetDouble(string key, double value)
         {
             if (!Data.TryGetValue(key, out StoreType storeType)) return Task.FromResult(value);
-            return Task.FromResult(storeType is StoreFloat storeFloat 
-                ? storeFloat.Value 
+            return Task.FromResult(storeType is StoreDouble storeDouble 
+                ? storeDouble.Value 
                 : value
             );
         }
@@ -119,9 +120,9 @@ namespace GameCreator.Runtime.Common.SaveSystem
             return Task.FromResult(1);
         }
 
-        Task IDataStorage.SetFloat(string key, float value)
+        Task IDataStorage.SetDouble(string key, double value)
         {
-            Data[key] = new StoreFloat(key, value);
+            Data[key] = new StoreDouble(key, value);
             return Task.FromResult(1);
         }
 
@@ -290,28 +291,28 @@ namespace GameCreator.Runtime.Common.SaveSystem
         }
         
         [Serializable]
-        private class StoreFloat : StoreType
+        private class StoreDouble : StoreType
         {
-            [SerializeField] private float m_Value;
+            [SerializeField] private string m_Value;
 
-            public float Value => this.m_Value;
+            public double Value => Convert.ToDouble(this.m_Value);
             
-            public StoreFloat(string key, float value) : base(key)
+            public StoreDouble(string key, double value) : base(key)
             {
-                this.m_Value = value;
+                this.m_Value = value.ToString(CultureInfo.InvariantCulture);
             }
         }
         
         [Serializable]
         private class StoreInt : StoreType
         {
-            [SerializeField] private int m_Value;
+            [SerializeField] private string m_Value;
 
-            public int Value => this.m_Value;
+            public int Value => Convert.ToInt32(this.m_Value);
             
             public StoreInt(string key, int value) : base(key)
             {
-                this.m_Value = value;
+                this.m_Value = value.ToString(CultureInfo.InvariantCulture);
             }
         }
     }

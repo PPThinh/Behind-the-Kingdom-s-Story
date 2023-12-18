@@ -17,7 +17,7 @@ namespace GameCreator.Runtime.Cameras
         [SerializeField] private float m_Pan = DEFAULT_PAN;
         [SerializeField] private float m_Tilt = DEFAULT_TILT;
 
-        [SerializeField] private InputPropertyValueVector2 m_Input;
+        [SerializeField] private InputPropertyValueVector2 m_Input = InputValueVector2MotionSecondary.Create();
         [SerializeField] private float m_SmoothTime = 0.15f;
         
         [SerializeField] private bool m_Restitute;
@@ -38,13 +38,6 @@ namespace GameCreator.Runtime.Cameras
         // PROPERTIES: ----------------------------------------------------------------------------
 
         public override int Id => ID;
-
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-
-        public ShotSystemPeek()
-        {
-            this.m_Input = InputValueVector2MotionSecondary.Create();
-        }
 
         // IMPLEMENTS: ----------------------------------------------------------------------------
         
@@ -128,16 +121,9 @@ namespace GameCreator.Runtime.Cameras
         public override void OnEnable(TShotType shotType, TCamera camera)
         {
             base.OnEnable(shotType, camera);
-            this.m_Input?.Enable();
             
             this.m_Value.Target = Vector3.zero;
             this.m_Value.Current = Vector2.zero;
-        }
-
-        public override void OnDisable(TShotType shotType, TCamera camera)
-        {
-            base.OnDisable(shotType, camera);
-            this.m_Input?.Disable();
         }
 
         // GIZMOS: --------------------------------------------------------------------------------

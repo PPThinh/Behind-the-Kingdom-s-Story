@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconCubeOutline), ColorTheme.Type.Blue)]
     [Title("Game Object")]
-    [Category("Game Object")]
+    [Category("References/Game Object")]
     
     [Serializable]
     public class ValueGameObject : TValue
@@ -61,7 +61,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueGameObject), CreateValue)
+            new TypeData(typeof(ValueGameObject), CreateValue),
+            typeof(GameObject)
         );
         
         #if UNITY_EDITOR
@@ -69,7 +70,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueGameObject), CreateValue)
+            new TypeData(typeof(ValueGameObject), CreateValue),
+            typeof(GameObject)
         );
         
         #endif

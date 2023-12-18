@@ -39,7 +39,7 @@
 }
 
 #GC-Event-Body {
-    margin: 0 var(--gc-list-body-margins) 0 var(--gc-list-body-margins);
+    margin: 0 var(--gc-list-body-margins);
     padding: var(--gc-list-body-padding);
     background-color: var(--gc-color-list-body);
     border-width: 0 var(--gc-common-border-width) var(--gc-common-border-width) var(--gc-common-border-width);

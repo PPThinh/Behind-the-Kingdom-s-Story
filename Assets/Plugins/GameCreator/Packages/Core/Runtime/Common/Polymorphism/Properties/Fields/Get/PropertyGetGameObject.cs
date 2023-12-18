@@ -26,13 +26,5 @@ namespace GameCreator.Runtime.Common
         {
             return this.m_Property.Get<T>(component);
         }
-        
-        // EDITOR: --------------------------------------------------------------------------------
-
-        /// <summary>
-        /// EDITOR ONLY: This is used by editor scripts that require an optional scene reference,
-        /// if the value is not dynamic, but constant. For example, the GetGameObjectInstance.
-        /// </summary>
-        public GameObject SceneReference => this.m_Property.SceneReference;
     }
 }

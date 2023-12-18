@@ -16,24 +16,33 @@ namespace GameCreator.Runtime.Common
 
         // PUBLIC STATIC METHODS: -----------------------------------------------------------------
 
-        public static GameObject CreateTemplate<TRunnerType>(TValue value)
+        public static GameObject CreateTemplate<TRunnerType>(TValue value) 
             where TRunnerType : TRunner<TValue>
         {
-            GameObject template = new GameObject
+            GameObject container = new GameObject
             {
-                name = "Template",
                 hideFlags = TEMPLATE_FLAGS
             };
-                
+            
+            GameObject template = new GameObject
+            {
+                hideFlags = TEMPLATE_FLAGS
+            };
+
+            container.name = container.GetInstanceID().ToString();
+            template.transform.SetParent(container.transform);
+            
             TRunnerType runner = template.Add<TRunnerType>();
             runner.m_Value = value;
-
+            
             return template;
         }
-        
-        public static TRunnerType CreateRunner<TRunnerType>(GameObject template, RunnerConfig config)
+
+        public static TRunnerType Pick<TRunnerType>(GameObject template, RunnerConfig config, int prewarmCounter)
             where TRunnerType : TRunner<TValue>
         {
+            if (template == null) return null;
+            
             Vector3 position = config.Location.Position;
             Quaternion rotation = config.Location.Rotation;
             
@@ -42,16 +51,39 @@ namespace GameCreator.Runtime.Common
                 position = config.Location.Parent.TransformPoint(position);
                 rotation = config.Location.Parent.rotation * rotation;
             }
-            
-            GameObject instance = Instantiate(
-                template, 
-                position, rotation, 
-                config.Location?.Parent
-            );
 
-            instance.name = config.Name;
-            instance.hideFlags = INSTANCE_FLAGS;
-            return instance.GetComponent<TRunnerType>();
+            int templateHash = template.GetInstanceID();
+            if (!Pool.ContainsKey(templateHash))
+            {
+                template.transform.parent.gameObject.name = config.Name;
+                template.name = $"{config.Name}";
+                
+                RunnerPool runnerPool = new RunnerPool(template, prewarmCounter);
+                Pool.Add(templateHash, runnerPool);
+            }
+
+            TRunnerType instance = Pool[templateHash].Pick<TRunnerType>();
+            if (instance == null) return null;
+            
+            instance.transform.SetPositionAndRotation(position, rotation);
+            if (config.Location.Parent != null)
+            {
+                instance.transform.SetParent(config.Location.Parent);
+            }
+            
+            instance.gameObject.SetActive(true);
+            return instance.Get<TRunnerType>();
+        }
+
+        public static void Restore(Runner runner)
+        {
+            if (runner == null) return;
+            if (runner.Template == null) Destroy(runner.gameObject);
+            
+            if (Pool.TryGetValue(runner.Template.GetInstanceID(), out RunnerPool runnerPool))
+            {
+                runnerPool.Restore(runner.gameObject);
+            }
         }
     }
 }

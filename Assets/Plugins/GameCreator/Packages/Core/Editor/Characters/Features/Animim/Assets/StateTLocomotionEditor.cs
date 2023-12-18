@@ -1,7 +1,4 @@
-using GameCreator.Editor.Common;
 using UnityEditor;
-using GameCreator.Runtime.Characters;
-using GameCreator.Runtime.Common;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
@@ -17,17 +14,11 @@ namespace GameCreator.Editor.Characters
         private VisualElement m_LandContent;
         private VisualElement m_AirborneContent;
         
-        private VisualElement m_BreathContent;
-        private VisualElement m_TwitchContent;
-        
         private SerializedProperty m_PropertyAirborneMode;
 
         private SerializedProperty m_PropertyStand;
         private SerializedProperty m_PropertyLand;
         private SerializedProperty m_PropertyAirborne;
-
-        private SerializedProperty m_PropertyBreathing;
-        private SerializedProperty m_PropertyTwitching;
         
         // PROPERTIES: ----------------------------------------------------------------------------
         
@@ -41,12 +32,6 @@ namespace GameCreator.Editor.Characters
             this.m_Content = new VisualElement();
             
             this.m_PropertyAirborneMode = this.serializedObject.FindProperty("m_AirborneMode");
-
-            SerializedProperty useBreathing = this.serializedObject.FindProperty("m_UseBreathing");
-            SerializedProperty useTwitching = this.serializedObject.FindProperty("m_UseTwitching");
-
-            this.m_PropertyBreathing = this.serializedObject.FindProperty("m_Breathing");
-            this.m_PropertyTwitching = this.serializedObject.FindProperty("m_Twitching");
 
             this.UpdateProperties();
             
@@ -77,58 +62,12 @@ namespace GameCreator.Editor.Characters
 
             this.EmptyLine();
 
-            PropertyField fieldUseBreathing = new PropertyField(useBreathing);
-            PropertyField fieldUseTwitching = new PropertyField(useTwitching);
-
-            this.m_BreathContent = new VisualElement();
-            this.m_TwitchContent = new VisualElement();
-            
-            this.m_Content.Add(fieldUseBreathing);
-            this.m_Content.Add(this.m_BreathContent);
-            if (useBreathing.boolValue)
-            {
-                this.m_BreathContent.Add(new PropertyField(this.m_PropertyBreathing));
-            }
-
-            this.Space();
-            
-            this.m_Content.Add(fieldUseTwitching);
-            this.m_Content.Add(this.m_TwitchContent);
-            if (useTwitching.boolValue)
-            {
-                m_TwitchContent.Add(new PropertyField(this.m_PropertyTwitching));
-            }
-            
-            this.Space();
-
             fieldAirborneMode.RegisterValueChangeCallback(_ =>
             {
                 this.UpdateProperties();
                 this.m_PropertyAirborne.isExpanded = true;
                 
                 this.RefreshAirborne();
-            });
-            
-            fieldUseBreathing.RegisterValueChangeCallback(changeEvent =>
-            {
-                this.m_BreathContent.Clear();
-                if (changeEvent.changedProperty.boolValue)
-                {
-                    PropertyField fieldBreathing = new PropertyField(this.m_PropertyBreathing);
-                    fieldBreathing.Bind(this.serializedObject);
-                    this.m_BreathContent.Add(fieldBreathing);
-                }
-            });
-            
-            fieldUseTwitching.RegisterValueChangeCallback(changeEvent =>
-            {
-                this.m_TwitchContent.Clear();
-                if (changeEvent.changedProperty.boolValue)
-                {
-                    PropertyField fieldTwitching = new PropertyField(this.m_PropertyTwitching);
-                    fieldTwitching.Bind(this.serializedObject);
-                    this.m_TwitchContent.Add(fieldTwitching);
-                }
             });
             
             this.m_Root.Add(this.m_Content);

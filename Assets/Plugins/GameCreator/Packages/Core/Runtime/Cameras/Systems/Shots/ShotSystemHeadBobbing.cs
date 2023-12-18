@@ -35,11 +35,6 @@ namespace GameCreator.Runtime.Cameras
             set => this.m_IsActive = value;
         }
 
-        // CONSTRUCTORS: --------------------------------------------------------------------------
-
-        public ShotSystemHeadBobbing() : base()
-        { }
-
         // IMPLEMENTS: ----------------------------------------------------------------------------
 
         public override void OnAwake(TShotType shotType)

@@ -14,12 +14,13 @@ namespace GameCreator.Runtime.Characters
         // MEMBERS: -------------------------------------------------------------------------------
 
         [NonSerialized] private Character m_Character;
-        [NonSerialized] private List<ISpatialHash> m_Interactions = new List<ISpatialHash>();
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public IInteractive Target { get; private set; }
-        public bool CanInteract => !this.m_Character.Busy.AreArmsBusy && this.Target != null;
+        [field: NonSerialized] public IInteractive Target { get; private set; }
+        public bool CanInteract => this.Target != null;
+        
+        [field: NonSerialized] public List<ISpatialHash> Interactions { get; private set; }
 
         // EVENTS: --------------------------------------------------------------------------------
 
@@ -31,8 +32,7 @@ namespace GameCreator.Runtime.Characters
 
         public Interaction()
         {
-            this.m_Character = null;
-            this.Target = null;
+            this.Interactions = new List<ISpatialHash>();
         }
         
         internal void OnStartup(Character character)
@@ -73,13 +73,13 @@ namespace GameCreator.Runtime.Characters
             SpatialHashInteractions.Find(
                 this.m_Character.transform.position, 
                 this.m_Character.Motion.InteractionRadius,
-                this.m_Interactions
+                this.Interactions
             );
 
             IInteractive newTarget = null;
             float targetPriority = float.MaxValue;
             
-            foreach (ISpatialHash interaction in this.m_Interactions)
+            foreach (ISpatialHash interaction in this.Interactions)
             {
                 if (interaction is not IInteractive interactive) continue;
                 float priority = this.m_Character.Motion.InteractionMode.CalculatePriority(

@@ -92,7 +92,7 @@ namespace GameCreator.Editor.Common
             fieldContent.Add(fieldText);
             fieldContent.Add(fieldDropdown);
 
-            _ = new AlignLabel(fieldContent);
+            AlignLabel.On(fieldContent);
             
             root.Add(fieldComponent);
             root.Add(fieldContent);

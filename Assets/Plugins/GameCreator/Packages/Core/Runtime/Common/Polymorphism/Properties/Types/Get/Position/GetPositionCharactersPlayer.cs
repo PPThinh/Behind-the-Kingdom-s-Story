@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Player")]
-    [Category("Characters/Player")]
+    [Title("Player Position")]
+    [Category("Characters/Player Position")]
     
     [Image(typeof(IconPlayer), ColorTheme.Type.Green)]
     [Description("Returns the position of the Player character")]

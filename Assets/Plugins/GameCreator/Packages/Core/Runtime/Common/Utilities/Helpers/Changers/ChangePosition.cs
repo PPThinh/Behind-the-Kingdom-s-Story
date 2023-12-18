@@ -37,11 +37,9 @@ namespace GameCreator.Runtime.Common
         
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
-        public Vector3 Get(Vector3 point, Args args, Space space, Transform parent)
+        public Vector3 Get(Vector3 point, Args args)
         {
-            Vector3 value = space == Space.Self && parent != null
-                ? parent.TransformPoint(this.m_Value.Get(args))
-                : this.m_Value.Get(args);
+            Vector3 value = this.m_Value.Get(args);
 
             return this.m_Operation switch
             {

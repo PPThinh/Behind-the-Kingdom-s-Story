@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconNull), ColorTheme.Type.Gray)]
     [Title("Null")]
-    [Category("Null")]
+    [Category("Values/Null")]
     
     public class ValueNull : TValue
     {
@@ -39,7 +39,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueNull), CreateValue)
+            new TypeData(typeof(ValueNull), CreateValue),
+            null
         );
         
         #if UNITY_EDITOR
@@ -47,7 +48,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueNull), CreateValue)
+            new TypeData(typeof(ValueNull), CreateValue),
+            null
         );
         
         #endif

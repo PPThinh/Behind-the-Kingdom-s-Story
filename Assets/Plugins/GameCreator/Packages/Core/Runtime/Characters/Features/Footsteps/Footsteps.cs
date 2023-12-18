@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Characters
 {
     [Serializable]
-    public class Footsteps : TPolymorphicList<Bone>
+    public class Footsteps : TPolymorphicList<Footstep>
     {
         private const float RAYCAST_DISTANCE_PERCENTAGE = 0.25f;
         private const int RAYCAST_BUFFER_SIZE = 5;
@@ -27,10 +27,10 @@ namespace GameCreator.Runtime.Characters
 
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
         
-        [SerializeReference] private Bone[] m_Feet =
+        [SerializeReference] private Footstep[] m_Feet =
         {
-            new Bone(HumanBodyBones.LeftFoot),
-            new Bone(HumanBodyBones.RightFoot),
+            new Footstep(HumanBodyBones.LeftFoot),
+            new Footstep(HumanBodyBones.RightFoot),
         };
 
         [SerializeField] private MaterialSounds m_FootstepSounds = new MaterialSounds();
@@ -39,7 +39,7 @@ namespace GameCreator.Runtime.Characters
 
         private Character m_Character;
         
-        private Dictionary<Transform, Footstep> m_Footsteps = new Dictionary<Transform, Footstep>();
+        private Dictionary<Transform, Footprint> m_Footprints = new Dictionary<Transform, Footprint>();
         
         private readonly RaycastHit[] m_HitsBuffer = new RaycastHit[RAYCAST_BUFFER_SIZE];
 
@@ -86,24 +86,24 @@ namespace GameCreator.Runtime.Characters
             
             for (int i = 0; i < this.m_Feet.Length && i < Phases.Count; i++)
             {
-                Bone foot = this.m_Feet[i];
-                Transform bone = foot.GetTransform(animator);
+                Footstep foot = this.m_Feet[i];
+                Transform bone = foot.Bone.GetTransform(animator);
                 if (bone == null) continue;
 
                 bool phaseGround = this.m_Character.Phases.IsGround(i);
 
-                if (isGrounded && this.m_Footsteps.TryGetValue(bone, out Footstep footstep))
+                if (isGrounded && this.m_Footprints.TryGetValue(bone, out Footprint footprint))
                 {
-                    if (phaseGround && !footstep.WasGrounded)
+                    if (phaseGround && !footprint.WasGrounded)
                     {
                         this.OnStep(i, bone);
                     }
 
-                    footstep.WasGrounded = phaseGround;
+                    footprint.WasGrounded = phaseGround;
                 }
                 else
                 {
-                    this.m_Footsteps[bone] = new Footstep
+                    this.m_Footprints[bone] = new Footprint
                     {
                         WasGrounded = true,
                     };
@@ -198,8 +198,8 @@ namespace GameCreator.Runtime.Characters
             
             for (int i = 0; i < this.m_Feet.Length && i < Phases.Count; ++i)
             {
-                Bone foot = this.m_Feet[i];
-                Transform bone = foot.GetTransform(animator);
+                Footstep foot = this.m_Feet[i];
+                Transform bone = foot.Bone.GetTransform(animator);
                 
                 if (bone == null) continue;
                 bool isOnGround = this.m_Character.Phases.IsGround(i);

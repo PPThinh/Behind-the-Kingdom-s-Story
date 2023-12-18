@@ -21,6 +21,6 @@
 }
 
 #Section-Body.section-active {
-    margin-left: var(--gc-common-indent-left);
+    margin-left: 15px;
     padding: var(--gc-common-space-smallest) 0;
 }

@@ -19,12 +19,17 @@ namespace GameCreator.Runtime.Characters
         
         public override float CalculatePriority(Character character, IInteractive interactive)
         {
-            Transform origin = ShortcutMainCamera.Transform;
-            if (origin == null) return float.MaxValue;
+            Transform camera = ShortcutMainCamera.Transform;
+            if (camera == null) return float.MaxValue;
 
+            Vector3 cameraDirection = camera.TransformDirection(Vector3.forward);
+            Vector3 interactiveDirection = interactive.Position - camera.position;
+
+            if (Vector3.Dot(cameraDirection, interactiveDirection) < 0f) return float.MaxValue; 
+            
             float distance = Vector3.Cross(
-                origin.TransformDirection(Vector3.forward), 
-                interactive.Position - origin.position
+                cameraDirection, 
+                interactiveDirection
             ).magnitude;
 
             return distance < this.m_MaxDistance ? distance : float.MaxValue;

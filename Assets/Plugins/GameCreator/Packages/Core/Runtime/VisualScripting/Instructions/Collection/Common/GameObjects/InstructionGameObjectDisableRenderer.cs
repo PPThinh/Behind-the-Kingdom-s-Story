@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Disable Renderer")]
     [Description("Disables a Renderer component from the game object")]
 
-    [Category("Game Objects/Disable Renderer")]
+    [Category("Game Objects/Components/Disable Renderer")]
 
     [Keywords("Inactive", "Turn", "Off", "Mesh")]
     [Image(typeof(IconSkinMesh), ColorTheme.Type.Red)]

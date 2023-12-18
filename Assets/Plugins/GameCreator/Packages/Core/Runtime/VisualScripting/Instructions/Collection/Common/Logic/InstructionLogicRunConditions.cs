@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Run Conditions")]
     [Description("Executes a Conditions component object")]
 
-    [Category("Logic/Run Conditions")]
+    [Category("Visual Scripting/Run Conditions")]
 
     [Parameter(
         "Conditions",

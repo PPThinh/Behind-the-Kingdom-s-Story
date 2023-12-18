@@ -4,14 +4,14 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("None")]
-    [Category("None")]
+    [Category("Game Objects/None")]
     
     [Image(typeof(IconNull), ColorTheme.Type.TextLight)]
     [Description("Returns a null Sprite reference")]
 
     [Keywords("Null", "Empty")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetSpriteNone : PropertyTypeGetSprite
     {
         public override Sprite Get(Args args) => null;

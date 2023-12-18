@@ -15,7 +15,7 @@ namespace GameCreator.Runtime.VisualScripting
     
     [Keywords("Boolean")]
     
-    [Image(typeof(IconToggleOn), ColorTheme.Type.Red)]
+    [Image(typeof(IconToggleOn), ColorTheme.Type.Yellow)]
     [Serializable]
     public class ConditionMathCompareBooleans : Condition
     {

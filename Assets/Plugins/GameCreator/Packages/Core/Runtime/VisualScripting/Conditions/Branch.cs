@@ -34,7 +34,7 @@ namespace GameCreator.Runtime.VisualScripting
             if (!this.IsEnabled) return BranchResult.False;
             if (this.Breakpoint) Debug.Break();
             
-            if (!this.m_ConditionList.Check(args)) return BranchResult.False;
+            if (!this.m_ConditionList.Check(args, CheckMode.And)) return BranchResult.False;
             
             await this.m_InstructionList.Run(args, cancellable);
             return BranchResult.True;

@@ -43,7 +43,11 @@ namespace GameCreator.Runtime.Cameras
         public virtual bool UseSmoothPosition => this.m_ShotType?.UseSmoothPosition ?? false;
         public virtual bool UseSmoothRotation => this.m_ShotType?.UseSmoothRotation ?? false;
 
-        public TimeMode TimeMode => this.m_TimeMode;
+        public TimeMode TimeMode
+        {
+            get => this.m_TimeMode;
+            set => this.m_TimeMode = value;
+        }
 
         public bool HasObstacle => this.m_ShotType.HasObstacle;
         

@@ -24,7 +24,7 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
         
-        [SerializeField] private PropertyGetCamera m_Camera = GetCameraMain.Create;
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
 
         [Space] 
         [SerializeField] private LayerMask m_CullingMask = -1;
@@ -37,7 +37,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         protected override Task Run(Args args)
         {
-            TCamera camera = this.m_Camera.Get(args);
+            TCamera camera = this.m_Camera.Get<TCamera>(args);
             if (camera == null) return DefaultResult;
 
             camera.Get<Camera>().cullingMask = this.m_CullingMask;

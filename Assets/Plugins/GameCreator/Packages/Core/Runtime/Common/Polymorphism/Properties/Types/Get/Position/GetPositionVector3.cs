@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameCreator.Runtime.Common
 {
     [Title("Vector3")]
-    [Category("Vector3")]
+    [Category("Constants/Vector3")]
     
     [Image(typeof(IconVector3), ColorTheme.Type.Yellow)]
     [Description("Returns a world-space point in space")]
@@ -33,6 +33,12 @@ namespace GameCreator.Runtime.Common
             new GetPositionVector3(position)
         );
 
-        public override string String => this.m_Position.ToString();
+        public override string String => string.Format("({0:0.##}, {1:0.##}, {2:0.##})",
+            this.m_Position.x, 
+            this.m_Position.y,
+            this.m_Position.z
+        );
+        
+        public override Vector3 EditorValue => this.m_Position;
     }
 }

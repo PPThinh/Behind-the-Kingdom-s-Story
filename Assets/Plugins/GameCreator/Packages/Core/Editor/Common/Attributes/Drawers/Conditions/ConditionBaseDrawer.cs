@@ -82,8 +82,9 @@ namespace GameCreator.Editor.Common
                 case SerializedPropertyType.AnimationCurve:
                 case SerializedPropertyType.Gradient:
                 case SerializedPropertyType.Generic:
+                case SerializedPropertyType.Hash128:
                     return true;
-
+                
                 default:
                     Debug.LogErrorFormat("Unhandled Type: {0}", field.propertyType);
                     return false;

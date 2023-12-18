@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Color value of a Local List Variable")]
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetColorLocalList : PropertyTypeSetColor
     {
         [SerializeField]

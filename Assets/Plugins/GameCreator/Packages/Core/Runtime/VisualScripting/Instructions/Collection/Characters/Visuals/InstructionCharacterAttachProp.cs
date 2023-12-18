@@ -37,12 +37,9 @@ namespace GameCreator.Runtime.VisualScripting
         [SerializeField] private Type m_Type = Type.Prefab;
         [SerializeField] private PropertyGetGameObject m_Prop = new PropertyGetGameObject();
 
-        [SerializeField] private Bone m_Bone = new Bone(HumanBodyBones.RightHand);
-        
-        [SerializeField] private Vector3 m_Position = Vector3.zero;
-        [SerializeField] private Vector3 m_Rotation = Vector3.zero;
+        [SerializeField] private HandleField m_Handle = new HandleField();
 
-        public override string Title => $"Attach {this.m_Type} {this.m_Prop} on {this.m_Character} {this.m_Bone}";
+        public override string Title => $"Attach {this.m_Type} {this.m_Prop} on {this.m_Character} {this.m_Handle}";
 
         protected override Task Run(Args args)
         {
@@ -52,19 +49,22 @@ namespace GameCreator.Runtime.VisualScripting
             GameObject prop = this.m_Prop.Get(args);
             if (prop == null) return DefaultResult;
 
+            Args handleArgs = new Args(character.gameObject);
+            HandleResult handle = this.m_Handle.Get(handleArgs);
+            
             switch (this.m_Type)
             {
                 case Type.Prefab:
                     character.Props.AttachPrefab(
-                        this.m_Bone, prop,
-                        this.m_Position, Quaternion.Euler(this.m_Rotation)
+                        handle.Bone, prop,
+                        handle.LocalPosition, handle.LocalRotation
                     );
                     break;
                 
                 case Type.Instance:
                     character.Props.AttachInstance(
-                        this.m_Bone, prop,
-                        this.m_Position, Quaternion.Euler(this.m_Rotation)
+                        handle.Bone, prop,
+                        handle.LocalPosition, handle.LocalRotation
                     );
                     break;
                 

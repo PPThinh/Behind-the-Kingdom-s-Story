@@ -6,10 +6,10 @@ namespace GameCreator.Runtime.Common
     [Title("Opposite of Color")]
     [Category("Math/Opposite of Color")]
     
-    [Image(typeof(IconColor), ColorTheme.Type.Green, typeof(OverlayMinus))]
+    [Image(typeof(IconColor), ColorTheme.Type.Green, typeof(OverlayArrowLeft))]
     [Description("Returns the opposite of the color value")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetColorOpposite : PropertyTypeGetColor
     {
         [SerializeField]

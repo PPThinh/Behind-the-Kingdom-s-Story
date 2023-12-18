@@ -258,11 +258,13 @@ namespace GameCreator.Editor.Common
                 ITEM_HEIGHT,
                 this.ContentMakeItem,
                 this.ContentBindItem
-            );
-            
-            content.focusable = true;
-            content.delegatesFocus = true;
-            content.selectionType = SelectionType.Single;
+            )
+            {
+                focusable = true,
+                delegatesFocus = true,
+                selectionType = SelectionType.Single
+            };
+
             content.RegisterCallback<FocusInEvent>(eventFocus =>
             {
                 if (eventFocus.target is ListView {selectedIndex: -1} eventListView)
@@ -271,14 +273,8 @@ namespace GameCreator.Editor.Common
                 }
             });
 
-            // TODO: [15/03/2023] Remove when Unity 2022.3 LTS is released
-            #if UNITY_2022_2_OR_NEWER
             content.selectionChanged += ContentSelectItem;
             content.itemsChosen += ContentChooseItem;
-            #else
-            content.onSelectionChange += ContentSelectItem;
-            content.onItemsChosen += ContentChooseItem;
-            #endif
 
             content.AddToClassList("gc-tsf-body--content");
             content.RegisterCallback<KeyDownEvent>(eventKeydown =>
@@ -291,18 +287,7 @@ namespace GameCreator.Editor.Common
                 
                 switch (eventKeydown.keyCode)
                 {
-                    case KeyCode.UpArrow:
-                        if (index == 0)
-                        {
-                            this.m_SearchField.Focus();
-                            eventKeydown.StopPropagation();
-                        }
-                        break;
-                    
-                    case KeyCode.DownArrow:
-                        break;
-                    
-                    case KeyCode.LeftArrow:
+                    case KeyCode.Escape:
                         if (isSearch)
                         {
                             this.m_SearchField.value = string.Empty;
@@ -316,17 +301,6 @@ namespace GameCreator.Editor.Common
                         }
                         
                         break;
-
-                    case KeyCode.RightArrow:
-                    {
-                        if (node is TypeNodeFolder)
-                        {
-                            this.ContentChooseItem(new [] { node });
-                            eventKeydown.StopPropagation();
-                        }
-
-                        break;
-                    }
                     
                     case KeyCode.Return:
                     {
@@ -335,10 +309,10 @@ namespace GameCreator.Editor.Common
                             this.ContentChooseItem(new [] { node });
                             eventKeydown.StopPropagation();
                         }
-
+            
                         break;
                     }
-
+            
                     default:
                         this.m_SearchField.Focus();
                         eventKeydown.StopPropagation();
@@ -517,20 +491,7 @@ namespace GameCreator.Editor.Common
         
         private static void PutFocusOnList(VisualElement page)
         {
-            ListView content = GetListView(page);
-            content?.Focus();
-        }
-        
-        private static ListView GetListView(VisualElement element)
-        {
-            if (element is ListView list) return list;
-
-            foreach (VisualElement child in element.Children())
-            {
-                if ((list = GetListView(child)) != null) return list;
-            }
-
-            return null;
+            page.Query<ListView>().First()?.Focus();
         }
 
         // CONFIGURE FOOT: ------------------------------------------------------------------------

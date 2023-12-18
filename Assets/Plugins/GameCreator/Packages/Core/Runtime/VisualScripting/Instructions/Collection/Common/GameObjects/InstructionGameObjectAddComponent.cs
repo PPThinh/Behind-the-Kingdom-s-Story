@@ -8,7 +8,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Title("Add Component")]
     [Description("Adds a component class to the game object")]
 
-    [Category("Game Objects/Add Component")]
+    [Category("Game Objects/Components/Add Component")]
 
     [Keywords("Add", "Append", "MonoBehaviour", "Behaviour", "Script")]
     [Image(typeof(IconComponent), ColorTheme.Type.Yellow, typeof(OverlayPlus))]

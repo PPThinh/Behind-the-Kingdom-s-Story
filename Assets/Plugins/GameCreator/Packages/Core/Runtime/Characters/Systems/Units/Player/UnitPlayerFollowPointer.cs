@@ -79,7 +79,6 @@ namespace GameCreator.Runtime.Characters
 
             this.m_HitBuffer = new RaycastHit[BUFFER_SIZE];
             
-            this.m_InputMove.Enable();
             this.m_InputMove.RegisterStart(this.OnStartPointer);
             this.m_InputMove.RegisterPerform(this.OnPerformPointer);
             
@@ -93,7 +92,6 @@ namespace GameCreator.Runtime.Characters
             
             this.m_InputMove.ForgetStart(this.OnStartPointer);
             this.m_InputMove.ForgetPerform(this.OnPerformPointer);
-            this.m_InputMove.Disable();
             
             this.Character.Motion?.MoveToDirection(Vector3.zero, Space.World, 0);
             this.m_Direction = Vector3.zero;

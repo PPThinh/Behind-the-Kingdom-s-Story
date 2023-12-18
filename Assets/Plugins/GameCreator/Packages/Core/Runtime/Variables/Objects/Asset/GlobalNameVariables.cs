@@ -10,11 +10,13 @@ namespace GameCreator.Runtime.Variables
     )]
 
     [Icon(RuntimePaths.GIZMOS + "GizmoGlobalNameVariables.png")]
+    
+    [Serializable]
     public class GlobalNameVariables : TGlobalVariables, INameVariable
     {
         // MEMBERS: -------------------------------------------------------------------------------
     
-        [SerializeField] private NameList m_NameList = new NameList(
+        [SerializeReference] private NameList m_NameList = new NameList(
             new NameVariable("my-variable", new ValueNumber(5f))
         );
 

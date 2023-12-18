@@ -6,14 +6,14 @@ using UnityEngine;
 namespace GameCreator.Runtime.VisualScripting
 {
     [Image(typeof(IconLight), ColorTheme.Type.Yellow)]
-    [Title("Change Color")]
+    [Title("Light Color")]
     [Description("Smoothly changes the color of a Light component")]
 
-    [Category("Lights/Change Color")]
+    [Category("Lights/Light Color")]
 
     [Parameter("Color", "The color the Light component starts emitting")]
 
-    [Keywords("Colour", "Hue", "Mood", "RGB")]
+    [Keywords("Colour", "Hue", "Mood", "RGB", "Light")]
     [Serializable]
     public class InstructionLightChangeColor : TInstructionLight
     {

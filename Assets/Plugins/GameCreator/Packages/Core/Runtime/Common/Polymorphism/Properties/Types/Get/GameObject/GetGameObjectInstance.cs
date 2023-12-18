@@ -50,6 +50,6 @@ namespace GameCreator.Runtime.Common
             ? this.m_GameObject.name
             : "(none)";
 
-        public override GameObject SceneReference => this.m_GameObject;
+        public override GameObject EditorValue => this.m_GameObject;
     }
 }

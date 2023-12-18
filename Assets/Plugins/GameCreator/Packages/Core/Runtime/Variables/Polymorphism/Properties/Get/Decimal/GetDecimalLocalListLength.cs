@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
     [Description("Returns the amount of elements of a Local List Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetDecimalLocalListLength : PropertyTypeGetDecimal
     {
         [SerializeField] private PropertyGetGameObject m_List = new PropertyGetGameObject();

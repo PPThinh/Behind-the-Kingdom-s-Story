@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Console
     [Title("Console Close")]
     [Description("Closes the Runtime Console")]
 
-    [Category("Debug/Console Close")]
+    [Category("Debug/Console/Console Close")]
 
     [Keywords("Terminal", "Log", "Debug")]
     [Image(typeof(IconTerminal), ColorTheme.Type.Blue, typeof(OverlayMinus))]

@@ -52,7 +52,7 @@ namespace GameCreator.Runtime.VisualScripting
             ? this.m_Hotspot.gameObject.name
             : "(none)";
 
-        public override GameObject SceneReference => this.m_Hotspot != null 
+        public override GameObject EditorValue => this.m_Hotspot != null 
             ? this.m_Hotspot.gameObject
             : null;
     }

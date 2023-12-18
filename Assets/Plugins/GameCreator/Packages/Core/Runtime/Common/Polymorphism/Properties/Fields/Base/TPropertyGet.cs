@@ -36,5 +36,13 @@ namespace GameCreator.Runtime.Common
         {
             return this.m_Property?.String ?? "(none)";
         }
+        
+        // EDITOR: --------------------------------------------------------------------------------
+
+        /// <summary>
+        /// EDITOR ONLY: This is used by editor scripts that require an optional scene value for
+        /// tooling, like displaying the radius of a field. Only use if the value is not dynamic.
+        /// </summary>
+        public TValue EditorValue => this.m_Property.EditorValue;
     }
 }

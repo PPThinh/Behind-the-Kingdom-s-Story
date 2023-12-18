@@ -150,6 +150,7 @@ namespace GameCreator.Editor.Common
         
         private static int CompareAssetRepositories(TAssetRepository x, TAssetRepository y)
         {
+            if (x == null || y == null) return 0;
             return x.Priority.CompareTo(y.Priority);
         }
     }

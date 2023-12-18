@@ -44,7 +44,7 @@ namespace GameCreator.Runtime.Cameras
         {
             this.m_ShotSystemLook = new ShotSystemLook(
                 GetGameObjectInstance.Create(),
-                GetOffsetNone.Create
+                GetDirectionVector3Zero.Create()
             );
             
             this.m_ShotSystemZoom = new ShotSystemZoom();

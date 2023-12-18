@@ -100,7 +100,7 @@ namespace GameCreator.Editor.Common
             });
             
             popupField.AddToClassList(AlignLabel.CLASS_UNITY_ALIGN_LABEL);
-            _ = new AlignLabel(popupField);
+            AlignLabel.On(popupField);
         }
     }
 }

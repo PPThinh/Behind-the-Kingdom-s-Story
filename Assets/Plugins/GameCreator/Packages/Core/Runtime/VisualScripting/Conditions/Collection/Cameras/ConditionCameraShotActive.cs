@@ -20,7 +20,7 @@ namespace GameCreator.Runtime.VisualScripting
     {
         // MEMBERS: -------------------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetShot m_Shot = GetShotInstance.Create;
+        [SerializeField] private PropertyGetGameObject m_Shot = GetGameObjectShot.Create;
 
         // PROPERTIES: ----------------------------------------------------------------------------
         
@@ -30,7 +30,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected override bool Run(Args args)
         {
-            ShotCamera shot = this.m_Shot.Get(args);
+            ShotCamera shot = this.m_Shot.Get<ShotCamera>(args);
             if (shot == null) return false;
 
             MainCamera mainCamera = ShortcutMainCamera.Get<MainCamera>();

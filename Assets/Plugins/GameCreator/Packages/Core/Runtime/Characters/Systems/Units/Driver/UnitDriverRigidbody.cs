@@ -41,6 +41,8 @@ namespace GameCreator.Runtime.Characters
         [NonSerialized] protected float m_GroundTime = -100f;
         [NonSerialized] protected float m_JumpTime = -100f;
         
+        [NonSerialized] private DriverAdditionalTranslation m_AddTranslation;
+        
         // INTERFACE PROPERTIES: ------------------------------------------------------------------
 
         public override Vector3 WorldMoveDirection => this.m_Rigidbody.velocity;
@@ -296,6 +298,15 @@ namespace GameCreator.Runtime.Characters
                 direction,
                 ForceMode.Acceleration
             );
+
+            Vector3 additionalTranslation = this.m_AddTranslation.Consume();
+            if (additionalTranslation != Vector3.zero)
+            {
+                this.m_Rigidbody.AddForce(
+                    additionalTranslation,
+                    ForceMode.VelocityChange
+                );
+            }
         }
 
         // POSITION METHODS: ----------------------------------------------------------------------
@@ -345,8 +356,7 @@ namespace GameCreator.Runtime.Characters
 
         public override void AddPosition(Vector3 amount)
         {
-            this.Transform.position += amount;
-            Physics.SyncTransforms();
+            this.m_AddTranslation.Add(amount);
         }
 
         public override void AddRotation(Quaternion amount)

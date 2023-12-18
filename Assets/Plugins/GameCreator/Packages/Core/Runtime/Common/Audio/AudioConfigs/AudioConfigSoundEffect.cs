@@ -22,8 +22,8 @@ namespace GameCreator.Runtime.Common.Audio
         [SerializeField] 
         private SpatialBlending m_SpatialBlend = SpatialBlending.None;
         
-        [SerializeField] 
-        private PropertyGetGameObject m_Target = new PropertyGetGameObject();
+        [SerializeField]
+        private PropertyGetGameObject m_Target = GetGameObjectNone.Create();
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ namespace GameCreator.Runtime.Common.Audio
         // STATIC CONSTRUCTOR: --------------------------------------------------------------------
 
         public static AudioConfigSoundEffect Create(float volume, Vector2 pitch, float transition,
-            SpatialBlending spatialBlending, GameObject target)
+            TimeMode.UpdateMode time, SpatialBlending spatialBlending, GameObject target)
         {
             return new AudioConfigSoundEffect
             {

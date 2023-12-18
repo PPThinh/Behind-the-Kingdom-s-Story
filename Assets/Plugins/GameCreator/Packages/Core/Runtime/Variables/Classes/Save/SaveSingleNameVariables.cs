@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Variables
     {
         // MEMBERS: -------------------------------------------------------------------------------
         
-        [SerializeField] private List<NameVariable> m_Variables;
+        [SerializeReference] private List<NameVariable> m_Variables;
         
         // PROPERTIES: ----------------------------------------------------------------------------
 

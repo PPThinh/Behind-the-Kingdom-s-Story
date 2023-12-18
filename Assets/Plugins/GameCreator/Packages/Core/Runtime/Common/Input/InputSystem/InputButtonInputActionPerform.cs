@@ -19,68 +19,45 @@ namespace GameCreator.Runtime.Common
 
         [SerializeField] private InputActionFromAsset m_Input = new InputActionFromAsset();
 
-        // PROPERTIES: ----------------------------------------------------------------------------
-        
-        public override bool Active
-        {
-            get => this.m_Input.InputAction?.enabled ?? false;
-            set
-            {
-                switch (value)
-                {
-                    case true: this.Enable(); break;
-                    case false: this.Disable(); break;
-                }
-            }
-        }
-
-        // INITIALIZERS: --------------------------------------------------------------------------
+        // OVERRIDE METHODS: ----------------------------------------------------------------------
         
         public override void OnStartup()
         {
-            this.Enable();
+            base.OnStartup();
+            if (this.m_Input?.InputAction == null) return;
+            
+            this.m_Input.InputAction.canceled -= this.OnInputCancel;
+            this.m_Input.InputAction.started -= this.OnInputStart;
+            this.m_Input.InputAction.performed -= this.OnInputPerform;
+            
+            this.m_Input.InputAction.canceled += this.OnInputCancel;
+            this.m_Input.InputAction.started += this.OnInputStart;
+            this.m_Input.InputAction.performed += this.OnInputPerform;
         }
 
         public override void OnDispose()
         {
-            this.Disable();
-            this.m_Input.InputAction?.Dispose();
+            base.OnDispose();
+            if (this.m_Input?.InputAction == null) return;
+            
+            this.m_Input.InputAction.canceled -= this.OnInputCancel;
+            this.m_Input.InputAction.started -= this.OnInputStart;
+            this.m_Input.InputAction.performed -= this.OnInputPerform;
         }
 
         // PRIVATE METHODS: -----------------------------------------------------------------------
-        
-        private void Enable()
-        {
-            if (this.m_Input.InputAction == null) return;
-            if (this.m_Input.InputAction.enabled) return;
-            
-            this.m_Input.InputAction.Enable();
-            this.m_Input.InputAction.started += this.ExecuteEventStart;
-            this.m_Input.InputAction.canceled += this.ExecuteEventCancel;
-            this.m_Input.InputAction.performed += this.ExecuteEventPerform;
-        }
 
-        private void Disable()
-        {
-            if (this.m_Input.InputAction is not { enabled: true }) return;
-
-            this.m_Input.InputAction.Disable();
-            this.m_Input.InputAction.started -= this.ExecuteEventStart;
-            this.m_Input.InputAction.canceled -= this.ExecuteEventCancel;
-            this.m_Input.InputAction.performed -= this.ExecuteEventPerform;
-        }
-        
-        private void ExecuteEventStart(InputAction.CallbackContext context)
+        private void OnInputStart(InputAction.CallbackContext _)
         {
             this.ExecuteEventStart();
         }
-        
-        private void ExecuteEventCancel(InputAction.CallbackContext context)
+
+        private void OnInputCancel(InputAction.CallbackContext _)
         {
             this.ExecuteEventCancel();
         }
-        
-        private void ExecuteEventPerform(InputAction.CallbackContext context)
+
+        private void OnInputPerform(InputAction.CallbackContext _)
         {
             this.ExecuteEventPerform();
         }

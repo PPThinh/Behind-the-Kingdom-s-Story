@@ -11,11 +11,7 @@ namespace GameCreator.Runtime.VisualScripting
         
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
-        [SerializeField] private InstructionList m_Instructions = new InstructionList();
-        
-        // MEMBERS: -------------------------------------------------------------------------------
-
-        [NonSerialized] private GameObject m_TemplateInstructions;
+        [SerializeField] private RunInstructionsList m_Instructions = new RunInstructionsList();
         
         // CONSTRUCTORS: --------------------------------------------------------------------------
 
@@ -27,7 +23,7 @@ namespace GameCreator.Runtime.VisualScripting
 
         public ClipDefault(InstructionList instructions, float time) : base(time)
         {
-            this.m_Instructions = instructions;
+            this.m_Instructions = new RunInstructionsList(instructions);
         }
 
         // OVERRIDE METHODS: ----------------------------------------------------------------------
@@ -42,20 +38,13 @@ namespace GameCreator.Runtime.VisualScripting
         
         private void Run(Args args)
         {
-            if (this.m_TemplateInstructions == null)
-            {
-                this.m_TemplateInstructions = RunInstructionsList.CreateTemplate(
-                    this.m_Instructions
-                );
-            }
-            
-            _ = RunInstructionsList.Run(
-                args.Clone, this.m_TemplateInstructions, 
+            _ = this.m_Instructions.Run(
+                args.Clone,
                 new RunnerConfig
                 {
                     Name = "On Clip Run",
-                    Location = new RunnerLocationPosition(
-                        args.Self != null ? args.Self.transform.position : Vector3.zero, 
+                    Location = new RunnerLocationLocation(
+                        args.Self != null ? args.Self.transform.position : Vector3.zero,
                         args.Self != null ? args.Self.transform.rotation : Quaternion.identity
                     )
                 }

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal)]
     [Description("Returns the direction vector value of a Local List Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetRotationDirectionLocalList : PropertyTypeGetRotation
     {
         [SerializeField]

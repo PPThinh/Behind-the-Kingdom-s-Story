@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class TrackDefault : Track
     {
-        [SerializeField] private ClipDefault[] m_Clips = Array.Empty<ClipDefault>();
+        [SerializeReference] private ClipDefault[] m_Clips = Array.Empty<ClipDefault>();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 

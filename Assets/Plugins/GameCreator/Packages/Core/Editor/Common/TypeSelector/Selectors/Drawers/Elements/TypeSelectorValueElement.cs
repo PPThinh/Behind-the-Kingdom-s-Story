@@ -61,7 +61,8 @@ namespace GameCreator.Editor.Common
             using ChangeEvent<Type> changeTypeEvent = ChangeEvent<Type>.GetPooled(
                 prevType, newType
             );
-            
+
+            changeTypeEvent.target = this;
             this.SendEvent(changeTypeEvent);
         }
     }

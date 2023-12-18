@@ -1,4 +1,4 @@
-TrackTool {
+#GC-Sequence-Track-Root {
     border-right-width: var(--gc-common-border-width);
     border-left-width: var(--gc-common-border-width);
     border-bottom-width: var(--gc-common-border-width);
@@ -9,7 +9,7 @@ TrackTool {
     position: relative;
 }
 
-TrackTool #GC-Sequence-Track-Lane {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Lane {
     -unity-background-scale-mode: stretch-to-fill;
     height: var(--gc-sequence-track-height);
     flex-grow: 1;
@@ -21,7 +21,7 @@ TrackTool #GC-Sequence-Track-Lane {
     position: relative;
 }
 
-TrackTool #GC-Sequence-Track-Lane-Button {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Lane-Button {
     margin: 0;
     padding: 0;
     border-width: 0;
@@ -31,26 +31,26 @@ TrackTool #GC-Sequence-Track-Lane-Button {
     flex-shrink: 0;
 }
 
-TrackTool #GC-Sequence-Track-Lane-Button:enabled:hover {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Lane-Button:enabled:hover {
     background-color: var(--gc-color-list-head-hover);
 }
 
-TrackTool #GC-Sequence-Track-Lane-Button:enabled:active {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Lane-Button:enabled:active {
     background-color: var(--gc-color-list-head-press);
 }
 
-TrackTool #GC-Sequence-Track-Lane-Button Image {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Lane-Button Image {
     height: var(--gc-sequence-clip-height);
     width: var(--gc-sequence-clip-height);
     margin: var(--gc-sequence-clip-offset);
 }
 
-TrackTool #GC-Sequence-Track-Head {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Head {
     position: absolute;
     height: var(--gc-sequence-track-height);
 }
 
-TrackTool #GC-Sequence-Track-Track {
+#GC-Sequence-Track-Root #GC-Sequence-Track-Track {
     width: 100%;
     height: var(--gc-sequence-track-height);
     overflow: hidden;

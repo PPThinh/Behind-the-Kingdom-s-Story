@@ -6,7 +6,7 @@ namespace GameCreator.Runtime.Variables
 {
     [Image(typeof(IconString), ColorTheme.Type.Yellow)]
     [Title("String")]
-    [Category("String")]
+    [Category("Values/String")]
     
     [Serializable]
     public class ValueString : TValue
@@ -63,7 +63,8 @@ namespace GameCreator.Runtime.Variables
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RuntimeInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueString), CreateValue)
+            new TypeData(typeof(ValueString), CreateValue),
+            typeof(string)
         );
         
         #if UNITY_EDITOR
@@ -71,7 +72,8 @@ namespace GameCreator.Runtime.Variables
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInit() => RegisterValueType(
             TYPE_ID, 
-            new TypeData(typeof(ValueString), CreateValue)
+            new TypeData(typeof(ValueString), CreateValue),
+            typeof(string)
         );
         
         #endif

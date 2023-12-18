@@ -11,9 +11,6 @@ namespace GameCreator.Runtime.Common
         #pragma warning disable 414
 
         [SerializeField] [HideInInspector]
-        private bool m_IsExpanded = true;
-        
-        [SerializeField] [HideInInspector]
         private bool m_Breakpoint = false;
         
         [SerializeField] [HideInInspector]
@@ -31,15 +28,5 @@ namespace GameCreator.Runtime.Common
 
         public virtual Color Color => ColorTheme.Get(ColorTheme.Type.TextNormal); 
         public virtual string Title => TextUtils.Humanize(this.GetType().ToString());
-        
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
-        
-        protected TPolymorphicItem()
-        { }
-
-        protected TPolymorphicItem(bool isExpanded)
-        {
-            this.m_IsExpanded = isExpanded;
-        }
     }
 }

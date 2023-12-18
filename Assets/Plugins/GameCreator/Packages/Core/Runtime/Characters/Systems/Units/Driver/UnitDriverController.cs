@@ -39,6 +39,7 @@ namespace GameCreator.Runtime.Characters
         [NonSerialized] protected float m_JumpTime = -100f;
 
         [NonSerialized] private DriverControllerComponent m_Helper;
+        [NonSerialized] private DriverAdditionalTranslation m_AddTranslation;
         
         [NonSerialized] private Vector3 m_SlideFromCharacter;
         [NonSerialized] private int m_FrameSlideFromCharacter;
@@ -267,7 +268,9 @@ namespace GameCreator.Runtime.Characters
                 float deltaSpeed = motion.LinearSpeed * this.Character.Time.DeltaTime;
                 movement += this.m_SlideFromCharacter * deltaSpeed;
             }
-
+            
+            movement += this.m_AddTranslation.Consume();
+            
             if (this.m_Controller.enabled)
             {
                 this.m_Controller.Move(movement);
@@ -323,8 +326,7 @@ namespace GameCreator.Runtime.Characters
 
         public override void AddPosition(Vector3 amount)
         {
-            this.Transform.position += amount;
-            Physics.SyncTransforms();
+            this.m_AddTranslation.Add(amount);
         }
 
         public override void AddRotation(Quaternion amount)

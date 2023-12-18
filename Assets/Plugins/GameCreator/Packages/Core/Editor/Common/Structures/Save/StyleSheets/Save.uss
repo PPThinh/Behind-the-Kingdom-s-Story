@@ -12,7 +12,6 @@
     border-color: var(--gc-color-border-default);
     border-width: var(--gc-common-border-width);
     border-radius: var(--gc-common-border-radius);
-    background-color: var(--gc-color-bg-light);
     margin: 0;
     padding: 0;
     overflow: hidden;

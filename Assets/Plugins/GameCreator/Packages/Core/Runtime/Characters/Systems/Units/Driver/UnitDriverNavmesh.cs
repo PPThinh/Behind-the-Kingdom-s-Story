@@ -37,6 +37,8 @@ namespace GameCreator.Runtime.Characters
         [NonSerialized] private Vector3 m_Velocity = Vector3.zero;
         [NonSerialized] private Vector3 m_PreviousPosition = Vector3.zero;
 
+        [NonSerialized] private DriverAdditionalTranslation m_AddTranslation;
+
         // INTERFACE PROPERTIES: ------------------------------------------------------------------
 
         public override Vector3 WorldMoveDirection => this.m_Velocity;
@@ -173,12 +175,14 @@ namespace GameCreator.Runtime.Characters
                 }
             }
 
+            Vector3 additionalTranslation = this.m_AddTranslation.Consume();
+            if (additionalTranslation != Vector3.zero) this.m_Agent.Move(additionalTranslation);
+
             Vector3 currentPosition = this.Transform.position;
             
-            this.m_Velocity = (
+            this.m_Velocity = 
                 Vector3.Normalize(currentPosition - this.m_PreviousPosition) *
-                this.m_MoveDirection.magnitude
-            );
+                this.m_MoveDirection.magnitude;
 
             this.m_PreviousPosition = currentPosition;
         }
@@ -222,7 +226,7 @@ namespace GameCreator.Runtime.Characters
 
         public override void AddPosition(Vector3 amount)
         {
-            this.SetPosition(this.Transform.position + amount);
+            this.m_AddTranslation.Add(amount);
         }
 
         public override void AddRotation(Quaternion amount)

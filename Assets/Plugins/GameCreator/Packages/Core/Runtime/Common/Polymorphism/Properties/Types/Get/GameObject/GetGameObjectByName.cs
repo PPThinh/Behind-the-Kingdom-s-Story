@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconSearch), ColorTheme.Type.Yellow)]
     [Description("Searches the scene for a Game Object with a specific name")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectByName : PropertyTypeGetGameObject
     {
         [SerializeField] protected PropertyGetString m_Name = new PropertyGetString("");
@@ -22,6 +22,6 @@ namespace GameCreator.Runtime.Common
 
         public override string String => this.m_Name.ToString();
 
-        public override GameObject SceneReference => GameObject.Find(this.m_Name.ToString());
+        public override GameObject EditorValue => GameObject.Find(this.m_Name.ToString());
     }
 }

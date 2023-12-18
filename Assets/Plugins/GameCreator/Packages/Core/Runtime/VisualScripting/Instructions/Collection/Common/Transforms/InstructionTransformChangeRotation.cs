@@ -22,11 +22,19 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionTransformChangeRotation : TInstructionTransform
     {
+        private enum SpaceMode
+        {
+            GlobalRotation = Space.World,
+            LocalRotation = Space.Self
+        }
+        
+        // EXPOSED MEMBERS: -----------------------------------------------------------------------
+        
+        [SerializeField] private SpaceMode m_Space = SpaceMode.GlobalRotation;
         [SerializeField] private ChangeQuaternion m_Rotation = new ChangeQuaternion(
             Quaternion.Euler(0f, 180f, 0f)
         );
-
-        [Space] [SerializeField] private Space m_Space = Space.Self;
+        
         [SerializeField] private Transition m_Transition = new Transition();
         
         // PROPERTIES: ----------------------------------------------------------------------------
@@ -42,8 +50,8 @@ namespace GameCreator.Runtime.VisualScripting
 
             Quaternion valueSource = this.m_Space switch
             {
-                Space.World => gameObject.transform.rotation,
-                Space.Self => gameObject.transform.localRotation,
+                SpaceMode.GlobalRotation => gameObject.transform.rotation,
+                SpaceMode.LocalRotation => gameObject.transform.localRotation,
                 _ => throw new ArgumentOutOfRangeException()
             };
             
@@ -57,11 +65,11 @@ namespace GameCreator.Runtime.VisualScripting
                 {
                     switch (this.m_Space)
                     {
-                        case Space.World:
+                        case SpaceMode.GlobalRotation:
                             gameObject.transform.rotation = Quaternion.LerpUnclamped(a, b, t);
                             break;
                         
-                        case Space.Self:
+                        case SpaceMode.LocalRotation:
                             gameObject.transform.localRotation = Quaternion.LerpUnclamped(a, b, t);
                             break;
                         

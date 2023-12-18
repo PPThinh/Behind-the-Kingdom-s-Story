@@ -30,5 +30,7 @@ namespace GameCreator.Runtime.Common
         public override string String => this.m_Texture != null
             ? this.m_Texture.name
             : "(none)";
+
+        public override Texture EditorValue => this.m_Texture;
     }
 }

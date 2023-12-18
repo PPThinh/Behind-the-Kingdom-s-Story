@@ -30,18 +30,13 @@ namespace GameCreator.Runtime.VisualScripting
         protected internal override void OnEnable(Trigger trigger)
         {
             base.OnEnable(trigger);
-            EnhancedTouchSupport.Enable();
-        }
-
-        protected internal override void OnDisable(Trigger trigger)
-        {
-            base.OnDisable(trigger);
-            EnhancedTouchSupport.Disable();
+            InputManager.Instance.RequireEnhancedTouchInput();
         }
 
         protected internal override void OnUpdate(Trigger trigger)
         {
             base.OnUpdate(trigger);
+            InputManager.Instance.RequireEnhancedTouchInput();
             
             if (!this.InteractionSuccessful(trigger)) return;
             if (IsPointerOverUI()) return;

@@ -13,8 +13,6 @@ namespace GameCreator.Editor.Characters
 
         // MEMBERS: -------------------------------------------------------------------------------
 
-        private readonly RigLayers m_Instructions;
-        
         private Button m_ButtonAdd;
 
         // PROPERTIES: ----------------------------------------------------------------------------
@@ -44,7 +42,6 @@ namespace GameCreator.Editor.Characters
             : base(property, "m_Rigs")
         {
             this.SerializedObject.Update();
-            this.m_Instructions = property.GetValue<RigLayers>();
         }
 
         // PROTECTED METHODS: ---------------------------------------------------------------------

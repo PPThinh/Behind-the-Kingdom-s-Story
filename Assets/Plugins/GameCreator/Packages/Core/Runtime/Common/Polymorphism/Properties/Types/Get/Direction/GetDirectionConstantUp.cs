@@ -19,5 +19,7 @@ namespace GameCreator.Runtime.Common
         );
 
         public override string String => "Up";
+        
+        public override Vector3 EditorValue => Vector3.up;
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Player")]
-    [Category("Characters/Player")]
+    [Title("Player Scale")]
+    [Category("Characters/Player Scale")]
     
     [Image(typeof(IconPlayer), ColorTheme.Type.Green)]
     [Description("Scale of the Player character in local or world space")]

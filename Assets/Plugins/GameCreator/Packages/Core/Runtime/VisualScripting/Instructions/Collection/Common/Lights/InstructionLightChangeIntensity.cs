@@ -6,10 +6,10 @@ using UnityEngine;
 namespace GameCreator.Runtime.VisualScripting
 {
     [Image(typeof(IconLight), ColorTheme.Type.Yellow)]
-    [Title("Change Intensity")]
+    [Title("Light Intensity")]
     [Description("Smoothly changes the intensity of a Light component")]
 
-    [Category("Lights/Change Intensity")]
+    [Category("Lights/Light Intensity")]
 
     [Parameter("Intensity", "The intensity change that the Light component undergoes")]
 

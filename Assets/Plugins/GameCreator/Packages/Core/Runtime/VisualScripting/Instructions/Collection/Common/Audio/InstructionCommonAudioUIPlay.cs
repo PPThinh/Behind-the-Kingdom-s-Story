@@ -25,22 +25,22 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCommonAudioUIPlay : Instruction
     {
-        [SerializeField] private AudioClip m_AudioClip = null;
+        [SerializeField] private PropertyGetAudio m_AudioClip = GetAudioClip.Create;
         [SerializeField] private bool m_WaitToComplete = false;
         
         [SerializeField] private AudioConfigSoundUI m_Config = new AudioConfigSoundUI();
 
-        public override string Title => string.Format(
-            "Play UI sound: {0}",
-            this.m_AudioClip != null ? this.m_AudioClip.name : "(none)"
-        );
+        public override string Title => $"Play UI sound: {this.m_AudioClip}";
 
         protected override async Task Run(Args args)
         {
+            AudioClip audioClip = this.m_AudioClip.Get(args);
+            if (audioClip == null) return;
+            
             if (this.m_WaitToComplete)
             {
                 await AudioManager.Instance.UserInterface.Play(
-                    this.m_AudioClip, 
+                    audioClip, 
                     this.m_Config,
                     args
                 );
@@ -48,7 +48,7 @@ namespace GameCreator.Runtime.VisualScripting
             else
             {
                 _ = AudioManager.Instance.UserInterface.Play(
-                    this.m_AudioClip, 
+                    audioClip, 
                     this.m_Config,
                     args
                 );

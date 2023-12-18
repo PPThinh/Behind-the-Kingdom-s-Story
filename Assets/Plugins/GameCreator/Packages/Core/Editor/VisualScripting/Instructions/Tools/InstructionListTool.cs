@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.UIElements;
 using GameCreator.Editor.Common;
 using GameCreator.Runtime.Common;
 using GameCreator.Runtime.VisualScripting;
+using UnityEngine;
 
 namespace GameCreator.Editor.VisualScripting
 {
@@ -18,9 +20,12 @@ namespace GameCreator.Editor.VisualScripting
 
         // MEMBERS: -------------------------------------------------------------------------------
 
-        protected Button m_ButtonAdd;
-        protected Button m_ButtonPaste;
-        protected Button m_ButtonPlay;
+        [NonSerialized] protected Button m_ButtonAdd;
+        [NonSerialized] protected Button m_ButtonPaste;
+        [NonSerialized] protected Button m_ButtonPlay;
+
+        [NonSerialized] private readonly BaseActions m_BaseActions;
+        [NonSerialized] private IVisualElementScheduledItem m_UpdateScheduler;
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
@@ -42,22 +47,50 @@ namespace GameCreator.Editor.VisualScripting
         public override bool AllowBreakpoint => true;
         public override bool AllowDisable => true;
         public override bool AllowDocumentation => true;
-        
-        private BaseActions Actions => this.SerializedObject?.targetObject as BaseActions;
 
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
         public InstructionListTool(SerializedProperty property)
             : base(property, InstructionListDrawer.NAME_INSTRUCTIONS)
         {
-            this.SerializedObject.Update();
+            this.m_BaseActions = property.serializedObject.targetObject as BaseActions;
+            
+            this.RegisterCallback<AttachToPanelEvent>(this.OnAttachPanel);
+            this.RegisterCallback<DetachFromPanelEvent>(this.OnDetachPanel);
+        }
+        
+        // SCHEDULER METHODS: ---------------------------------------------------------------------
 
-            this.OnChangePlayMode(EditorApplication.isPlaying
-                ? PlayModeStateChange.EnteredPlayMode
-                : PlayModeStateChange.ExitingPlayMode
-            );
+        private void OnAttachPanel(AttachToPanelEvent attachEvent)
+        {
+            if (!EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if (this.m_BaseActions == null) return;
+            
+            if (this.m_UpdateScheduler != null) return;
+            this.m_UpdateScheduler = this.schedule.Execute(this.OnUpdate).Every(0);
         }
 
+        private void OnDetachPanel(DetachFromPanelEvent detachEvent)
+        {
+            this.m_UpdateScheduler?.Pause();
+        }
+        
+        private void OnUpdate()
+        {
+            if (this.m_Property.propertyPath != BaseActionsEditor.NAME_INSTRUCTIONS) return;
+            
+            foreach (VisualElement child in this.m_Body.Children())
+            {
+                child.RemoveFromClassList(CLASS_INSTRUCTION_RUNNING);
+            }
+            
+            if (this.m_BaseActions == null) return;
+            int index = this.m_BaseActions.IsRunning ? this.m_BaseActions.RunningIndex : -1;
+            
+            if (this.m_Body.childCount <= index || index < 0) return;
+            this.m_Body[index].AddToClassList(CLASS_INSTRUCTION_RUNNING);
+        }
+        
         // PROTECTED METHODS: ---------------------------------------------------------------------
 
         protected override VisualElement MakeItemTool(int index)
@@ -106,61 +139,21 @@ namespace GameCreator.Editor.VisualScripting
             this.m_Foot.Add(this.m_ButtonAdd);
             this.m_Foot.Add(this.m_ButtonPaste);
             this.m_Foot.Add(this.m_ButtonPlay);
-            
-            this.m_ButtonPlay.style.display = this.Actions != null
+
+            this.m_ButtonPlay.SetEnabled(EditorApplication.isPlayingOrWillChangePlaymode);
+            this.m_ButtonPlay.style.display = this.SerializedObject?.targetObject as BaseActions != null
                 ? DisplayStyle.Flex
                 : DisplayStyle.None;
-        }
-
-        private void OnChangePlayMode(PlayModeStateChange state)
-        {
-            this.m_ButtonPlay?.SetEnabled(state == PlayModeStateChange.EnteredPlayMode);
-            
-            BaseActions actions = this.Actions;
-            if (actions == null) return;
-
-            actions.EventInstructionRun -= this.OnRunInstruction;
-            actions.EventInstructionEndRunning -= this.OnEndRunning;
-            
-            if (state == PlayModeStateChange.EnteredPlayMode)
-            {
-                if (actions.IsRunning)
-                {
-                    this.OnRunInstruction(actions.RunningIndex);
-                }
-                
-                actions.EventInstructionRun += this.OnRunInstruction;
-                actions.EventInstructionEndRunning += this.OnEndRunning;
-            }
         }
         
         // PRIVATE METHODS: -----------------------------------------------------------------------
 
         private void RunInstructions()
         {
-            BaseActions actions = this.Actions;
-            if (actions == null) return;
+            if (!EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if (this.m_BaseActions == null) return;
             
-            actions.Invoke(actions.gameObject);
-        }
-        
-        private void OnRunInstruction(int index)
-        {
-            foreach (VisualElement child in this.m_Body.Children())
-            {
-                child.RemoveFromClassList(CLASS_INSTRUCTION_RUNNING);
-            }
-            
-            if (this.m_Body.childCount <= index) return;
-            this.m_Body[index].AddToClassList(CLASS_INSTRUCTION_RUNNING);
-        }
-        
-        private void OnEndRunning()
-        {
-            foreach (VisualElement child in this.m_Body.Children())
-            {
-                child.RemoveFromClassList(CLASS_INSTRUCTION_RUNNING);
-            }
+            this.m_BaseActions.Invoke(this.m_BaseActions.gameObject);
         }
     }
 }

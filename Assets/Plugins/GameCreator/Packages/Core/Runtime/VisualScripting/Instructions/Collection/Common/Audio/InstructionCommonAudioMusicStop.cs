@@ -22,13 +22,14 @@ namespace GameCreator.Runtime.VisualScripting
     [Serializable]
     public class InstructionCommonAudioMusicStop : Instruction
     {
-        [SerializeField] private AudioClip m_AudioClip = null;
+        [SerializeField] private PropertyGetAudio m_AudioClip = GetAudioClip.Create;
+        
         [SerializeField] private bool m_WaitToComplete = false;
         [SerializeField] private float transitionOut = 2f;
 
         public override string Title => string.Format(
             "Stop Music: {0} {1}",
-            this.m_AudioClip != null ? this.m_AudioClip.name : "(none)",
+            this.m_AudioClip,
             this.transitionOut < float.Epsilon 
                 ? string.Empty 
                 : string.Format(
@@ -40,17 +41,20 @@ namespace GameCreator.Runtime.VisualScripting
 
         protected override async Task Run(Args args)
         {
+            AudioClip audioClip = this.m_AudioClip.Get(args);
+            if (audioClip == null) return;
+            
             if (this.m_WaitToComplete)
             {
                 await AudioManager.Instance.Music.Stop(
-                    this.m_AudioClip,
+                    audioClip,
                     this.transitionOut
                 );
             }
             else
             {
                 _ = AudioManager.Instance.Music.Stop(
-                    this.m_AudioClip,
+                    audioClip,
                     this.transitionOut
                 );
             }

@@ -10,7 +10,9 @@ namespace GameCreator.Editor.Common
         private const string USS_PATH =
             EditorPaths.COMMON + "Polymorphism/Properties/Styles/PropertyElement";
 
-        private static readonly IIcon ICON_DROP = new IconDropdown(ColorTheme.Type.TextLight); 
+        private static readonly IIcon ICON_DROP = new IconDropdown(ColorTheme.Type.TextLight);
+        
+        private const string CLASS_BODY_CONTENT = "gc-property-element-body-content";
         
         // MEMBERS: -------------------------------------------------------------------------------
 
@@ -21,10 +23,7 @@ namespace GameCreator.Editor.Common
         
         protected override string ElementNameRoot => "GC-PropertyElement-Root";
         protected override string ElementNameHead => "GC-PropertyElement-Head";
-
-        protected override string ElementNameBody => this.HideLabels
-            ? "GC-PropertyElement-Body-HideLabels"
-            : "GC-PropertyElement-Body-ShowLabels";
+        protected override string ElementNameBody => "GC-PropertyElement-Body";
 
         // EVENTS: --------------------------------------------------------------------------------
 
@@ -35,7 +34,7 @@ namespace GameCreator.Editor.Common
         public PropertyElement(SerializedProperty property, string label, bool hideLabels) 
             : base(property, hideLabels)
         {
-            _ = new AlignLabel(this);
+            AlignLabel.On(this);
             
             this.TypeSelector = new TypeSelectorFancyProperty(this.m_Property, this.m_Button);
             this.TypeSelector.EventChange += this.OnChange;
@@ -69,7 +68,7 @@ namespace GameCreator.Editor.Common
 
         protected override void CreateBody()
         {
-            SerializationUtils.CreateChildProperties(
+            bool hasAnyProperties = SerializationUtils.CreateChildProperties(
                 this.m_Body, 
                 this.m_Property,
                 this.HideLabels
@@ -77,6 +76,15 @@ namespace GameCreator.Editor.Common
                     : SerializationUtils.ChildrenMode.ShowLabelsInChildren,
                 true
             );
+            
+            if (hasAnyProperties)
+            {
+                this.m_Body.AddToClassList(CLASS_BODY_CONTENT);
+            }
+            else
+            {
+                this.m_Body.RemoveFromClassList(CLASS_BODY_CONTENT);
+            }
         }
 
         protected override void OnChange(Type prevType, Type newType)

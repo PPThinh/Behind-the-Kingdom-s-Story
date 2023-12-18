@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.VisualScripting
     [Keywords("Audio", "Sounds")]
     [Image(typeof(IconMusicNote), ColorTheme.Type.Yellow)]
     
-    [Category("Play Sound")]
+    [Category("Audio/Play Sound")]
     [Description(
         "Plays a User Interface sound effect when the Hotspot is activated or deactivated"
     )]

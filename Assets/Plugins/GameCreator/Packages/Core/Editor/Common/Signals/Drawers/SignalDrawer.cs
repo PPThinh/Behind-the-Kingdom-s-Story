@@ -32,7 +32,7 @@ namespace GameCreator.Editor.Common
         private static readonly IIcon ICON_FAVORITE_OFF = new IconStarOutline(ColorTheme.Type.TextLight);
         private static readonly IIcon ICON_DROPDOWN = new IconDropdown(ColorTheme.Type.TextLight);
         
-        public const string KEY_SIGNALS_FAVORITES = "gc:signals-favorites";
+        private const string KEY_SIGNALS_FAVORITES = "gc:signals-favorites";
 
         // PAINT METHODS: -------------------------------------------------------------------------
         
@@ -132,7 +132,7 @@ namespace GameCreator.Editor.Common
             nameContainer.Add(favorite);
             nameContainer.Add(dropdown);
 
-            _ = new AlignLabel(nameContainer);
+            AlignLabel.On(nameContainer);
 
             root.Add(nameContainer);
             root.SetEnabled(!EditorApplication.isPlayingOrWillChangePlaymode);
@@ -144,7 +144,7 @@ namespace GameCreator.Editor.Common
         
         private static string[] GetFavoriteSignals()
         {
-            string json = EditorPrefs.GetString(KEY_SIGNALS_FAVORITES, string.Empty);
+            string json = EditorPrefs.GetString(KeyFavorites, string.Empty);
             if (string.IsNullOrEmpty(json)) return Array.Empty<string>();
 
             Favorites favorites = JsonUtility.FromJson<Favorites>(json); 
@@ -173,7 +173,7 @@ namespace GameCreator.Editor.Common
             };
             
             string json = JsonUtility.ToJson(favorites);
-            EditorPrefs.SetString(KEY_SIGNALS_FAVORITES, json);
+            EditorPrefs.SetString(KeyFavorites, json);
         }
 
         private static void RemoveFavorite(string text)
@@ -187,7 +187,16 @@ namespace GameCreator.Editor.Common
             };
 
             string json = JsonUtility.ToJson(favorites);
-            EditorPrefs.SetString(KEY_SIGNALS_FAVORITES, json);
+            EditorPrefs.SetString(KeyFavorites, json);
+        }
+
+        private static string KeyFavorites
+        {
+            get
+            {
+                int hashProductName = Application.productName.GetHashCode();
+                return $"{KEY_SIGNALS_FAVORITES}:{hashProductName}";
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Description("Sets the Texture value of a Global List Variable")]
     [Image(typeof(IconListVariable), ColorTheme.Type.Teal, typeof(OverlayDot))]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class SetTextureGlobalList : PropertyTypeSetTexture
     {
         [SerializeField]

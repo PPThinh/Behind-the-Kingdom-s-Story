@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Common
 {
-    [Title("Player")]
-    [Category("Characters/Player")]
+    [Title("Player Rotation")]
+    [Category("Characters/Player Rotation")]
     
     [Image(typeof(IconPlayer), ColorTheme.Type.Green)]
     [Description("Rotation of the Player character in local or world space")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetRotationCharactersPlayer : PropertyTypeGetRotation
     {
         [SerializeField] private RotationSpace m_Space = RotationSpace.Global;

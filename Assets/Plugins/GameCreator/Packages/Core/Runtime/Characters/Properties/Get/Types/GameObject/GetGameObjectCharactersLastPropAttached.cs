@@ -4,23 +4,23 @@ using GameCreator.Runtime.Common;
 
 namespace GameCreator.Runtime.Characters
 {
-    [Title("Last Prop Attached")]
-    [Category("Characters/Last Prop Attached")]
+    [Title("Last Prop Instance Attached")]
+    [Category("Characters/Props/Last Prop Instance Attached")]
     
     [Image(typeof(IconTennis), ColorTheme.Type.Yellow, typeof(OverlayPlus))]
     [Description("Reference to the latest Prop instance attached to a Character")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectCharactersLastPropAttached : PropertyTypeGetGameObject
     {
         public override GameObject Get(Args args)
         {
-            return Props.LastPropAttached;
+            return Props.LastPropAttachedInstance;
         }
 
         public override GameObject Get(GameObject gameObject)
         {
-            return Props.LastPropAttached;
+            return Props.LastPropAttachedInstance;
         }
 
         public override string String => "Last Prop Attached";

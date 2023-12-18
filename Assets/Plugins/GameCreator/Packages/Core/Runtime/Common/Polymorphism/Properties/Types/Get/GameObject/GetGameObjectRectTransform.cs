@@ -49,7 +49,7 @@ namespace GameCreator.Runtime.Common
             ? this.m_RectTransform.name
             : "(none)";
 
-        public override GameObject SceneReference => this.m_RectTransform != null
+        public override GameObject EditorValue => this.m_RectTransform != null
             ? this.m_RectTransform.gameObject
             : null;
     }

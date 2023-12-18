@@ -28,7 +28,8 @@ namespace GameCreator.Editor.Characters
             get
             {
                 const string nameType = BoneDrawer.PROP_TYPE;
-                SerializedProperty type = this.m_Property.FindPropertyRelative(nameType);
+                SerializedProperty bone = this.m_Property.FindPropertyRelative("m_Bone");
+                SerializedProperty type = bone.FindPropertyRelative(nameType);
                 
                 switch (type.enumValueIndex)
                 {
@@ -37,12 +38,12 @@ namespace GameCreator.Editor.Characters
                     
                     case 1: // Human
                         const string nameHuman = BoneDrawer.PROP_HUMAN;
-                        SerializedProperty human = this.m_Property.FindPropertyRelative(nameHuman);
+                        SerializedProperty human = bone.FindPropertyRelative(nameHuman);
                         return $"Human {human.enumDisplayNames[human.enumValueIndex]}";
                         
                     case 2: // Path
                         const string namePath = BoneDrawer.PROP_PATH;
-                        SerializedProperty path = this.m_Property.FindPropertyRelative(namePath);
+                        SerializedProperty path = bone.FindPropertyRelative(namePath);
                         return $"Path {path.stringValue}";
                     
                     default: throw new ArgumentOutOfRangeException();
@@ -65,7 +66,10 @@ namespace GameCreator.Editor.Characters
 
         protected override void SetupBody()
         {
-            VisualElement fieldBody = BoneDrawer.CreatePropertyGUI(this.m_Property, "Bone");
+            VisualElement fieldBody = BoneDrawer.CreatePropertyGUI(
+                this.m_Property.FindPropertyRelative("m_Bone"),
+                "Bone"
+            );
 
             fieldBody.Bind(this.m_Property.serializedObject);
             fieldBody.RegisterCallback<SerializedPropertyChangeEvent>(change =>

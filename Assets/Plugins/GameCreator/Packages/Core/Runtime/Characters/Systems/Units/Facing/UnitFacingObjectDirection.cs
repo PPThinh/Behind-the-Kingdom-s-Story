@@ -1,4 +1,5 @@
 ﻿using System;
+using GameCreator.Runtime.Cameras;
 using UnityEngine;
 using GameCreator.Runtime.Common;
 
@@ -16,7 +17,7 @@ namespace GameCreator.Runtime.Characters
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
         
         [SerializeField]
-        private PropertyGetGameObject m_DirectionOf = GetGameObjectMainCamera.Create();
+        private PropertyGetGameObject m_DirectionOf = GetGameObjectCameraMain.Create;
         
         // PROPERTIES: ----------------------------------------------------------------------------
         

@@ -30,8 +30,6 @@ namespace GameCreator.Runtime.Common
 
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public override bool Active => true;
-
         private bool IsFired { get; set; } = false;
         private float PressTime { get; set; } = -999f;
 

@@ -7,6 +7,8 @@ namespace GameCreator.Runtime.Common
     [Serializable]
     public class RunConditionsList : TRun<ConditionList>
     {
+        private const int PREWARM_COUNTER = 1;
+        
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private ConditionList m_Conditions;
@@ -40,10 +42,15 @@ namespace GameCreator.Runtime.Common
 
         public bool Check(Args args)
         {
+            return this.Check(args, RunnerConfig.Default);
+        }
+
+        public bool Check(Args args, RunnerConfig config)
+        {
             if ((this.m_Conditions?.Length ?? 0) == 0) return true;
             
             GameObject template = this.Template;
-            return Check(args, template);
+            return Check(args, template, config);
         }
         
         // PUBLIC STATIC METHODS: -----------------------------------------------------------------
@@ -57,20 +64,23 @@ namespace GameCreator.Runtime.Common
         {
             if ((template.Get<RunnerConditionsList>().Value?.Length ?? 0) == 0) return true;
             
-            RunnerConditionsList runner = RunnerConditionsList.CreateRunner<RunnerConditionsList>(
+            RunnerConditionsList runner = RunnerConditionsList.Pick<RunnerConditionsList>(
                 template,
-                config
+                config,
+                PREWARM_COUNTER
             );
             
             if (runner == null) return false;
             
-            bool result = runner.Value.Check(args);
-            if (runner != null) UnityEngine.Object.Destroy(runner.gameObject);
-
+            bool result = runner.Value.Check(args, CheckMode.And);
+            if (runner != null) RunnerConditionsList.Restore(runner);
+            
             return result;
         }
+        
+        // PRIVATE STATIC METHODS: ----------------------------------------------------------------
 
-        public static GameObject CreateTemplate(ConditionList value)
+        private static GameObject CreateTemplate(ConditionList value)
         {
             return RunnerConditionsList.CreateTemplate<RunnerConditionsList>(value);
         }

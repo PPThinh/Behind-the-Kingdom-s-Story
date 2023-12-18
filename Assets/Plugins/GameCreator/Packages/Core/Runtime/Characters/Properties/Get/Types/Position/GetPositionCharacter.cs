@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace GameCreator.Runtime.Characters
 {
-    [Title("Character")]
-    [Category("Characters/Character")]
+    [Title("Character Position")]
+    [Category("Characters/Character Position")]
     
     [Image(typeof(IconCharacter), ColorTheme.Type.Yellow)]
     [Description("Returns the position of the Character")]

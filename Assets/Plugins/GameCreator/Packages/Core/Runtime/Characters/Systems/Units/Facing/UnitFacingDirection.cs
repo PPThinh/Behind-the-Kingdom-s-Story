@@ -16,7 +16,7 @@ namespace GameCreator.Runtime.Characters
     {
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
         
-        [SerializeField] private PropertyGetRotation m_Direction = GetRotationDirection.CreateForward;
+        [SerializeField] private PropertyGetRotation m_Direction = GetRotationTowardsDirection.CreateForward;
         
         [SerializeField] private Axonometry m_Axonometry = new Axonometry();
         

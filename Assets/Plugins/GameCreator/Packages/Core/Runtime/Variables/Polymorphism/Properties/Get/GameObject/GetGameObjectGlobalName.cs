@@ -10,7 +10,7 @@ namespace GameCreator.Runtime.Variables
     [Image(typeof(IconNameVariable), ColorTheme.Type.Purple, typeof(OverlayDot))]
     [Description("Returns the Game Object value of a Global Name Variable")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetGameObjectGlobalName : PropertyTypeGetGameObject
     {
         [SerializeField]

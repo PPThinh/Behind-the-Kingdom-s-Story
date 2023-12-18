@@ -2,7 +2,6 @@ using System;
 using GameCreator.Runtime.Characters;
 using GameCreator.Runtime.Common;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GameCreator.Runtime.Cameras
 {
@@ -13,11 +12,13 @@ namespace GameCreator.Runtime.Cameras
 
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
-        [SerializeField] private PropertyGetGameObject m_Target;
-        [SerializeField] private PropertyGetOffset m_Offset;
+        [SerializeField] private PropertyGetGameObject m_Target = GetGameObjectPlayer.Create();
+        [SerializeField] private PropertyGetDirection m_Offset = GetDirectionLocalValue.CreateTarget(
+            new Vector3(0f, 0.75f, 0f)
+        );
 
         [SerializeField]
-        private InputPropertyValueVector2 m_InputRotate;
+        private InputPropertyValueVector2 m_InputRotate = InputValueVector2MotionSecondary.Create();
         
         [SerializeField]
         private PropertyGetDecimal m_InputSensitivityX = GetDecimalDecimal.Create(180f);
@@ -82,19 +83,9 @@ namespace GameCreator.Runtime.Cameras
         
         public Vector3 Offset
         {
-            set => this.m_Offset = GetOffsetLocalTarget.Create(value);
+            set => this.m_Offset = GetDirectionLocalValue.CreateTarget(value);
         }
-        
-        // CONSTRUCTOR: ---------------------------------------------------------------------------
 
-        public ShotSystemFirstPerson()
-        {
-            this.m_Target = GetGameObjectPlayer.Create();
-            this.m_Offset = GetOffsetLocalTarget.Create(new Vector3(0f, 0.75f, 0f));
-
-            this.m_InputRotate = InputValueVector2MotionSecondary.Create();
-        }
-        
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
         public void SetRotation(Quaternion rotation)
@@ -178,15 +169,7 @@ namespace GameCreator.Runtime.Cameras
         public override void OnEnable(TShotType shotType, TCamera camera)
         {
             base.OnEnable(shotType, camera);
-            this.m_InputRotate.Enable();
-            
             this.SetRotation(camera.transform.rotation);
-        }
-
-        public override void OnDisable(TShotType shotType, TCamera camera)
-        {
-            base.OnDisable(shotType, camera);
-            this.m_InputRotate.Disable();
         }
 
         // GIZMOS: --------------------------------------------------------------------------------

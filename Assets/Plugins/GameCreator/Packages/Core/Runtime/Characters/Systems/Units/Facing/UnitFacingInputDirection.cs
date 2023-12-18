@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Cameras;
 using UnityEngine;
 using GameCreator.Runtime.Common;
 
@@ -16,7 +17,7 @@ namespace GameCreator.Runtime.Characters
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private InputPropertyValueVector2 m_Input = InputValueVector2MobileStickRight.Create;
-        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectMainCamera.Create();
+        [SerializeField] private PropertyGetGameObject m_Camera = GetGameObjectCameraMain.Create;
         
         [SerializeField] private Axonometry m_Axonometry = new Axonometry();
         
@@ -44,18 +45,6 @@ namespace GameCreator.Runtime.Characters
         {
             base.OnDispose(character);
             this.m_Input?.OnDispose();
-        }
-
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            this.m_Input?.Enable();
-        }
-
-        public override void OnDisable()
-        {
-            base.OnDisable();
-            this.m_Input?.Disable();
         }
 
         protected override Vector3 GetDefaultDirection()

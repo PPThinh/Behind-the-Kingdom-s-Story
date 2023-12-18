@@ -9,7 +9,7 @@ namespace GameCreator.Runtime.Common
     [Image(typeof(IconDice), ColorTheme.Type.Yellow, typeof(OverlayX))]
     [Description("Creates a rotation with a random euler X axis")]
 
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetRotationRandomEulerX : PropertyTypeGetRotation
     {
         public override Quaternion Get(Args args) => Quaternion.Euler(Vector3.right * UnityEngine.Random.Range(-360, 360f));

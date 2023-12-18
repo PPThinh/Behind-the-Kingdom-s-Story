@@ -6,18 +6,18 @@ namespace GameCreator.Runtime.Characters
     [Serializable]
     public class UnitDriver
     {
-        [SerializeReference] private IUnitDriver m_Driver = new UnitDriverController();
+        [SerializeReference] private TUnitDriver m_Driver = new UnitDriverController();
         
         // PROPERTIES: ----------------------------------------------------------------------------
 
-        public IUnitDriver Wrapper => this.m_Driver;
+        public TUnitDriver Wrapper => this.m_Driver;
         
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
         public UnitDriver()
         { }
 
-        public UnitDriver(IUnitDriver unit)
+        public UnitDriver(TUnitDriver unit)
         {
             this.m_Driver = unit;
         }

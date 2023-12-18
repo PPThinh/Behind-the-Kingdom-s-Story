@@ -52,19 +52,6 @@ namespace GameCreator.Runtime.Common
                 return this.m_InputAction;
             }
         }
-        
-        public override bool Active
-        {
-            get => this.InputAction?.enabled ?? false;
-            set
-            {
-                switch (value)
-                {
-                    case true: this.Enable(); break;
-                    case false: this.Disable(); break;
-                }
-            }
-        }
 
         // INITIALIZERS: --------------------------------------------------------------------------
 

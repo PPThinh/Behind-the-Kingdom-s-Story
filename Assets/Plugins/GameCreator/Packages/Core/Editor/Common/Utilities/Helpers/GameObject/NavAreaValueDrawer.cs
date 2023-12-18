@@ -37,7 +37,7 @@ namespace GameCreator.Editor.Common
             });
             
             maskField.AddToClassList(AlignLabel.CLASS_UNITY_ALIGN_LABEL);
-            _ = new AlignLabel(maskField);
+            AlignLabel.On(maskField);
 
             return maskField;
         }

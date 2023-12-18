@@ -29,10 +29,6 @@ namespace GameCreator.Runtime.Characters
         Vector3 RootMotionDeltaPosition { get; }
         Quaternion RootMotionDeltaRotation { get; }
 
-        float HeartRate { get; set; }
-        float Exertion  { get; set; }
-        float Twitching { get; set; }
-
         // EVENTS: --------------------------------------------------------------------------------
         
         event Action<int> EventOnAnimatorIK;

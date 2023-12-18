@@ -19,15 +19,15 @@ namespace GameCreator.Editor.Common
             VisualElement root = new VisualElement();
             
             StyleSheet[] styleSheets = StyleSheetUtils.Load(PATH_STYLES);
-            foreach (var styleSheet in styleSheets) root.styleSheets.Add(styleSheet);
+            foreach (StyleSheet styleSheet in styleSheets) root.styleSheets.Add(styleSheet);
             
             Button button = new Button
             {
                 tooltip = "Allow to save the value between play sessions"
             };
 
-            Image image = new Image();
-            Label label = new Label();
+            Image image = new Image { focusable = false };
+            Label label = new Label { focusable = false };
 
             button.clicked += () =>
             {

@@ -19,10 +19,6 @@ namespace GameCreator.Runtime.Common
         // EXPOSED MEMBERS: -----------------------------------------------------------------------
 
         [SerializeField] private GamepadButton m_Button = GamepadButton.South;
-        
-        // PROPERTIES: ----------------------------------------------------------------------------
-
-        public override bool Active => true;
 
         // INITIALIZERS: --------------------------------------------------------------------------
 

@@ -19,5 +19,7 @@ namespace GameCreator.Runtime.Common
         public static PropertyGetDecimal Create => new PropertyGetDecimal(new GetDecimalScreenHeight());
 
         public override string String => "Screen Height";
+        
+        public override double EditorValue => Screen.height;
     }
 }

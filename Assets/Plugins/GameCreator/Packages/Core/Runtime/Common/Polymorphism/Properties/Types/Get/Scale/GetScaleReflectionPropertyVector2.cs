@@ -11,7 +11,7 @@ namespace GameCreator.Runtime.Common
 
     [Keywords("Component", "Script", "Property", "Member", "Variable", "Value")]
     
-    [Serializable] [HideLabelsInEditor]
+    [Serializable]
     public class GetScaleReflectionPropertyVector2 : PropertyTypeGetScale
     {
         [SerializeField] private ReflectionPropertyVector2 m_Property = new ReflectionPropertyVector2();
