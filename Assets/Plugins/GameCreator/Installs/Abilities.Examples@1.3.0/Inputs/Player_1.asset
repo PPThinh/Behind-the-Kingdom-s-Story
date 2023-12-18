@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a40b5aaf854e82960b6d00d9df11b3, type: 3}
+  m_Name: Player_1
+  m_EditorClassIdentifier: 
+  m_UID:
+    m_SerializedID:
+      m_String: 82532a4d-a1c4-43b2-b477-2a2356033447
+  m_InputAsset: {fileID: -944628639613478452, guid: 583a463e677f2d648bfd73c2de0d75f5, type: 3}
+  m_InputModules:
+  - rid: 6442285303301406730
+  references:
+    version: 2
+    RefIds:
+    - rid: 4321897731076390916
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 14
+    - rid: 4321897731076390917
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 15
+    - rid: 4321897731076390918
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 16
+    - rid: 4321897731076390919
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 17
+    - rid: 4321897731076390920
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 18
+    - rid: 4321897731076390921
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 19
+    - rid: 4321897731076390922
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 20
+    - rid: 6442285303301406730
+      type: {class: InputModuleAbility, ns: DaimahouGames.Runtime.Abilities, asm: DaimahouGames.Runtime.Abilities}
+      data:
+        m_IsExpanded: 0
+        m_Input:
+          m_InputSettings:
+          - rid: 6442285350354944000
+          - rid: 6442285350354944001
+          - rid: 6442285350354944002
+          - rid: 6442285350354944003
+          - rid: 6442285350354944004
+          - rid: 6442285350354944005
+          - rid: 6442285350354944006
+          - rid: 6442285350354944007
+          - rid: 6442285350354944008
+          - rid: 6442285350354944009
+          - rid: 6442285350354944070
+          - rid: 6442285350354944071
+          - rid: 6442285350354944072
+          - rid: 4321897731076390916
+          - rid: 4321897731076390917
+          - rid: 4321897731076390918
+          - rid: 4321897731076390919
+          - rid: 4321897731076390920
+          - rid: 4321897731076390921
+          - rid: 4321897731076390922
+        m_GroundLayer:
+          serializedVersion: 2
+          m_Bits: 1
+        m_CastAtMaximumRange: 0
+    - rid: 6442285350354944000
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 1
+    - rid: 6442285350354944001
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 2
+    - rid: 6442285350354944002
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 3
+    - rid: 6442285350354944003
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 4
+    - rid: 6442285350354944004
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 5
+    - rid: 6442285350354944005
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 6
+    - rid: 6442285350354944006
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 7
+    - rid: 6442285350354944007
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 8
+    - rid: 6442285350354944008
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 9
+    - rid: 6442285350354944009
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 10
+    - rid: 6442285350354944070
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 11
+    - rid: 6442285350354944071
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 12
+    - rid: 6442285350354944072
+      type: {class: InputMapping/Mapping, ns: DaimahouGames.Runtime.Core, asm: Daimahou.Runtime.Core}
+      data:
+        ActionMap: Player
+        Action: Ability 13
