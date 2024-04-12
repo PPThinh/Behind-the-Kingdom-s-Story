@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3456c8e7299cac2469cb5775b323d8a4, type: 3}
+  m_Name: GPUInstancerBillboardAtlasBindings
+  m_EditorClassIdentifier: 
+  billboardAtlasBindings:
+  - prefab: {fileID: 1182756067964316, guid: fc9f550802bde56499ac8b64cac565f0, type: 3}
+    atlasResolution: 2048
+    frameCount: 8
+    albedoAtlasTexture: {fileID: 2800000, guid: 6e7ceb0008b44c04fbdd2a9c58f5946d,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: 6e727b991e0825d48b8cafb355f2db64,
+      type: 3}
+    quadSize: 6.3318815
+    yPivotOffset: 0.32433987
+    modifiedDate: 04/05/2024 08:59:38.871
+  - prefab: {fileID: 1467718062152118, guid: 7df36f4afc1dd884e81156cd2cb6545d, type: 3}
+    atlasResolution: 2048
+    frameCount: 8
+    albedoAtlasTexture: {fileID: 2800000, guid: f1bf5cb60b1a3734a970449a95860d60,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: 1703a1b523213e346ad93cd8f1bc0cea,
+      type: 3}
+    quadSize: 8.223099
+    yPivotOffset: 1.5369451
+    modifiedDate: 04/05/2024 08:59:40.560
+  - prefab: {fileID: 1814772297973644, guid: 7b324b148b509104cb0f42a02b6b4b78, type: 3}
+    atlasResolution: 2048
+    frameCount: 8
+    albedoAtlasTexture: {fileID: 2800000, guid: 4afaa4f8166615145a74a0514be991c3,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: 7c9eaa5a4fc98914bb3fe7eff5e0b086,
+      type: 3}
+    quadSize: 1.9807892
+    yPivotOffset: 0.37466586
+    modifiedDate: 04/05/2024 08:59:42.225

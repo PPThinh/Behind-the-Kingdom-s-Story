@@ -67,13 +67,15 @@ MonoBehaviour:
     m_PrefabSocket: {fileID: 0}
   m_Equip:
     m_IsEquippable: 1
-    m_Prefab: {fileID: 8577520562116956334, guid: 4d4457fe2e27c44a883edbfe1846f5dd, type: 3}
+    m_Prefab: {fileID: 8577520562116956334, guid: 4d4457fe2e27c44a883edbfe1846f5dd,
+      type: 3}
     m_ConditionsEquip:
       m_Conditions:
         m_Conditions: []
     m_InstructionsOnEquip:
       m_Instructions:
-        m_Instructions: []
+        m_Instructions:
+        - rid: 4384754061930660199
     m_InstructionsOnUnequip:
       m_Instructions:
         m_Instructions: []
@@ -131,3 +133,25 @@ MonoBehaviour:
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: 0
+    - rid: 4384754061930660199
+      type: {class: InstructionMeleeEquipWeapon, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_Character:
+          m_Property:
+            rid: 4384754061930660200
+        m_Weapon:
+          m_Property:
+            rid: 4384754061930660201
+        m_Model:
+          m_Property:
+            rid: 4384754061930660203
+    - rid: 4384754061930660200
+      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+    - rid: 4384754061930660201
+      type: {class: GetWeaponMeleeInstance, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
+      data:
+        m_Weapon: {fileID: 11400000, guid: 41f54a465d3f349829cc6ed4d9838764, type: 2}
+    - rid: 4384754061930660203
+      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}

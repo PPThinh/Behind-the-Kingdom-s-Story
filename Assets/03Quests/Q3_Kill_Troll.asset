@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c372b025c8c4d92bf11f951ee3d5042, type: 3}
+  m_Name: Q3_Kill_Troll
+  m_EditorClassIdentifier: 
+  m_Title:
+    m_Property:
+      rid: 4335897829870928262
+  m_Description:
+    m_Property:
+      rid: 4335897829870928275
+  m_Color:
+    m_Property:
+      rid: 4335897829870928264
+  m_Sprite:
+    m_Property:
+      rid: 4335897829870928265
+  m_Type: 0
+  m_SortOrder: 0
+  m_UniqueId:
+    m_SerializedID:
+      m_String: f3b41e40-fa9e-4599-ba74-e8c8039a90f4
+  m_Tasks:
+    rid: 4335897829870928266
+  m_OnActivate:
+    m_Instructions:
+      m_Instructions: []
+  m_OnDeactivate:
+    m_Instructions:
+      m_Instructions: []
+  m_OnComplete:
+    m_Instructions:
+      m_Instructions: []
+  m_OnAbandon:
+    m_Instructions:
+      m_Instructions: []
+  m_OnFail:
+    m_Instructions:
+      m_Instructions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4335897829870928262
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: "Ti\xEAu di\u1EC7t thu\u1ED9c h\u1EA1"
+    - rid: 4335897829870928264
+      type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829870928265
+      type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829870928266
+      type: {class: TasksTree, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
+      data:
+        m_Dirty: 6521
+        m_Data:
+          m_Keys: abae52dd
+          m_Values:
+          - m_Id: -581783893
+            m_Value:
+              rid: 4335897829870928267
+        m_Nodes:
+          m_Keys: abae52dd
+          m_Values:
+          - m_Id: -581783893
+            m_Parent: -1
+            m_Children: 
+        m_Roots: abae52dd
+    - rid: 4335897829870928267
+      type: {class: Task, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
+      data:
+        m_Completion: 0
+        m_IsHidden: 0
+        m_Name:
+          m_Property:
+            rid: 4335897829870928268
+        m_Description:
+          m_Property:
+            rid: 4335897829870928269
+        m_Color:
+          m_Property:
+            rid: 4335897829870928270
+        m_Sprite:
+          m_Property:
+            rid: 4335897829870928271
+        m_UseCounter: 1
+        m_CountTo:
+          m_Property:
+            rid: 4335897829870928272
+        m_ValueFrom:
+          m_Property:
+            rid: 4335897829870928273
+        m_CheckWhen:
+          m_Event:
+            rid: 4335897829870928274
+        m_OnActivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnDeactivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnComplete:
+          m_Instructions:
+            m_Instructions: []
+        m_OnAbandon:
+          m_Instructions:
+            m_Instructions: []
+        m_OnFail:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 4335897829870928268
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: "Ti\xEAu di\u1EC7t 2 t\xEAn Troll"
+    - rid: 4335897829870928269
+      type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Text:
+          m_Text: 
+    - rid: 4335897829870928270
+      type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829870928271
+      type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829870928272
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 2
+    - rid: 4335897829870928273
+      type: {class: GetDecimalGlobalName, ns: GameCreator.Runtime.Variables, asm: GameCreator.Runtime.Core}
+      data:
+        m_Variable:
+          m_TypeID:
+            m_String: number
+          m_Variable: {fileID: 0}
+          m_Name:
+            m_String: 
+            m_ID: 0
+    - rid: 4335897829870928274
+      type: {class: EventOnLateUpdate, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829870928275
+      type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Text:
+          m_Text: "Troll l\xE0 nh\u1EEFng t\xEAn thu\u1ED9c h\u1EA1 c\u1EE7a Eclipse,
+            h\u1EAFn ch\u1EC9 bi\u1EBFt \u0111\xE1nh \u0111\u1EA5m v\xE0 kh\u1EDD
+            kh\u1EA1o"

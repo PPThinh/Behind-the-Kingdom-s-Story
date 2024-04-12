@@ -1,0 +1,16 @@
+{
+    "name": "AdvancedCullingSystem.Example",
+    "rootNamespace": "",
+    "references": [
+        "GUID:37151e2099022af42afa90e2ee1b768a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c372b025c8c4d92bf11f951ee3d5042, type: 3}
+  m_Name: Q2_1_Help_Knight
+  m_EditorClassIdentifier: 
+  m_Title:
+    m_Property:
+      rid: 4384754057474475003
+  m_Description:
+    m_Property:
+      rid: 4384754057474475004
+  m_Color:
+    m_Property:
+      rid: 4384754057474475005
+  m_Sprite:
+    m_Property:
+      rid: 4384754057474475006
+  m_Type: 0
+  m_SortOrder: 0
+  m_UniqueId:
+    m_SerializedID:
+      m_String: 810bd2ce-0cba-4bfb-87e2-25d7a67b550a
+  m_Tasks:
+    rid: 4384754057474475007
+  m_OnActivate:
+    m_Instructions:
+      m_Instructions: []
+  m_OnDeactivate:
+    m_Instructions:
+      m_Instructions: []
+  m_OnComplete:
+    m_Instructions:
+      m_Instructions: []
+  m_OnAbandon:
+    m_Instructions:
+      m_Instructions: []
+  m_OnFail:
+    m_Instructions:
+      m_Instructions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4384754057474475003
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: "Gi\xFAp binh s\u0129"
+    - rid: 4384754057474475004
+      type: {class: GetStringEmpty, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754057474475005
+      type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754057474475006
+      type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754057474475007
+      type: {class: TasksTree, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
+      data:
+        m_Dirty: 51798
+        m_Data:
+          m_Keys: 7e3100869349adb0
+          m_Values:
+          - m_Id: -2046807682
+            m_Value:
+              rid: 4384754058931994713
+          - m_Id: -1330820717
+            m_Value:
+              rid: 4384754059619598443
+        m_Nodes:
+          m_Keys: 7e3100869349adb0
+          m_Values:
+          - m_Id: -2046807682
+            m_Parent: -1
+            m_Children: 
+          - m_Id: -1330820717
+            m_Parent: -1
+            m_Children: 
+        m_Roots: 7e3100869349adb0
+    - rid: 4384754058931994713
+      type: {class: Task, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
+      data:
+        m_Completion: 0
+        m_IsHidden: 0
+        m_Name:
+          m_Property:
+            rid: 4384754058931994714
+        m_Description:
+          m_Property:
+            rid: 4384754058931994715
+        m_Color:
+          m_Property:
+            rid: 4384754058931994716
+        m_Sprite:
+          m_Property:
+            rid: 4384754058931994717
+        m_UseCounter: 0
+        m_CountTo:
+          m_Property:
+            rid: 4384754058931994718
+        m_ValueFrom:
+          m_Property:
+            rid: 4384754058931994719
+        m_CheckWhen:
+          m_Event:
+            rid: 4384754058931994720
+        m_OnActivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnDeactivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnComplete:
+          m_Instructions:
+            m_Instructions: []
+        m_OnAbandon:
+          m_Instructions:
+            m_Instructions: []
+        m_OnFail:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 4384754058931994714
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: "T\xECm ch\xECa kh\xF3a"
+    - rid: 4384754058931994715
+      type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Text:
+          m_Text: "C\xF3 th\u1EC3 ch\xECa kh\xF3a b\u1ECB m\u1EA5t \u1EDF c\u1EA1nh
+            ng\xF4i nh\xE0 g\u1EA7n \u0111\xF3"
+    - rid: 4384754058931994716
+      type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754058931994717
+      type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754058931994718
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 3
+    - rid: 4384754058931994719
+      type: {class: GetDecimalGlobalName, ns: GameCreator.Runtime.Variables, asm: GameCreator.Runtime.Core}
+      data:
+        m_Variable:
+          m_TypeID:
+            m_String: number
+          m_Variable: {fileID: 0}
+          m_Name:
+            m_String: 
+            m_ID: 0
+    - rid: 4384754058931994720
+      type: {class: EventOnLateUpdate, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+    - rid: 4384754059619598443
+      type: {class: Task, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
+      data:
+        m_Completion: 0
+        m_IsHidden: 0
+        m_Name:
+          m_Property:
+            rid: 4384754059619598444
+        m_Description:
+          m_Property:
+            rid: 4384754059619598445
+        m_Color:
+          m_Property:
+            rid: 4384754059619598446
+        m_Sprite:
+          m_Property:
+            rid: 4384754059619598447
+        m_UseCounter: 0
+        m_CountTo:
+          m_Property:
+            rid: 4384754059619598448
+        m_ValueFrom:
+          m_Property:
+            rid: 4384754059619598449
+        m_CheckWhen:
+          m_Event:
+            rid: 4384754059619598450
+        m_OnActivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnDeactivate:
+          m_Instructions:
+            m_Instructions: []
+        m_OnComplete:
+          m_Instructions:
+            m_Instructions: []
+        m_OnAbandon:
+          m_Instructions:
+            m_Instructions: []
+        m_OnFail:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 4384754059619598444
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: "Quay l\u1EA1i binh s\u0129 Jenkela"
+    - rid: 4384754059619598445
+      type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Text:
+          m_Text: 
+    - rid: 4384754059619598446
+      type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754059619598447
+      type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4384754059619598448
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 3
+    - rid: 4384754059619598449
+      type: {class: GetDecimalGlobalName, ns: GameCreator.Runtime.Variables, asm: GameCreator.Runtime.Core}
+      data:
+        m_Variable:
+          m_TypeID:
+            m_String: number
+          m_Variable: {fileID: 0}
+          m_Name:
+            m_String: 
+            m_ID: 0
+    - rid: 4384754059619598450
+      type: {class: EventOnLateUpdate, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}

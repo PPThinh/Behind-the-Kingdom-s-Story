@@ -10,9 +10,9 @@ AnimatorOverrideController:
   m_Controller: {fileID: 9100000, guid: 1c038f6534d3946ae8373a24be7e2863, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 134f748d7ce0049f1b4827c6a710697e, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: c1e999368c18a49e4b8719f07f5ed89a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f8c2d6a0ce3bc2d40b090cd67dd23862, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: 4ee53f6c9d28a4e2ab78924219e1314c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: bc3d7b4e7a6d44b318df6c5be509df92, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5854db461340e4376819b4fbbd78a241, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 06adbf3a4686a4901884ac6bccb86be7, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 929ad13b1a3674f9c8e664d180bdbb99, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 505019e3f98744942a48950d518a4916, type: 2}
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Controller: {fileID: -6814475518344100960}
   m_AirborneMode: 0
   m_Stand8Points:
-    m_Idle: {fileID: 7400000, guid: c1e999368c18a49e4b8719f07f5ed89a, type: 2}
-    m_Forward: {fileID: 7400000, guid: bc3d7b4e7a6d44b318df6c5be509df92, type: 2}
+    m_Idle: {fileID: 7400000, guid: f8c2d6a0ce3bc2d40b090cd67dd23862, type: 3}
+    m_Forward: {fileID: 7400000, guid: 5854db461340e4376819b4fbbd78a241, type: 2}
     m_Backward: {fileID: 7400000, guid: 929ad13b1a3674f9c8e664d180bdbb99, type: 2}
     m_Right: {fileID: 7400000, guid: 6b0fb4966ce0e499f9e6acdd4cbb1ad1, type: 2}
     m_Left: {fileID: 7400000, guid: 845cee4113cd6455287d7a71984b37e9, type: 2}

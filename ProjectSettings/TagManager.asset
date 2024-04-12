@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Door
+  - Effects
+  - Icon
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - UI
   - Ground
   - 
-  - 
-  - 
-  - 
+  - ACSCulling
+  - Terrain
+  - Character
   - 
   - 
   - 
