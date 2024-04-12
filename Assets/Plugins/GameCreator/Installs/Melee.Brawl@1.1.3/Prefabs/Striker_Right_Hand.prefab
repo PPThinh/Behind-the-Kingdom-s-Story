@@ -72,4 +72,4 @@ MonoBehaviour:
       type: {class: StrikerSphere, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
         m_Position: {x: 0, y: 0, z: 0}
-        m_Radius: 0.35
+        m_Radius: 1

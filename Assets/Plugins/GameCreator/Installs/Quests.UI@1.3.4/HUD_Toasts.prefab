@@ -32,6 +32,7 @@ RectTransform:
   - {fileID: 3787437639811794754}
   - {fileID: 3787437638858025567}
   m_Father: {fileID: 3787437638636433317}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -96,6 +97,7 @@ RectTransform:
   - {fileID: 3787437639539756745}
   - {fileID: 3787437639440058307}
   m_Father: {fileID: 3787437638175731908}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -164,6 +166,7 @@ RectTransform:
   - {fileID: 3787437638594163410}
   - {fileID: 3787437638174740652}
   m_Father: {fileID: 3787437638984384198}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -272,6 +275,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638636433317}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -352,6 +356,7 @@ RectTransform:
   - {fileID: 3787437638783644375}
   - {fileID: 3787437639277554699}
   m_Father: {fileID: 3787437639170580838}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -461,6 +466,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437639277554699}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -556,6 +562,7 @@ RectTransform:
   m_Children:
   - {fileID: 3787437638636433317}
   m_Father: {fileID: 6761829390715221296}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -584,9 +591,9 @@ MonoBehaviour:
     RefIds:
     - rid: 3872144699144536229
       type: {class: EventOnStart, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 3872144699144536230
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -627,7 +634,8 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4340017066418372841
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -646,7 +654,8 @@ MonoBehaviour:
       data:
         m_Value: 0
     - rid: 4340017066418372856
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -665,7 +674,8 @@ MonoBehaviour:
       data:
         m_Value: 1
     - rid: 4340017066418372877
-      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -698,14 +708,12 @@ MonoBehaviour:
               rid: 4340017066418372945
     - rid: 4340017066418372944
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017066418372945
       type: {class: GetQuestInstance, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
       data:
         m_Quest: {fileID: 0}
     - rid: 4340017066418372964
       type: {class: GetQuestLastAbandoned, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
-      data: 
 --- !u!1 &3787437638594163413
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +745,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638175731908}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -817,6 +826,7 @@ RectTransform:
   - {fileID: 3787437639888901902}
   - {fileID: 3787437638105960090}
   m_Father: {fileID: 3787437638399512587}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -926,6 +936,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437639277554699}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -973,7 +984,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: failed...
+  m_Text: "th\u1EA5t b\u1EA1i..."
 --- !u!114 &3787437638661538621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1031,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638352574428}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1096,6 +1108,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638105960090}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1143,7 +1156,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: abandoned...
+  m_Text: "t\u1EEB b\u1ECF..."
 --- !u!114 &3787437638858025564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1204,7 @@ RectTransform:
   m_Children:
   - {fileID: 3787437638175731908}
   m_Father: {fileID: 6761829390715221296}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1219,9 +1233,9 @@ MonoBehaviour:
     RefIds:
     - rid: 3872144699144536229
       type: {class: EventOnStart, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 3872144699144536230
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1274,13 +1288,13 @@ MonoBehaviour:
               rid: 4340017066418372834
     - rid: 4340017066418372833
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017066418372834
       type: {class: GetQuestInstance, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
       data:
         m_Quest: {fileID: 0}
     - rid: 4340017066418372841
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1299,7 +1313,8 @@ MonoBehaviour:
       data:
         m_Value: 0
     - rid: 4340017066418372856
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1318,7 +1333,8 @@ MonoBehaviour:
       data:
         m_Value: 1
     - rid: 4340017066418372877
-      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1340,7 +1356,6 @@ MonoBehaviour:
             rid: 4340017066418372900
     - rid: 4340017066418372900
       type: {class: GetQuestLastCompleted, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
-      data: 
 --- !u!1 &3787437639170580825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1388,7 @@ RectTransform:
   m_Children:
   - {fileID: 3787437638352574428}
   m_Father: {fileID: 6761829390715221296}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1401,9 +1417,9 @@ MonoBehaviour:
     RefIds:
     - rid: 3872144699144536229
       type: {class: EventOnStart, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 3872144699144536230
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1444,7 +1460,8 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4340017066418372841
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1463,7 +1480,8 @@ MonoBehaviour:
       data:
         m_Value: 0
     - rid: 4340017066418372856
-      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectSetActive, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1482,7 +1500,8 @@ MonoBehaviour:
       data:
         m_Value: 1
     - rid: 4340017066418372877
-      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionUIChangeText, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -1504,7 +1523,6 @@ MonoBehaviour:
             rid: 4340017066418373007
     - rid: 4340017066418373007
       type: {class: GetQuestLastFailed, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
-      data: 
     - rid: 4340017066418373014
       type: {class: EventOnQuestFail, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
       data:
@@ -1518,7 +1536,6 @@ MonoBehaviour:
               rid: 4340017066418373016
     - rid: 4340017066418373015
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017066418373016
       type: {class: GetQuestInstance, ns: GameCreator.Runtime.Quests, asm: GameCreator.Runtime.Quests}
       data:
@@ -1555,6 +1572,7 @@ RectTransform:
   - {fileID: 3787437638394076203}
   - {fileID: 3787437638661538620}
   m_Father: {fileID: 3787437638352574428}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1619,11 +1637,12 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638174740652}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1008.5, y: -75}
+  m_SizeDelta: {x: 230, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3787437639440058318
 CanvasRenderer:
@@ -1666,7 +1685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: completed!
+  m_Text: "ho\xE0n th\xE0nh!"
 --- !u!114 &3787437639440058304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1732,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638352574428}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1789,11 +1809,12 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638174740652}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 840, y: -75}
+  m_SizeDelta: {x: 87, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3787437639539756756
 CanvasRenderer:
@@ -1883,6 +1904,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638175731908}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1959,6 +1981,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638105960090}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2053,6 +2076,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3787437638636433317}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2132,6 +2156,7 @@ RectTransform:
   - {fileID: 3787437638399512587}
   - {fileID: 3787437639170580838}
   m_Father: {fileID: 0}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2183,7 +2208,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6761829390715221299
 MonoBehaviour:
   m_ObjectHideFlags: 0

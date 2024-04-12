@@ -1,0 +1,21 @@
+Hi,
+
+If You reading this then You have some problems with my asset.
+
+Most of the errors are related to the Unity Package Manager.
+You can solve this by installing the following packages :
+
+	*Burst (tested on version 1.2.3)
+	*Mathematics (tested on version 1.1.0)
+	*Collections (tested on version 0.6.0)
+
+If You use Unity 2020, please read this : 
+https://medium.com/@jeffreymlynch/where-are-the-missing-preview-packages-in-unity-2020-3ad0935e4193
+
+If it doesn't helps then try to reset dependencies(Help/Reset packages to default)
+and reinstall packages.
+
+If You still have some errors, please write in my e-mail(andre-orsk@yandex.ru) and I will help You 
+or make a refund for You.
+
+Have a nice day :)

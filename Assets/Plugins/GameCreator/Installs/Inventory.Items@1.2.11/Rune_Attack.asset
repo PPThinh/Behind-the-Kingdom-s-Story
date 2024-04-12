@@ -17,6 +17,11 @@ MonoBehaviour:
       m_String: rune_attack
   m_Parent: {fileID: 11400000, guid: 722686d0d83334c769b8bb4e775a8036, type: 2}
   m_Prefab: {fileID: 609689531765649264, guid: b747840c147a449b0a40fe9b57f12c7b, type: 3}
+  m_CanDrop:
+    m_IsEnabled: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 4294967295
   m_Info:
     m_Name:
       m_Property:
@@ -30,6 +35,10 @@ MonoBehaviour:
     m_Color:
       m_Property:
         rid: 2531411309620625460
+    m_OnCreate:
+      m_Instructions:
+        m_Instructions: []
+    m_ExecuteFromParent: 0
   m_Shape:
     m_Width: 1
     m_Height: 1
@@ -38,6 +47,8 @@ MonoBehaviour:
   m_Price:
     m_Currency: {fileID: 11400000, guid: f161451dbe0f54fedbaaa28716337778, type: 2}
     m_Value: 35
+    m_CanBuyFromMerchant: 1
+    m_CanSellToMerchant: 1
   m_Properties:
     m_InheritFromParent: 1
     m_List: []
@@ -53,7 +64,8 @@ MonoBehaviour:
   m_Sockets:
     m_InheritFromParent: 1
     m_List: []
-    m_PrefabSocket: {fileID: 8577520562116956334, guid: 5b14eb9729bf74cc283dde7b66515384, type: 3}
+    m_PrefabSocket: {fileID: 8577520562116956334, guid: 5b14eb9729bf74cc283dde7b66515384,
+      type: 3}
   m_Equip:
     m_IsEquippable: 0
     m_Prefab: {fileID: 0}
@@ -70,6 +82,9 @@ MonoBehaviour:
   m_Usage:
     m_CanUse: 0
     m_ConsumeWhenUse: 1
+    m_Cooldown:
+      m_Property:
+        rid: 4335897829108089267
     m_ConditionsCanUse:
       m_Conditions:
         m_Conditions: []
@@ -99,15 +114,19 @@ MonoBehaviour:
     - rid: 2531411309620625457
       type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Value: Rune of Attack
+        m_Value: Rune
     - rid: 2531411309620625458
       type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Text:
-          m_Text: An ancient rune with the Attack glyph carved on one side
+          m_Text: "Rune kh\xF4ng c\xF3 g\xEC \u0111\u1EB7c bi\u1EC7t"
     - rid: 2531411309620625459
       type: {class: GetSpriteInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Sprite: {fileID: 21300000, guid: 85d92851aacdf4c64969b0725d13c483, type: 3}
     - rid: 2531411309620625460
       type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 4335897829108089267
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0

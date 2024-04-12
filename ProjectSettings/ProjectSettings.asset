@@ -22,7 +22,7 @@ PlayerSettings:
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
+  m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -39,7 +39,11 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: 97967319d77a63e408a2cb503b0502b7, type: 3}
+    duration: 3
+  - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -795,7 +799,22 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: PMS_URP;PMS_CINEMACHINE;PMS_CINE_MACHINE_2_6_OR_NEWER;PMS_CINE_MACHINE_2_6_1_OR_NEWER;PMS_CINE_MACHINE_2_8_OR_NEWER
+    Android: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2;GPU_INSTANCER
+    EmbeddedLinux: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    GameCoreScarlett: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    GameCoreXboxOne: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    LinuxHeadlessSimulation: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    Nintendo Switch: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    PS4: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    PS5: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    QNX: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    Stadia: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    Standalone: PMS_URP;PMS_CINEMACHINE;PMS_CINE_MACHINE_2_6_OR_NEWER;PMS_CINE_MACHINE_2_6_1_OR_NEWER;PMS_CINE_MACHINE_2_8_OR_NEWER;TextMeshPro;UNITY_POST_PROCESSING_STACK_V2;GPU_INSTANCER
+    WebGL: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    Windows Store Apps: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    XboxOne: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
+    iPhone: TextMeshPro
+    tvOS: TextMeshPro;UNITY_POST_PROCESSING_STACK_V2
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -901,7 +920,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 8ea81754-a1c3-4c71-b8af-ccb3f3c422a0
   framebufferDepthMemorylessMode: 0

@@ -72,16 +72,18 @@ MonoBehaviour:
     m_PrefabSocket: {fileID: 0}
   m_Equip:
     m_IsEquippable: 1
-    m_Prefab: {fileID: 8577520562116956334, guid: b85a0f9bd652a4f95830bf9c0578e2e5, type: 3}
+    m_Prefab: {fileID: 142972, guid: 96ee4655900e0284ab57affcd8946c9d, type: 3}
     m_ConditionsEquip:
       m_Conditions:
         m_Conditions: []
     m_InstructionsOnEquip:
       m_Instructions:
-        m_Instructions: []
+        m_Instructions:
+        - rid: 4384754061930660248
     m_InstructionsOnUnequip:
       m_Instructions:
-        m_Instructions: []
+        m_Instructions:
+        - rid: 4384754061930660250
     m_ExecuteFromParent: 1
   m_Usage:
     m_CanUse: 0
@@ -122,12 +124,13 @@ MonoBehaviour:
     - rid: 2531411309620625461
       type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Value: Metal Shield
+        m_Value: "Khi\xEAn s\u1EAFt"
     - rid: 2531411309620625462
       type: {class: GetStringTextArea, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Text:
-          m_Text: A worn out shield made of metal
+          m_Text: "Khi\xEAn c\xF3 th\u1EC3 ch\u1ED1ng \u0111\u1EE1 m\u1EA1nh m\u1EBD
+            tr\u01B0\u1EDBc s\u1EF1 t\u1EA5n c\xF4ng c\u1EE7a k\u1EBB th\xF9"
     - rid: 2531411309620625463
       type: {class: GetSpriteInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -140,3 +143,29 @@ MonoBehaviour:
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: 0
+    - rid: 4384754061930660248
+      type: {class: InstructionCommonDebugText, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_Message:
+          m_Property:
+            rid: 4384754061930660249
+    - rid: 4384754061930660249
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: equip
+    - rid: 4384754061930660250
+      type: {class: InstructionCommonDebugText, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_Message:
+          m_Property:
+            rid: 4384754061930660251
+    - rid: 4384754061930660251
+      type: {class: GetStringString, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: unequip

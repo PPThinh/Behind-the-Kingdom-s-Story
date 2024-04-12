@@ -9,6 +9,13 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+# Plugins from Game Creator 2
+/Assets/Plugins/GameCreator/Installs/Abilities.Examples@1.3.0
+/Assets/Plugins/GameCreator/Installs/Dialogue.Examples@1.3.12
+/Assets/Plugins/GameCreator/Installs/Inventory.Examples@1.5.11
+/Assets/Plugins/GameCreator/Installs/Melee.Examples@1.2.6
+/Assets/Plugins/GameCreator/Installs/Quests.Examples@1.3.5
+/Assets/Plugins/GameCreator/Installs/Stats.Examples@1.5.11
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

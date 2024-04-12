@@ -407,7 +407,8 @@ MonoBehaviour:
       m_Type: 0
       m_Text: {fileID: 0}
       m_TMP: {fileID: 0}
-    m_PrefabSocket: {fileID: 2774859073331058120, guid: c93b4007bff714b15a8a5cdf01e509aa, type: 3}
+    m_PrefabSocket: {fileID: 2774859073331058120, guid: c93b4007bff714b15a8a5cdf01e509aa,
+      type: 3}
     m_SocketsContent: {fileID: 2713000208342157257}
     m_ActiveContent: {fileID: 2950185598324796714}
     m_ActiveEquipped: {fileID: 3576687350333785433}
@@ -518,7 +519,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: c6398fdf4ec3d47319532f9968c45721, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: c6398fdf4ec3d47319532f9968c45721,
+      type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 58e19ce7432554aa197bee6942aae7e3, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 737b8f57bd8b94d2d80e386537ac6a9c, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: b09281e8546bd4bf9a085f0e2ea52d9d, type: 3}

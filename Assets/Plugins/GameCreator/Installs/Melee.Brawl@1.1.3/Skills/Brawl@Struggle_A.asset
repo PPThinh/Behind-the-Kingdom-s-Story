@@ -133,10 +133,8 @@ MonoBehaviour:
           m_Text: 
     - rid: 4340017107664372139
       type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372140
       type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372147
       type: {class: TrackMeleePhases, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -169,13 +167,10 @@ MonoBehaviour:
         - rid: 4340017107664372411
     - rid: 4340017107664372156
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372157
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372158
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372160
       type: {class: ClipMeleeCancel, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -220,32 +215,27 @@ MonoBehaviour:
         m_Value: 1
     - rid: 4340017107664372359
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372360
       type: {class: GetAudioClip, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: {fileID: 8300000, guid: fb07be7a94e754363970a41cb6d85521, type: 3}
     - rid: 4340017107664372396
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372397
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372398
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372399
       type: {class: GetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372400
-      type: {class: GetLocationTrackRotationTowards, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      type: {class: GetLocationTrackRotationTowards, ns: GameCreator.Runtime.Common,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Towards:
           m_Property:
             rid: 4340017107664372401
     - rid: 4340017107664372401
       type: {class: GetGameObjectTarget, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372406
       type: {class: GetLocationMeleeTargetToSelf, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -269,7 +259,8 @@ MonoBehaviour:
             m_Instructions:
             - rid: 4340017107664372409
     - rid: 4340017107664372409
-      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -287,7 +278,6 @@ MonoBehaviour:
           m_Radius: 10
     - rid: 4340017107664372410
       type: {class: GetGameObjectCameraMain, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372411
       type: {class: ClipDefault, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
       data:
@@ -298,7 +288,8 @@ MonoBehaviour:
             m_Instructions:
             - rid: 4340017107664372412
     - rid: 4340017107664372412
-      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -316,4 +307,3 @@ MonoBehaviour:
           m_Radius: 10
     - rid: 4340017107664372413
       type: {class: GetGameObjectCameraMain, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
-      data: 

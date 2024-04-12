@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb652872188b4bf99a563aa85d225e6e, type: 3}
+  m_Name: Player_Handle
+  m_EditorClassIdentifier: 
+  m_Handles:
+    m_Handles:
+    - rid: 4384754059619599273
+  references:
+    version: 2
+    RefIds:
+    - rid: 4384754059619599273
+      type: {class: HandleItem, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_Conditions:
+          m_Conditions:
+            m_Conditions: []
+        m_Bone:
+          m_Type: 1
+          m_Human: 18
+          m_Path: 
+        m_LocalPosition:
+          m_Property:
+            rid: 4384754059619599274
+        m_LocalRotation:
+          m_Property:
+            rid: 4384754059619599275
+    - rid: 4384754059619599274
+      type: {class: GetPositionVector3, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Position: {x: 8.6, y: 2.6, z: 0.6}
+    - rid: 4384754059619599275
+      type: {class: GetRotationConstantEulerVector, ns: GameCreator.Runtime.Common,
+        asm: GameCreator.Runtime.Core}
+      data:
+        m_Angles: {x: -24, y: 70, z: -111}

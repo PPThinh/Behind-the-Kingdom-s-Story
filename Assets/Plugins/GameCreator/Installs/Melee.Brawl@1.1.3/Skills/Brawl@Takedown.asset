@@ -134,10 +134,8 @@ MonoBehaviour:
           m_Text: 
     - rid: 4340017107664372139
       type: {class: GetSpriteNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372140
       type: {class: GetColorColorsWhite, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372147
       type: {class: TrackMeleePhases, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -171,13 +169,10 @@ MonoBehaviour:
         - rid: 4340017107664372488
     - rid: 4340017107664372156
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372157
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372158
       type: {class: GetDecimalConstantOne, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372160
       type: {class: ClipMeleeCancel, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -222,20 +217,16 @@ MonoBehaviour:
         m_Value: 1
     - rid: 4340017107664372359
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372360
       type: {class: GetAudioClip, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: {fileID: 8300000, guid: 9e5c23c2cd6b14240b0c6a4024d9af94, type: 3}
     - rid: 4340017107664372397
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372398
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372399
       type: {class: GetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372408
       type: {class: ClipDefault, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
       data:
@@ -248,7 +239,8 @@ MonoBehaviour:
             - rid: 4340017107664372474
             - rid: 4340017107664372477
     - rid: 4340017107664372409
-      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -266,7 +258,6 @@ MonoBehaviour:
           m_Radius: 10
     - rid: 4340017107664372410
       type: {class: GetGameObjectCameraMain, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372411
       type: {class: ClipDefault, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
       data:
@@ -278,7 +269,8 @@ MonoBehaviour:
             - rid: 4340017107664372412
             - rid: 4340017107664372500
     - rid: 4340017107664372412
-      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCameraShakeBurst, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -296,12 +288,11 @@ MonoBehaviour:
           m_Radius: 10
     - rid: 4340017107664372413
       type: {class: GetGameObjectCameraMain, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372473
       type: {class: GetAudioNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372474
-      type: {class: InstructionCommonAudioSFXPlay, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCommonAudioSFXPlay, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -323,7 +314,8 @@ MonoBehaviour:
       data:
         m_Value: {fileID: 8300000, guid: 79832aa5f296f4d53870d82e6cc9548b, type: 3}
     - rid: 4340017107664372477
-      type: {class: InstructionGameObjectInstantiate, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectInstantiate, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -349,13 +341,12 @@ MonoBehaviour:
     - rid: 4340017107664372478
       type: {class: GetGameObjectInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_GameObject: {fileID: 3135502183617210236, guid: 04124b357ce5f44f790264435901c671, type: 3}
+        m_GameObject: {fileID: 3135502183617210236, guid: 04124b357ce5f44f790264435901c671,
+          type: 3}
     - rid: 4340017107664372481
       type: {class: GetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372482
       type: {class: SetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372483
       type: {class: GetPositionGameObject, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -363,7 +354,8 @@ MonoBehaviour:
           m_Property:
             rid: 4340017107664372485
     - rid: 4340017107664372485
-      type: {class: GetGameObjectCharactersBone, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      type: {class: GetGameObjectCharactersBone, ns: GameCreator.Runtime.Characters,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Character:
           m_Property:
@@ -374,10 +366,8 @@ MonoBehaviour:
           m_Path: 
     - rid: 4340017107664372486
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372487
       type: {class: GetRotationIdentity, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372488
       type: {class: ClipDefault, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
       data:
@@ -388,7 +378,8 @@ MonoBehaviour:
             m_Instructions:
             - rid: 4340017107664372489
     - rid: 4340017107664372489
-      type: {class: InstructionCommonAudioSFXPlay, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionCommonAudioSFXPlay, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -411,12 +402,11 @@ MonoBehaviour:
         m_Value: {fileID: 8300000, guid: f855e55cf437944e8bc43370938e8ad9, type: 3}
     - rid: 4340017107664372492
       type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372493
       type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372500
-      type: {class: InstructionGameObjectInstantiate, ns: GameCreator.Runtime.VisualScripting, asm: GameCreator.Runtime.Core}
+      type: {class: InstructionGameObjectInstantiate, ns: GameCreator.Runtime.VisualScripting,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -442,7 +432,8 @@ MonoBehaviour:
     - rid: 4340017107664372501
       type: {class: GetGameObjectInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_GameObject: {fileID: 3135502183617210236, guid: 04124b357ce5f44f790264435901c671, type: 3}
+        m_GameObject: {fileID: 3135502183617210236, guid: 04124b357ce5f44f790264435901c671,
+          type: 3}
     - rid: 4340017107664372502
       type: {class: GetPositionGameObject, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -451,15 +442,13 @@ MonoBehaviour:
             rid: 4340017107664372506
     - rid: 4340017107664372503
       type: {class: GetRotationIdentity, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372504
       type: {class: GetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372505
       type: {class: SetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372506
-      type: {class: GetGameObjectCharactersBone, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      type: {class: GetGameObjectCharactersBone, ns: GameCreator.Runtime.Characters,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Character:
           m_Property:
@@ -470,16 +459,15 @@ MonoBehaviour:
           m_Path: 
     - rid: 4340017107664372507
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372508
-      type: {class: GetLocationTrackRotationTowards, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      type: {class: GetLocationTrackRotationTowards, ns: GameCreator.Runtime.Common,
+        asm: GameCreator.Runtime.Core}
       data:
         m_Towards:
           m_Property:
             rid: 4340017107664372510
     - rid: 4340017107664372510
       type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 4340017107664372511
       type: {class: GetLocationMeleeSelfToTarget, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
       data:
@@ -494,7 +482,8 @@ MonoBehaviour:
       data:
         m_Value: 1.5
     - rid: 4340017107664372513
-      type: {class: InstructionMeleeResetBreakTime, ns: GameCreator.Runtime.Melee, asm: GameCreator.Runtime.Melee}
+      type: {class: InstructionMeleeResetBreakTime, ns: GameCreator.Runtime.Melee,
+        asm: GameCreator.Runtime.Melee}
       data:
         m_Breakpoint: 0
         m_IsEnabled: 1
@@ -503,4 +492,3 @@ MonoBehaviour:
             rid: 4340017107664372516
     - rid: 4340017107664372516
       type: {class: GetGameObjectTarget, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
