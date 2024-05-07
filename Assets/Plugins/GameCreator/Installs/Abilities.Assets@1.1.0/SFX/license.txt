@@ -1,5 +1,0 @@
-The sound effects included in this folder are a courtesy of [WOW Sound].
-
-The following sound effects may be used freely.
-
-If you wish to get more sound effects from them, I recommend visiting their Asset Store Publisher page at https://assetstore.unity.com/publishers/19233.

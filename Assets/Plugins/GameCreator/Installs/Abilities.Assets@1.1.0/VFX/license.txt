@@ -1,5 +1,0 @@
-The VFX included in these folders are a courtesy of [Archanor VFX].
-
-The included sample may be used for demonstration purposes.
-
-If you wish to download more effects, please visit their publisher page at : https://assetstore.unity.com/publishers/8569.

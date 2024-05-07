@@ -1,4 +1,0 @@
-#GC-Inventory-Loot-Table-List-Item {
-    -unity-text-align: middle-right;
-    margin-right: var(--gc-common-space-smaller);
-}

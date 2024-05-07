@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5d8955ff124a4ea87af78909a5e3c6, type: 3}
+  m_Name: Eclipse_State
+  m_EditorClassIdentifier: 
+  m_Nodes:
+  - rid: 7942555370402611886
+  - rid: 7942555370402611887
+  - rid: 7942555370402611893
+  - rid: 7942555370402611896
+  - rid: 7942555370402611902
+  m_Data:
+    m_List: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942555370402611886
+      type: {class: NodeStateMachineEnter, ns: GameCreator.Runtime.Behavior, asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_String: c548fe2b-1760-476b-8592-688b3368deee
+        m_Position: {x: -525, y: -146}
+        m_Ports:
+          m_Inputs: []
+          m_Outputs:
+          - rid: 7942555370402611888
+    - rid: 7942555370402611887
+      type: {class: NodeStateMachineExit, ns: GameCreator.Runtime.Behavior, asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_String: 659d36af-bb51-4b2f-888e-2eb3253664d5
+        m_Position: {x: 100, y: 0}
+        m_Ports:
+          m_Inputs:
+          - rid: 7942555370402611889
+          m_Outputs: []
+    - rid: 7942555370402611888
+      type: {class: OutputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: a8bb32c4-6963-445e-b274-fbaff700ad16
+        m_Connections:
+        - m_Value: e2553a0d-4cd6-4211-84b3-c24a435714e1
+        - m_Value: df43262b-b793-4e5d-9ff4-0f8d696369fd
+        - m_Value: 1348f627-fca2-4dff-bbed-a2661566e268
+    - rid: 7942555370402611889
+      type: {class: InputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: cddc51ef-f062-4efe-bfc3-c44f432c823d
+    - rid: 7942555370402611893
+      type: {class: NodeStateMachineState, ns: GameCreator.Runtime.Behavior, asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_String: 421bf1aa-3302-4027-b583-ad5f832e518f
+        m_Position: {x: -246.95001, y: -140.84999}
+        m_Ports:
+          m_Inputs:
+          - rid: 7942555370402611894
+          m_Outputs:
+          - rid: 7942555370402611895
+        m_Name: Follow Player
+        m_Check: 1
+        m_Conditions:
+          m_Conditions:
+            m_Conditions: []
+        m_OnEnter:
+          m_Instructions:
+            m_Instructions: []
+        m_OnExit:
+          m_Instructions:
+            m_Instructions: []
+        m_Instructions:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 7942555370402611894
+      type: {class: InputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: df43262b-b793-4e5d-9ff4-0f8d696369fd
+    - rid: 7942555370402611895
+      type: {class: OutputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: dde9cc10-de38-43d8-8478-8962cb9d0b3d
+        m_Connections: []
+    - rid: 7942555370402611896
+      type: {class: NodeStateMachineState, ns: GameCreator.Runtime.Behavior, asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_String: acf2b6f8-b415-4c8c-82e5-da0c00684216
+        m_Position: {x: -241.2068, y: -57.09751}
+        m_Ports:
+          m_Inputs:
+          - rid: 7942555370402611897
+          m_Outputs:
+          - rid: 7942555370402611898
+        m_Name: My State
+        m_Check: 1
+        m_Conditions:
+          m_Conditions:
+            m_Conditions:
+            - rid: 7942555370402611899
+        m_OnEnter:
+          m_Instructions:
+            m_Instructions: []
+        m_OnExit:
+          m_Instructions:
+            m_Instructions: []
+        m_Instructions:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 7942555370402611897
+      type: {class: InputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: e2553a0d-4cd6-4211-84b3-c24a435714e1
+    - rid: 7942555370402611898
+      type: {class: OutputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: bf9b0fb3-92de-461c-a993-a271f77c0161
+        m_Connections: []
+    - rid: 7942555370402611899
+      type: {class: ConditionCompareAttribute, ns: GameCreator.Runtime.Stats, asm: GameCreator.Runtime.Stats}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_Sign: 1
+        m_Traits:
+          m_Property:
+            rid: 7942555370402611900
+        m_Attribute: {fileID: 11400000, guid: aeab77f65cdfcf948966eeaadbb74324, type: 2}
+        m_Value: 0
+        m_CompareTo:
+          m_Comparison: 4
+          m_CompareTo:
+            m_Property:
+              rid: 7942555370402611901
+    - rid: 7942555370402611900
+      type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 7942555370402611901
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0
+    - rid: 7942555370402611902
+      type: {class: NodeStateMachineState, ns: GameCreator.Runtime.Behavior, asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_String: fba30979-0e1c-44d3-a46d-d7dff676716c
+        m_Position: {x: -244.26001, y: -250.01001}
+        m_Ports:
+          m_Inputs:
+          - rid: 7942555370402611903
+          m_Outputs:
+          - rid: 7942555370402611904
+        m_Name: My State
+        m_Check: 1
+        m_Conditions:
+          m_Conditions:
+            m_Conditions: []
+        m_OnEnter:
+          m_Instructions:
+            m_Instructions: []
+        m_OnExit:
+          m_Instructions:
+            m_Instructions: []
+        m_Instructions:
+          m_Instructions:
+            m_Instructions: []
+    - rid: 7942555370402611903
+      type: {class: InputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: 1348f627-fca2-4dff-bbed-a2661566e268
+    - rid: 7942555370402611904
+      type: {class: OutputPortStateMachineMultiple, ns: GameCreator.Runtime.Behavior,
+        asm: GameCreator.Runtime.Behavior}
+      data:
+        m_Id:
+          m_Value: f1bd120c-849f-4801-8221-062161387af9
+        m_Connections: []
